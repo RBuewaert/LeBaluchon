@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		697BD1EE26AEFB6F001EA117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */; };
 		697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */; };
-		697BD1F226AEFB6F001EA117 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD1F126AEFB6F001EA117 /* ViewController.swift */; };
 		697BD1F526AEFB6F001EA117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697BD1F326AEFB6F001EA117 /* Main.storyboard */; };
 		697BD1F726AEFB70001EA117 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697BD1F626AEFB70001EA117 /* Assets.xcassets */; };
 		697BD1FA26AEFB70001EA117 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697BD1F826AEFB70001EA117 /* LaunchScreen.storyboard */; };
+		697BD20626AEFCB5001EA117 /* ExchangeRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20526AEFCB5001EA117 /* ExchangeRateViewController.swift */; };
+		697BD20826AEFCCA001EA117 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20726AEFCCA001EA117 /* TranslationViewController.swift */; };
+		697BD20A26AEFCDB001EA117 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20926AEFCDB001EA117 /* WeatherViewController.swift */; };
+		697BD20C26AF0639001EA117 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20B26AF0639001EA117 /* Currency.swift */; };
+		697BD20E26AF0660001EA117 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20D26AF0660001EA117 /* CurrencyService.swift */; };
+		697BD21026AF0688001EA117 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD20F26AF0688001EA117 /* ErrorType.swift */; };
+		697BD21226AF0865001EA117 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD21126AF0865001EA117 /* APIKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		697BD1EA26AEFB6F001EA117 /* LeBaluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeBaluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		697BD1F126AEFB6F001EA117 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		697BD1F426AEFB6F001EA117 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		697BD1F626AEFB70001EA117 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		697BD1F926AEFB70001EA117 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		697BD1FB26AEFB70001EA117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		697BD20526AEFCB5001EA117 /* ExchangeRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewController.swift; sourceTree = "<group>"; };
+		697BD20726AEFCCA001EA117 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		697BD20926AEFCDB001EA117 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		697BD20B26AF0639001EA117 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		697BD20D26AF0660001EA117 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		697BD20F26AF0688001EA117 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		697BD21126AF0865001EA117 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,53 @@
 		697BD1EC26AEFB6F001EA117 /* LeBaluchon */ = {
 			isa = PBXGroup;
 			children = (
-				697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */,
-				697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */,
-				697BD1F126AEFB6F001EA117 /* ViewController.swift */,
-				697BD1F326AEFB6F001EA117 /* Main.storyboard */,
-				697BD1F626AEFB70001EA117 /* Assets.xcassets */,
-				697BD1F826AEFB70001EA117 /* LaunchScreen.storyboard */,
-				697BD1FB26AEFB70001EA117 /* Info.plist */,
+				697BD20426AEFB8C001EA117 /* Supporting Files */,
+				697BD20326AEFB88001EA117 /* Model */,
+				697BD20226AEFB84001EA117 /* View */,
+				697BD20126AEFB7C001EA117 /* Controller */,
 			);
 			path = LeBaluchon;
+			sourceTree = "<group>";
+		};
+		697BD20126AEFB7C001EA117 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				697BD20526AEFCB5001EA117 /* ExchangeRateViewController.swift */,
+				697BD20726AEFCCA001EA117 /* TranslationViewController.swift */,
+				697BD20926AEFCDB001EA117 /* WeatherViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		697BD20226AEFB84001EA117 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				697BD1F826AEFB70001EA117 /* LaunchScreen.storyboard */,
+				697BD1F326AEFB6F001EA117 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		697BD20326AEFB88001EA117 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				697BD21126AF0865001EA117 /* APIKeys.swift */,
+				697BD20B26AF0639001EA117 /* Currency.swift */,
+				697BD20D26AF0660001EA117 /* CurrencyService.swift */,
+				697BD20F26AF0688001EA117 /* ErrorType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		697BD20426AEFB8C001EA117 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				697BD1FB26AEFB70001EA117 /* Info.plist */,
+				697BD1F626AEFB70001EA117 /* Assets.xcassets */,
+				697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */,
+				697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				697BD1F226AEFB6F001EA117 /* ViewController.swift in Sources */,
+				697BD21026AF0688001EA117 /* ErrorType.swift in Sources */,
+				697BD20A26AEFCDB001EA117 /* WeatherViewController.swift in Sources */,
 				697BD1EE26AEFB6F001EA117 /* AppDelegate.swift in Sources */,
+				697BD21226AF0865001EA117 /* APIKeys.swift in Sources */,
+				697BD20626AEFCB5001EA117 /* ExchangeRateViewController.swift in Sources */,
+				697BD20E26AF0660001EA117 /* CurrencyService.swift in Sources */,
 				697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */,
+				697BD20C26AF0639001EA117 /* Currency.swift in Sources */,
+				697BD20826AEFCCA001EA117 /* TranslationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.buewaertromain.LeBaluchon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +371,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.buewaertromain.LeBaluchon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

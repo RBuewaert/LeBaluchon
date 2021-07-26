@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0VU-zL-BWj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hBn-wb-1Mp">
+            <objects>
+                <tabBarController id="0VU-zL-BWj" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hEO-rR-Qll">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="oKD-Rs-K42"/>
+                        <segue destination="vom-UR-2hx" kind="relationship" relationship="viewControllers" id="UJ0-0B-x4j"/>
+                        <segue destination="ctA-vL-WBq" kind="relationship" relationship="viewControllers" id="De4-Y3-myk"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8N-Cw-4t8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932" y="-315"/>
+        </scene>
+        <!--Exchange Rate-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ExchangeRateViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2na-C8-66b">
+                                <rect key="frame" x="81.5" y="44" width="251" height="157.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-Wj-tyT">
+                                        <rect key="frame" x="0.0" y="0.0" width="251" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Xlf-un-FS0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtJ-4O-wuY">
+                                        <rect key="frame" x="0.0" y="70" width="251" height="87.5"/>
+                                        <string key="text">Today :
+
+1 Euro = X US dollar</string>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-Yd-1xx">
+                                <rect key="frame" x="20" y="358" width="374" height="180"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cw8-wI-VFs">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
+                                        <color key="backgroundColor" red="0.11838372799999999" green="0.07407657057" blue="0.34713387489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="fkJ-oa-Tym"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <state key="normal" title="CONVERT">
+                                            <color key="titleColor" systemColor="systemYellowColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedConvertButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="sc7-uQ-ZsR"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPa-5k-G3b">
+                                        <rect key="frame" x="0.0" y="70" width="374" height="55"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elE-29-krG">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
+                                                <string key="text">Enter your value:
+in EUR</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXp-e0-zkh">
+                                                <rect key="frame" x="187" y="0.0" width="187" height="55"/>
+                                                <string key="text">Result:
+in USD</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Zk7-mw-bQJ">
+                                        <rect key="frame" x="0.0" y="130" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pxd-bZ-jj5">
+                                                <rect key="frame" x="0.0" y="0.0" width="180.5" height="50"/>
+                                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="continue"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HWU-ez-mQT"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0e-IB-soc">
+                                                <rect key="frame" x="193.5" y="0.0" width="180.5" height="50"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mkh-SO-8Sa"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money" translatesAutoresizingMaskIntoConstraints="NO" id="7Sb-jz-7v1">
+                                <rect key="frame" x="0.0" y="578" width="414" height="235"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="utH-ei-O82">
+                                <rect key="frame" x="184.5" y="368" width="45" height="45"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7vo-ta-KFE"/>
+                                    <constraint firstAttribute="width" constant="45" id="MUU-r4-mXk"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="7Sb-jz-7v1" firstAttribute="top" secondItem="WlL-Yd-1xx" secondAttribute="bottom" constant="40" id="7mq-Yd-vJl"/>
+                            <constraint firstItem="WlL-Yd-1xx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HuX-Aa-YLv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Sb-jz-7v1" secondAttribute="trailing" id="Mmu-6X-vhe"/>
+                            <constraint firstItem="Cw8-wI-VFs" firstAttribute="centerX" secondItem="utH-ei-O82" secondAttribute="centerX" id="OAR-hS-4PA"/>
+                            <constraint firstItem="2na-C8-66b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VsY-HF-zgy"/>
+                            <constraint firstItem="7Sb-jz-7v1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YUw-yS-E4r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WlL-Yd-1xx" secondAttribute="trailing" constant="20" id="Zjf-IO-7rr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Sb-jz-7v1" secondAttribute="bottom" id="aTN-pq-Tyy"/>
+                            <constraint firstItem="WlL-Yd-1xx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hpJ-wJ-AO9"/>
+                            <constraint firstItem="Cw8-wI-VFs" firstAttribute="centerY" secondItem="utH-ei-O82" secondAttribute="centerY" id="nbj-si-0qR"/>
+                            <constraint firstItem="2na-C8-66b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5K-6Y-pIA"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XAa-YB-IUh" appends="YES" id="Jkr-8B-sdH"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Exchange Rate" image="currency" id="E65-D6-Vs3"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="utH-ei-O82" id="mIj-LC-Dpf"/>
+                        <outlet property="comparedCurrencyLabel" destination="xtJ-4O-wuY" id="Zm5-Wb-gsl"/>
+                        <outlet property="convertButton" destination="Cw8-wI-VFs" id="a3Q-jN-uUB"/>
+                        <outlet property="firstCurrencyLabel" destination="elE-29-krG" id="BuD-WB-mOH"/>
+                        <outlet property="resultValueLabel" destination="Y0e-IB-soc" id="Qwm-Be-fXD"/>
+                        <outlet property="secondCurrencyLabel" destination="VXp-e0-zkh" id="59X-g0-CaH"/>
+                        <outlet property="userValueTextField" destination="pxd-bZ-jj5" id="Zrt-mu-rGr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XAa-YB-IUh">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="1HD-Lp-Z1X"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="866.66666666666674" y="-1108.2589285714284"/>
+        </scene>
+        <!--Translation-->
+        <scene sceneID="FdY-bo-XSe">
+            <objects>
+                <viewController id="vom-UR-2hx" customClass="tr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="89D-Se-bPT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yoG-dd-xkc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Translation" id="UvS-hp-12B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZO7-yX-8e9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-315"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="Dm7-Kd-l18">
+            <objects>
+                <viewController id="ctA-vL-WBq" customClass="weath" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pmF-Ci-wcj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QLa-2J-16k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Weather" id="s8y-Tv-ETy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBa-ie-WFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="563"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="currency" width="33.5" height="33.5"/>
+        <image name="money" width="213.5" height="142"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
