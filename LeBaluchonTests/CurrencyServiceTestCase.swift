@@ -11,12 +11,11 @@ import XCTest
 class CurrencyServiceTestCase: XCTestCase {
     func testGetExchangeRateShouldPostFailedCallbackIfError() {
         // Given
-        let exchangeRate = CurrencyService(
-            currencySession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+        let currencyService = CurrencyService(currencySession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        CurrencyService.getExchangeRate { (success, currency) in
+        currencyService.getExchangeRate { (success, currency) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(currency)
