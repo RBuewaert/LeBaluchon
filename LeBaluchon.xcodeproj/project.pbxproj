@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6961A57D26B02DA400D96B90 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961A57C26B02DA400D96B90 /* Weather.swift */; };
+		6961A57F26B034D600D96B90 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961A57E26B034D600D96B90 /* WeatherService.swift */; };
 		697BD1EE26AEFB6F001EA117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */; };
 		697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */; };
 		697BD1F526AEFB6F001EA117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697BD1F326AEFB6F001EA117 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6961A57C26B02DA400D96B90 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		6961A57E26B034D600D96B90 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		697BD1EA26AEFB6F001EA117 /* LeBaluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeBaluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697BD1ED26AEFB6F001EA117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		697BD1EF26AEFB6F001EA117 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				697BD20B26AF0639001EA117 /* Currency.swift */,
 				697BD20D26AF0660001EA117 /* CurrencyService.swift */,
 				697BD20F26AF0688001EA117 /* ErrorType.swift */,
+				6961A57C26B02DA400D96B90 /* Weather.swift */,
+				6961A57E26B034D600D96B90 /* WeatherService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,8 +268,10 @@
 			files = (
 				697BD21026AF0688001EA117 /* ErrorType.swift in Sources */,
 				697BD20A26AEFCDB001EA117 /* WeatherViewController.swift in Sources */,
+				6961A57F26B034D600D96B90 /* WeatherService.swift in Sources */,
 				697BD1EE26AEFB6F001EA117 /* AppDelegate.swift in Sources */,
 				697BD21226AF0865001EA117 /* APIKeys.swift in Sources */,
+				6961A57D26B02DA400D96B90 /* Weather.swift in Sources */,
 				697BD20626AEFCB5001EA117 /* ExchangeRateViewController.swift in Sources */,
 				697BD20E26AF0660001EA117 /* CurrencyService.swift in Sources */,
 				697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */,

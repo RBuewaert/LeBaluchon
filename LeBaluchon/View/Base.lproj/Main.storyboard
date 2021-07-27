@@ -196,10 +196,26 @@ in USD</string>
                     <view key="view" contentMode="scaleToFill" id="pmF-Ci-wcj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dz-DY-IvD">
+                                <rect key="frame" x="135" y="44" width="144.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Lv3-RE-KLH"/>
+                                    <constraint firstAttribute="height" constant="50" id="uxd-sw-idI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QLa-2J-16k"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="5dz-DY-IvD" firstAttribute="centerX" secondItem="pmF-Ci-wcj" secondAttribute="centerX" id="57B-td-T22"/>
+                            <constraint firstItem="5dz-DY-IvD" firstAttribute="top" secondItem="QLa-2J-16k" secondAttribute="top" id="Z70-eq-tSz"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Weather" id="s8y-Tv-ETy"/>
+                    <tabBarItem key="tabBarItem" title="Weather" image="sun" id="s8y-Tv-ETy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBa-ie-WFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,6 +225,7 @@ in USD</string>
     <resources>
         <image name="currency" width="33.5" height="33.5"/>
         <image name="money" width="213.5" height="142"/>
+        <image name="sun" width="33.5" height="33.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

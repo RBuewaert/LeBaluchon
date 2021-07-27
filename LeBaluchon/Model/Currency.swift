@@ -14,10 +14,6 @@ struct Currency {
 }
 
 struct CurrencyResult: Codable {
-//    var success: Bool
-//    var timestamp: Int
-//    var base: String = "EUR"
-//    var date: String
     var rates: [String: Double]
 }
 
