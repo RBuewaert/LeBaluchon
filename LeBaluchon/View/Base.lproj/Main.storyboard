@@ -176,7 +176,7 @@ in USD</string>
         <!--Translation-->
         <scene sceneID="FdY-bo-XSe">
             <objects>
-                <viewController id="vom-UR-2hx" customClass="tr" sceneMemberID="viewController">
+                <viewController id="vom-UR-2hx" customClass="TranslationViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="89D-Se-bPT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@ in USD</string>
         <!--Weather-->
         <scene sceneID="Dm7-Kd-l18">
             <objects>
-                <viewController id="ctA-vL-WBq" customClass="weath" sceneMemberID="viewController">
+                <viewController id="ctA-vL-WBq" customClass="WeatherViewController" customModule="LeBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pmF-Ci-wcj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
