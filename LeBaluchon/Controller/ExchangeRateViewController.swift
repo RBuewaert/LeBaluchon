@@ -11,36 +11,36 @@ class ExchangeRateViewController: UIViewController {
     var currency: Currency!
 
     @IBOutlet weak var comparedCurrencyLabel: UILabel!
-    @IBOutlet weak var firstCurrencyLabel: UILabel!
-    @IBOutlet weak var secondCurrencyLabel: UILabel!
+    @IBOutlet weak var leftCurrencyLabel: UILabel!
+    @IBOutlet weak var rightCurrencyLabel: UILabel!
     @IBOutlet weak var userValueTextField: UITextField!
     @IBOutlet weak var resultValueLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
-        CurrencyService.shared.getExchangeRate { (success, currency) in
-                    self.toggleActivityIndicator(shown: false)
-
-                    if success, let currentCurrency = currency {
-                        self.currency = currentCurrency
-                        self.update(currency: currentCurrency)
-                        print(self.currency.exchangeRate)
-                    } else {
-                        self.errorMessage(message: ErrorType.downloadFailed.rawValue)
-                    }
-                }
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        // Do any additional setup after loading the view.
+//
+//        CurrencyService.shared.getExchangeRate { (success, currency) in
+//                    self.toggleActivityIndicator(shown: false)
+//
+//                    if success, let currentCurrency = currency {
+//                        self.currency = currentCurrency
+//                        self.update(currency: currentCurrency)
+//                        print(self.currency.exchangeRate)
+//                    } else {
+//                        self.errorMessage(message: ErrorType.downloadFailed.rawValue)
+//                    }
+//                }
+//    }
 
     private func toggleActivityIndicator(shown: Bool) {
             activityIndicator.isHidden = !shown
             convertButton.isHidden = shown
         }
 
-    private func update(currency: Currency) {
+    private func updateExchangeRateView(currency: Currency) {
         do {
             let currencyForOne: String = try CurrencyService.shared.convertCurrency(
                 currency: currency,
@@ -53,11 +53,11 @@ class ExchangeRateViewController: UIViewController {
 
                 1 \(currencyList[currency.currencyToConvert]!) =  \(currencyForOne) \(currencyList[currency.currencyToObtain]!)
                 """
-            firstCurrencyLabel.text = """
+            leftCurrencyLabel.text = """
                 Enter your value:
                 in \(currency.currencyToConvert)
                 """
-            secondCurrencyLabel.text = """
+            rightCurrencyLabel.text = """
                 Result:
                 in \(currency.currencyToObtain)
                 """

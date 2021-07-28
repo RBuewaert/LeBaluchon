@@ -24,6 +24,10 @@ class TranslationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    
+    
+    
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //        print("A : init")

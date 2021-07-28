@@ -9,32 +9,89 @@ import Foundation
 
 struct Weather {
     var city: String
-    var weather: String
-    var weatherDescription: String
+    var description: String
+//    var weatherDescription: String (faire directement dans weather)
     var icon: String
     var temperature: Double
     var feltTemperature: Double
     var temperatureMin: Double
     var temperatureMax: Double
-    var Pressure: Int
-    var humidity: Int
+    var pressure: Int
+    var humidity: Double
     var windSpeed: Double
-    var cloudiness: Int
+    var cloudiness: Double
+    
+    /* vitesste du vent par défaut metre par s :
+    Une vitesse de 1 m/s correspond à 3,6 km/h soit 1,9 nœuds. Une vitesse de 25 m/s correspond à 90 km/h soit 49 nœuds. Une vitesse de 28 m/s correspond à 100 km/h soit 54 nœuds.
+    */
 }
 
+struct WeatherResultList: Codable {
+    var name: String
+    var description: String
+//    var weatherDescription: String (faire directement dans weather)
+    var icon: String
+    var temp: Double
+    var feels_like: Double
+    var temp_min: Double
+    var temp_max: Double
+    var pressure: Int
+    var humidity: Int
+    var speed: Double
+    var all: Double
+}
+
+
+
 struct WeatherResult: Codable {
+    let weather: [WeatherResultWeather]
+    let main: WeatherResultMain
+    let wind: WeatherResultWind
+    let clouds: WeatherResultClouds
+    let name: String
+}
+
+struct WeatherResultWeather: Codable {
+    let main: String
+    let description: String
+    let icon: String
+}
+
+struct WeatherResultMain: Codable {
+    let temp: Double
+    let feels_like: Double
+    let temp_min: Double
+    let temp_max: Double
+    let pressure: Int
+    let humidity: Double
+}
+
+struct WeatherResultWind: Codable {
+    let speed: Double
+}
+
+struct WeatherResultClouds: Codable {
+    let all: Double
+}
+
+struct WeatherResultName: Codable {
+    let name: String
+}
+
+    
+    
 //    var coord: [String: Double]
-    var weather: [String: String]
+//    var weather: [String: String]
 //    var base: String
-    var main: [String: Double]
+//    var main: [String: Double]
 //    var visibility: Int
-    var wind: [String: Double]
-    var clouds: [String: Double]
+//    var wind: [String: Double]
+//    var clouds: [String: Double]
 //    var dt: Int
 //    var sys: [String: String]
 //    var timezone: Double
 //    var id : Int
-    var name: String
+//    var name: String
 //    var cod: Int
 
     /*
@@ -82,4 +139,4 @@ struct WeatherResult: Codable {
         "cod": 200
     }
  */
-}
+
