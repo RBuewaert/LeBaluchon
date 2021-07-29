@@ -11,29 +11,18 @@ class WeatherViewController: UIViewController {
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
 
-    @IBOutlet weak var leftCityLabel: UILabel!
-    @IBOutlet weak var leftWeatherLabel: UILabel!
-    @IBOutlet weak var leftImageView: UIImageView!
-    @IBOutlet weak var leftTempLabel: UILabel!
-    @IBOutlet weak var leftFeltTempLabel: UILabel!
-    @IBOutlet weak var leftTempMinLabel: UILabel!
-    @IBOutlet weak var leftTempMaxLabel: UILabel!
-    @IBOutlet weak var leftPressureLabel: UILabel!
-    @IBOutlet weak var leftHumidityLabel: UILabel!
-    @IBOutlet weak var leftWindLabel: UILabel!
-    @IBOutlet weak var leftCloudinessLabel: UILabel!
-
-    @IBOutlet weak var rightCityLabel: UILabel!
-    @IBOutlet weak var rightWeatherLabel: UILabel!
-    @IBOutlet weak var rightImageView: UIImageView!
-    @IBOutlet weak var rightTempLabel: UILabel!
-    @IBOutlet weak var rightFeltTempLabel: UILabel!
-    @IBOutlet weak var rightTempMinLabel: UILabel!
-    @IBOutlet weak var rightTempMaxLabel: UILabel!
-    @IBOutlet weak var rightPressureLabel: UILabel!
-    @IBOutlet weak var rightHumidityLabel: UILabel!
-    @IBOutlet weak var rightWindLabel: UILabel!
-    @IBOutlet weak var rightCloudinessLabel: UILabel!
+    @IBOutlet var cityLabel: [UILabel]!
+    @IBOutlet var weatherLabel: [UILabel]!
+    @IBOutlet var imageView: [UIImageView]!
+    @IBOutlet var tempLabel: [UILabel]!
+    @IBOutlet var feltTempLabel: [UILabel]!
+    @IBOutlet var tempMinLabel: [UILabel]!
+    @IBOutlet var tempMaxLabel: [UILabel]!
+    @IBOutlet var pressureLabel: [UILabel]!
+    @IBOutlet var humidityLabel: [UILabel]!
+    @IBOutlet var windLabel: [UILabel]!
+    @IBOutlet var cloudinessLabel: [UILabel]!
+    
     
     /*
      TESTER : Diminuer le nbre de label ci-dessus avec les tag !!!
@@ -79,12 +68,16 @@ class WeatherViewController: UIViewController {
     }
 
     private func updateWeatherView(weather: Weather, tag: Int) {
-        let outletList = [leftCityLabel, leftWeatherLabel, leftImageView, leftTempLabel]
-        for outlet in outletList {
-            if outlet!.tag == tag {
-                leftCityLabel.text = "toto"
-            }
-        }
+        cityLabel[0].text = ""
+        
+        
+        
+//        let outletList = [cityLabel, leftWeatherLabel, leftImageView, leftTempLabel, leftFeltTempLabel, leftTempMinLabel, leftTempMaxLabel, leftPressureLabel, leftHumidityLabel, leftWindLabel, leftCloudinessLabel, rightCityLabelTest, rightWeatherLabel, rightImageView, rightTempLabel, rightFeltTempLabel, rightTempMinLabel, rightTempMaxLabel, rightPressureLabel, rightHumidityLabel, rightWindLabel, rightCloudinessLabel]
+//        for outlet in outletList {
+//            if outlet!.tag == tag {
+//                cityLabel.text = "City: \(weather.city)"
+//            }
+//        }
     }
 
    

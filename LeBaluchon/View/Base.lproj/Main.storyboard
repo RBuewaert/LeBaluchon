@@ -59,13 +59,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WlL-Yd-1xx">
-                                <rect key="frame" x="20" y="358" width="374" height="180"/>
+                                <rect key="frame" x="20" y="360.5" width="374" height="175"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cw8-wI-VFs">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                         <color key="backgroundColor" red="0.11838372799999999" green="0.07407657057" blue="0.34713387489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="fkJ-oa-Tym"/>
+                                            <constraint firstAttribute="height" constant="60" id="fkJ-oa-Tym"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <state key="normal" title="CONVERT">
@@ -76,7 +76,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPa-5k-G3b">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="55"/>
+                                        <rect key="frame" x="0.0" y="65" width="374" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elE-29-krG">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
@@ -97,7 +97,7 @@ in USD</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Zk7-mw-bQJ">
-                                        <rect key="frame" x="0.0" y="130" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="125" width="374" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pxd-bZ-jj5">
                                                 <rect key="frame" x="0.0" y="0.0" width="180.5" height="50"/>
@@ -122,7 +122,7 @@ in USD</string>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money" translatesAutoresizingMaskIntoConstraints="NO" id="7Sb-jz-7v1">
-                                <rect key="frame" x="0.0" y="578" width="414" height="235"/>
+                                <rect key="frame" x="0.0" y="575.5" width="414" height="237.5"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="utH-ei-O82">
                                 <rect key="frame" x="184.5" y="368" width="45" height="45"/>
@@ -284,67 +284,67 @@ in USD</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="qao-ZW-Eqd">
                                         <rect key="frame" x="204.5" y="0.0" width="199.5" height="599"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City: City 1" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GE-4E-xPv">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City: City 1" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GE-4E-xPv">
                                                 <rect key="frame" x="0.0" y="0.0" width="199.5" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather: SUN" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9t-Ic-tCk">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather: SUN" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9t-Ic-tCk">
                                                 <rect key="frame" x="0.0" y="42" width="199.5" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cy2-Zi-Rd6">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cy2-Zi-Rd6">
                                                 <rect key="frame" x="0.0" y="84" width="199.5" height="199.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Cy2-Zi-Rd6" secondAttribute="height" multiplier="1:1" id="9f0-zb-gVk"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3l-ys-v1w">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3l-ys-v1w">
                                                 <rect key="frame" x="0.0" y="298" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felt temperature : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAx-OQ-eWd">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felt temperature : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAx-OQ-eWd">
                                                 <rect key="frame" x="0.0" y="337.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature min. : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjh-gR-8CW">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature min. : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjh-gR-8CW">
                                                 <rect key="frame" x="0.0" y="377" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature max. : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-RR-U0Y">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature max. : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-RR-U0Y">
                                                 <rect key="frame" x="0.0" y="416" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uus-8o-Gvh">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uus-8o-Gvh">
                                                 <rect key="frame" x="0.0" y="455.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-Dz-1Yw">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-Dz-1Yw">
                                                 <rect key="frame" x="0.0" y="495" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a56-eG-q4I">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a56-eG-q4I">
                                                 <rect key="frame" x="0.0" y="534.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-k3-D4x">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-k3-D4x">
                                                 <rect key="frame" x="0.0" y="574" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -370,28 +370,28 @@ in USD</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="sun" id="s8y-Tv-ETy"/>
                     <connections>
-                        <outlet property="leftCityLabel" destination="U8T-7v-cTL" id="s1t-9A-6It"/>
-                        <outlet property="leftCloudinessLabel" destination="I0C-bk-fgR" id="gs8-as-uGj"/>
-                        <outlet property="leftFeltTempLabel" destination="HZC-Js-2HU" id="Zoy-Ba-JlO"/>
-                        <outlet property="leftHumidityLabel" destination="sZA-sj-wPs" id="Uw9-ED-fDH"/>
-                        <outlet property="leftImageView" destination="nYE-m8-qee" id="JG6-LR-CmX"/>
-                        <outlet property="leftPressureLabel" destination="SWo-I8-bEQ" id="OAI-uW-YQ8"/>
-                        <outlet property="leftTempLabel" destination="Jma-gU-jDe" id="Z64-eI-mjU"/>
-                        <outlet property="leftTempMaxLabel" destination="vtg-DM-NmC" id="EhM-GU-Ye3"/>
-                        <outlet property="leftTempMinLabel" destination="TGC-1O-M6C" id="QJi-EM-HOI"/>
-                        <outlet property="leftWeatherLabel" destination="YZh-Rj-t3M" id="0v9-rY-1rw"/>
-                        <outlet property="leftWindLabel" destination="tZ0-1g-G69" id="saT-RK-4Uc"/>
-                        <outlet property="rightCityLabel" destination="7GE-4E-xPv" id="bXT-d9-D93"/>
-                        <outlet property="rightCloudinessLabel" destination="sA6-k3-D4x" id="Hd9-Y3-S9w"/>
-                        <outlet property="rightFeltTempLabel" destination="jAx-OQ-eWd" id="Oyc-ut-2EE"/>
-                        <outlet property="rightHumidityLabel" destination="BnH-Dz-1Yw" id="fRf-DD-dwj"/>
-                        <outlet property="rightImageView" destination="Cy2-Zi-Rd6" id="osr-HH-JBg"/>
-                        <outlet property="rightPressureLabel" destination="uus-8o-Gvh" id="N3G-6U-Jki"/>
-                        <outlet property="rightTempLabel" destination="g3l-ys-v1w" id="aVx-bD-NBy"/>
-                        <outlet property="rightTempMaxLabel" destination="Bsz-RR-U0Y" id="HUX-Ad-1re"/>
-                        <outlet property="rightTempMinLabel" destination="sjh-gR-8CW" id="Hwk-Ar-Lwy"/>
-                        <outlet property="rightWeatherLabel" destination="N9t-Ic-tCk" id="vVI-GW-PRa"/>
-                        <outlet property="rightWindLabel" destination="a56-eG-q4I" id="3Nx-1I-jtY"/>
+                        <outletCollection property="cityLabel" destination="U8T-7v-cTL" collectionClass="NSMutableArray" id="MeV-sP-bWd"/>
+                        <outletCollection property="cityLabel" destination="7GE-4E-xPv" collectionClass="NSMutableArray" id="ZzF-yt-UrQ"/>
+                        <outletCollection property="weatherLabel" destination="YZh-Rj-t3M" collectionClass="NSMutableArray" id="ea0-eH-XOA"/>
+                        <outletCollection property="weatherLabel" destination="N9t-Ic-tCk" collectionClass="NSMutableArray" id="qjZ-4r-ccS"/>
+                        <outletCollection property="imageView" destination="nYE-m8-qee" collectionClass="NSMutableArray" id="1FN-Pl-HOn"/>
+                        <outletCollection property="imageView" destination="Cy2-Zi-Rd6" collectionClass="NSMutableArray" id="y4d-Av-tCZ"/>
+                        <outletCollection property="tempLabel" destination="Jma-gU-jDe" collectionClass="NSMutableArray" id="SO5-U5-tjk"/>
+                        <outletCollection property="tempLabel" destination="g3l-ys-v1w" collectionClass="NSMutableArray" id="Vup-A9-3Tm"/>
+                        <outletCollection property="feltTempLabel" destination="HZC-Js-2HU" collectionClass="NSMutableArray" id="2oH-ZQ-E6N"/>
+                        <outletCollection property="feltTempLabel" destination="jAx-OQ-eWd" collectionClass="NSMutableArray" id="q3S-5v-tKE"/>
+                        <outletCollection property="tempMinLabel" destination="TGC-1O-M6C" collectionClass="NSMutableArray" id="TBc-sc-S7G"/>
+                        <outletCollection property="tempMinLabel" destination="sjh-gR-8CW" collectionClass="NSMutableArray" id="bbd-a8-NKU"/>
+                        <outletCollection property="tempMaxLabel" destination="vtg-DM-NmC" collectionClass="NSMutableArray" id="6ZL-li-KgH"/>
+                        <outletCollection property="tempMaxLabel" destination="Bsz-RR-U0Y" collectionClass="NSMutableArray" id="dcd-12-MeM"/>
+                        <outletCollection property="pressureLabel" destination="SWo-I8-bEQ" collectionClass="NSMutableArray" id="56X-8B-nEt"/>
+                        <outletCollection property="pressureLabel" destination="uus-8o-Gvh" collectionClass="NSMutableArray" id="RnH-65-xQ3"/>
+                        <outletCollection property="humidityLabel" destination="sZA-sj-wPs" collectionClass="NSMutableArray" id="065-6u-3EX"/>
+                        <outletCollection property="humidityLabel" destination="BnH-Dz-1Yw" collectionClass="NSMutableArray" id="QOR-f9-LuB"/>
+                        <outletCollection property="cloudinessLabel" destination="I0C-bk-fgR" collectionClass="NSMutableArray" id="BPH-M0-uEt"/>
+                        <outletCollection property="cloudinessLabel" destination="sA6-k3-D4x" collectionClass="NSMutableArray" id="KDS-2D-FoK"/>
+                        <outletCollection property="windLabel" destination="tZ0-1g-G69" collectionClass="NSMutableArray" id="Jr5-YE-cAi"/>
+                        <outletCollection property="windLabel" destination="a56-eG-q4I" collectionClass="NSMutableArray" id="t9J-A5-t0v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBa-ie-WFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

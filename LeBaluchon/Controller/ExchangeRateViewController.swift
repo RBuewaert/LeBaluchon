@@ -22,12 +22,14 @@ class ExchangeRateViewController: UIViewController {
 //        super.viewDidLoad()
 //        // Do any additional setup after loading the view.
 //
+//        convertButton.layer.cornerRadius = 30
+//
 //        CurrencyService.shared.getExchangeRate { (success, currency) in
 //                    self.toggleActivityIndicator(shown: false)
 //
 //                    if success, let currentCurrency = currency {
 //                        self.currency = currentCurrency
-//                        self.update(currency: currentCurrency)
+//                        self.updateExchangeRateView(currency: currentCurrency)
 //                        print(self.currency.exchangeRate)
 //                    } else {
 //                        self.errorMessage(message: ErrorType.downloadFailed.rawValue)
