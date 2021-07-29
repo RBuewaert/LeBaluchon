@@ -254,25 +254,25 @@ in USD</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-I8-bEQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZ0-1g-G69">
                                                 <rect key="frame" x="0.0" y="455.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZA-sj-wPs">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-bk-fgR">
                                                 <rect key="frame" x="0.0" y="495" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZ0-1g-G69">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZA-sj-wPs">
                                                 <rect key="frame" x="0.0" y="534.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-bk-fgR">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWo-I8-bEQ">
                                                 <rect key="frame" x="0.0" y="574" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -326,25 +326,25 @@ in USD</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uus-8o-Gvh">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a56-eG-q4I">
                                                 <rect key="frame" x="0.0" y="455.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-Dz-1Yw">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-k3-D4x">
                                                 <rect key="frame" x="0.0" y="495" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a56-eG-q4I">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-Dz-1Yw">
                                                 <rect key="frame" x="0.0" y="534.5" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloudiness: XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA6-k3-D4x">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure : XXX" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uus-8o-Gvh">
                                                 <rect key="frame" x="0.0" y="574" width="199.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -370,8 +370,6 @@ in USD</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="sun" id="s8y-Tv-ETy"/>
                     <connections>
-                        <outletCollection property="cityLabel" destination="U8T-7v-cTL" collectionClass="NSMutableArray" id="MeV-sP-bWd"/>
-                        <outletCollection property="cityLabel" destination="7GE-4E-xPv" collectionClass="NSMutableArray" id="ZzF-yt-UrQ"/>
                         <outletCollection property="weatherLabel" destination="YZh-Rj-t3M" collectionClass="NSMutableArray" id="ea0-eH-XOA"/>
                         <outletCollection property="weatherLabel" destination="N9t-Ic-tCk" collectionClass="NSMutableArray" id="qjZ-4r-ccS"/>
                         <outletCollection property="imageView" destination="nYE-m8-qee" collectionClass="NSMutableArray" id="1FN-Pl-HOn"/>
@@ -384,14 +382,16 @@ in USD</string>
                         <outletCollection property="tempMinLabel" destination="sjh-gR-8CW" collectionClass="NSMutableArray" id="bbd-a8-NKU"/>
                         <outletCollection property="tempMaxLabel" destination="vtg-DM-NmC" collectionClass="NSMutableArray" id="6ZL-li-KgH"/>
                         <outletCollection property="tempMaxLabel" destination="Bsz-RR-U0Y" collectionClass="NSMutableArray" id="dcd-12-MeM"/>
-                        <outletCollection property="pressureLabel" destination="SWo-I8-bEQ" collectionClass="NSMutableArray" id="56X-8B-nEt"/>
-                        <outletCollection property="pressureLabel" destination="uus-8o-Gvh" collectionClass="NSMutableArray" id="RnH-65-xQ3"/>
-                        <outletCollection property="humidityLabel" destination="sZA-sj-wPs" collectionClass="NSMutableArray" id="065-6u-3EX"/>
-                        <outletCollection property="humidityLabel" destination="BnH-Dz-1Yw" collectionClass="NSMutableArray" id="QOR-f9-LuB"/>
-                        <outletCollection property="cloudinessLabel" destination="I0C-bk-fgR" collectionClass="NSMutableArray" id="BPH-M0-uEt"/>
-                        <outletCollection property="cloudinessLabel" destination="sA6-k3-D4x" collectionClass="NSMutableArray" id="KDS-2D-FoK"/>
-                        <outletCollection property="windLabel" destination="tZ0-1g-G69" collectionClass="NSMutableArray" id="Jr5-YE-cAi"/>
-                        <outletCollection property="windLabel" destination="a56-eG-q4I" collectionClass="NSMutableArray" id="t9J-A5-t0v"/>
+                        <outletCollection property="windLabel" destination="tZ0-1g-G69" collectionClass="NSMutableArray" id="UdY-xy-1Ep"/>
+                        <outletCollection property="windLabel" destination="a56-eG-q4I" collectionClass="NSMutableArray" id="sO1-fJ-kbp"/>
+                        <outletCollection property="cloudinessLabel" destination="I0C-bk-fgR" collectionClass="NSMutableArray" id="AJK-OJ-Oyi"/>
+                        <outletCollection property="cloudinessLabel" destination="sA6-k3-D4x" collectionClass="NSMutableArray" id="cYM-OF-Z5w"/>
+                        <outletCollection property="humidityLabel" destination="sZA-sj-wPs" collectionClass="NSMutableArray" id="NNA-Ud-c3h"/>
+                        <outletCollection property="humidityLabel" destination="BnH-Dz-1Yw" collectionClass="NSMutableArray" id="mMA-ch-Unx"/>
+                        <outletCollection property="pressureLabel" destination="SWo-I8-bEQ" collectionClass="NSMutableArray" id="Bds-lZ-sUm"/>
+                        <outletCollection property="pressureLabel" destination="uus-8o-Gvh" collectionClass="NSMutableArray" id="g7H-tG-62u"/>
+                        <outletCollection property="cityLabel" destination="7GE-4E-xPv" collectionClass="NSMutableArray" id="d7J-as-4iP"/>
+                        <outletCollection property="cityLabel" destination="U8T-7v-cTL" collectionClass="NSMutableArray" id="j9i-It-bZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBa-ie-WFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

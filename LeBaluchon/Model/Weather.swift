@@ -20,10 +20,6 @@ struct Weather {
     var humidity: Double
     var windSpeed: Double
     var cloudiness: Double
-    
-    /* vitesste du vent par défaut metre par s :
-    Une vitesse de 1 m/s correspond à 3,6 km/h soit 1,9 nœuds. Une vitesse de 25 m/s correspond à 90 km/h soit 49 nœuds. Une vitesse de 28 m/s correspond à 100 km/h soit 54 nœuds.
-    */
 }
 
 struct WeatherResultList: Codable {

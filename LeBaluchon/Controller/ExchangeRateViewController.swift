@@ -18,24 +18,24 @@ class ExchangeRateViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//
-//        convertButton.layer.cornerRadius = 30
-//
-//        CurrencyService.shared.getExchangeRate { (success, currency) in
-//                    self.toggleActivityIndicator(shown: false)
-//
-//                    if success, let currentCurrency = currency {
-//                        self.currency = currentCurrency
-//                        self.updateExchangeRateView(currency: currentCurrency)
-//                        print(self.currency.exchangeRate)
-//                    } else {
-//                        self.errorMessage(message: ErrorType.downloadFailed.rawValue)
-//                    }
-//                }
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+
+        convertButton.layer.cornerRadius = 30
+
+        CurrencyService.shared.getExchangeRate { (success, currency) in
+                    self.toggleActivityIndicator(shown: false)
+
+                    if success, let currentCurrency = currency {
+                        self.currency = currentCurrency
+                        self.updateExchangeRateView(currency: currentCurrency)
+                        print(self.currency.exchangeRate)
+                    } else {
+                        self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+                    }
+                }
+    }
 
     private func toggleActivityIndicator(shown: Bool) {
             activityIndicator.isHidden = !shown
@@ -66,15 +66,15 @@ class ExchangeRateViewController: UIViewController {
             resultValueLabel.text = currencyForOne
 
         } catch ErrorType.userValueIsIncorrect {
-            errorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
         } catch ErrorType.firstCurrencyIsIncorrect {
-            errorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
         } catch {
-            errorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
         }
     }
 
-    private func errorMessage(message: String) {
+    private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -90,11 +90,11 @@ class ExchangeRateViewController: UIViewController {
                 valueToConvert: userValueTextField.text)
 
         } catch ErrorType.userValueIsIncorrect {
-            errorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
         } catch ErrorType.firstCurrencyIsIncorrect {
-            errorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
         } catch {
-            errorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
         }
     }
 }

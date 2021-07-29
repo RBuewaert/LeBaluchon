@@ -11,6 +11,9 @@ class WeatherViewController: UIViewController {
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
 
+    var firstRequestFinished = true
+    var secondRequestFinished = true
+
     @IBOutlet var cityLabel: [UILabel]!
     @IBOutlet var weatherLabel: [UILabel]!
     @IBOutlet var imageView: [UIImageView]!
@@ -18,10 +21,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet var feltTempLabel: [UILabel]!
     @IBOutlet var tempMinLabel: [UILabel]!
     @IBOutlet var tempMaxLabel: [UILabel]!
-    @IBOutlet var pressureLabel: [UILabel]!
-    @IBOutlet var humidityLabel: [UILabel]!
     @IBOutlet var windLabel: [UILabel]!
     @IBOutlet var cloudinessLabel: [UILabel]!
+    @IBOutlet var humidityLabel: [UILabel]!
+    @IBOutlet var pressureLabel: [UILabel]!
     
     
     /*
@@ -33,53 +36,77 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        orderOutletCollectionWithTags()
+
         WeatherService.shared.getWeather(city: "Toulouse") { (success, weather) in
-//                            self.toggleActivityIndicator(shown: false)
+//            self.toggleActivityIndicator(shown: false)
         
-                            if success, let currentWeather = weather {
-                                self.weatherLeftCity = currentWeather
-//                                self.update(currency: currentCurrency)
-//                                print(self.currency.exchangeRate)
-                                print("bravo")
-                            } else {
-//                                self.errorMessage(message: ErrorType.downloadFailed.rawValue)
-                                print("erreur")
-                            }
-                        }
-
+            if success, let currentWeather = weather {
+                self.weatherLeftCity = currentWeather
+                self.updateWeatherView(weather: self.weatherLeftCity, index: 0)
+                print("bravo 1")
+            } else {
+//                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+                print("erreur de recup 1  ??????")
+            }
+        }
+        
         WeatherService.shared.getWeather(city: "New York") { (success, weather) in
-//                            self.toggleActivityIndicator(shown: false)
+//            self.toggleActivityIndicator(shown: false)
+            
+            if success, let currentWeather = weather {
+                self.weatherRightCity = currentWeather
+                self.updateWeatherView(weather: self.weatherRightCity, index: 1)
+                print("bravo 2")
+            } else {
+//                self.errorMessage(message: ErrorType.downloadFailed.rawValue)
+                print("erreur de recup 2  ??????")
+            }
+        }
+
+//        updateWeatherView(weather: weatherLeftCity, index: 0)
         
-                            if success, let currentWeather = weather {
-                                self.weatherRightCity = currentWeather
-//                                self.update(currency: currentCurrency)
-//                                print(self.currency.exchangeRate)
-                                print("bravo")
-                            } else {
-//                                self.errorMessage(message: ErrorType.downloadFailed.rawValue)
-                                print("erreur")
-                            }
-                        }
-        
-        
-        
+
+    }
+
+    private func orderOutletCollectionWithTags() {
+        cityLabel = cityLabel.sorted { $0.tag < $1.tag }
+        weatherLabel = weatherLabel.sorted { $0.tag < $1.tag }
+        imageView = imageView.sorted { $0.tag < $1.tag }
+        tempLabel = tempLabel.sorted { $0.tag < $1.tag }
+        feltTempLabel = feltTempLabel.sorted { $0.tag < $1.tag }
+        tempMinLabel = tempMinLabel.sorted { $0.tag < $1.tag }
+        tempMaxLabel = tempMaxLabel.sorted { $0.tag < $1.tag }
+        windLabel = windLabel.sorted { $0.tag < $1.tag }
+        cloudinessLabel = cloudinessLabel.sorted { $0.tag < $1.tag }
+        humidityLabel = humidityLabel.sorted { $0.tag < $1.tag }
+        pressureLabel = pressureLabel.sorted { $0.tag < $1.tag }
+    }
+
+    private func updateWeatherView(weather: Weather, index: Int) {
+        cityLabel[index].text = "City: \(weather.city)"
+        weatherLabel[index].text = "Weather: \(weather.description)"
+//        imageView
+        tempLabel[index].text = "Temperature : \(weather.temperature)°C"
+        feltTempLabel[index].text = "Felt temperature : \(weather.feltTemperature)°C"
+        tempMinLabel[index].text = "Temperature min. : \(weather.temperatureMin)°C"
+        tempMaxLabel[index].text = "Temperature max. : \(weather.temperatureMax)°C"
+        windLabel[index].text = "Wind : \(weather.windSpeed)km/h"
+        cloudinessLabel[index].text = "Cloudiness: \(weather.cloudiness)%"
+        humidityLabel[index].text = "Humidity : \(weather.humidity)%"
+        pressureLabel[index].text = "Pressure : \(weather.pressure)hPa"
+    
         
         
     }
 
-    private func updateWeatherView(weather: Weather, tag: Int) {
-        cityLabel[0].text = ""
-        
-        
-        
-//        let outletList = [cityLabel, leftWeatherLabel, leftImageView, leftTempLabel, leftFeltTempLabel, leftTempMinLabel, leftTempMaxLabel, leftPressureLabel, leftHumidityLabel, leftWindLabel, leftCloudinessLabel, rightCityLabelTest, rightWeatherLabel, rightImageView, rightTempLabel, rightFeltTempLabel, rightTempMinLabel, rightTempMaxLabel, rightPressureLabel, rightHumidityLabel, rightWindLabel, rightCloudinessLabel]
-//        for outlet in outletList {
-//            if outlet!.tag == tag {
-//                cityLabel.text = "City: \(weather.city)"
-//            }
-//        }
+    private func alertErrorMessage(message: String) {
+        let alertVC = UIAlertController(title: "Error!", message: message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
-
    
     
     
