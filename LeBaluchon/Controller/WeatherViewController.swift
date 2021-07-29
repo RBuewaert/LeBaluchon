@@ -87,7 +87,7 @@ class WeatherViewController: UIViewController {
     private func updateWeatherView(weather: Weather, index: Int) {
         cityLabel[index].text = "City: \(weather.city)"
         weatherLabel[index].text = "Weather: \(weather.description)"
-//        imageView
+        updateImageView(imageView: imageView[index], weather: weather)
         tempLabel[index].text = "Temperature : \(weather.temperature)°C"
         feltTempLabel[index].text = "Felt temperature : \(weather.feltTemperature)°C"
         tempMinLabel[index].text = "Temperature min. : \(weather.temperatureMin)°C"
@@ -96,9 +96,34 @@ class WeatherViewController: UIViewController {
         cloudinessLabel[index].text = "Cloudiness: \(weather.cloudiness)%"
         humidityLabel[index].text = "Humidity : \(weather.humidity)%"
         pressureLabel[index].text = "Pressure : \(weather.pressure)hPa"
-    
-        
-        
+    }
+
+    private func updateImageView(imageView: UIImageView, weather: Weather) {
+        if weather.icon == "01d" {
+            imageView.image = UIImage(named: "sunDay")
+        }  else if weather.icon == "01n"  {
+            imageView.image = UIImage(named: "moonNight")
+        } else if weather.icon == "02d" {
+            imageView.image = UIImage(named: "fewCloudsDay")
+        } else if weather.icon == "02n" {
+            imageView.image = UIImage(named: "fewCloudsNight")
+        } else if weather.icon == "03d" || weather.icon == "03n" {
+            imageView.image = UIImage(named: "brokenClouds")
+        } else if weather.icon == "04d" || weather.icon == "04n"  {
+            imageView.image = UIImage(named: "overcastClouds")
+        } else if weather.icon == "09d" || weather.icon == "09n"  {
+            imageView.image = UIImage(named: "heavyRain")
+        } else if weather.icon == "10d" {
+            imageView.image = UIImage(named: "lightRainDay")
+        }  else if weather.icon == "10n" {
+            imageView.image = UIImage(named: "lightRainNight")
+        } else if weather.icon == "11d" || weather.icon == "11n"  {
+            imageView.image = UIImage(named: "thunderstorm")
+        } else if weather.icon == "13d" || weather.icon == "13n"  {
+            imageView.image = UIImage(named: "snow")
+        } else if weather.icon == "50d" || weather.icon == "50n"  {
+            imageView.image = UIImage(named: "mist")
+        }
     }
 
     private func alertErrorMessage(message: String) {
