@@ -25,9 +25,6 @@ class TranslationViewController: UIViewController {
     }
     */
 
-    
-    
-    
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //        print("A : init")
@@ -62,5 +59,5 @@ class TranslationViewController: UIViewController {
 //        super.viewDidDisappear(animated)
 //        print("A : viewDidDisappear")
 //    }
-    
+
 }

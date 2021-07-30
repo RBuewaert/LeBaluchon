@@ -9,11 +9,11 @@ import Foundation
 
 class FakeResponseData {
     // MARK: - Data
-        static var currencyCorrectData: Data? {
-            let bundle = Bundle(for: FakeResponseData.self)
-            let url = bundle.url(forResource: "Currency", withExtension: "json")!
-            return try! Data(contentsOf: url)
-        }
+//        static var currencyCorrectData: Data? {
+//            let bundle = Bundle(for: FakeResponseData.self)
+//            let url = bundle.url(forResource: "Currency", withExtension: "json")!
+//            return try! Data(contentsOf: url)
+//        }
 
         static let currencyIncorrectData = "erreur".data(using: .utf8)!
 
@@ -27,7 +27,6 @@ class FakeResponseData {
         static let responseKO = HTTPURLResponse(
             url: URL(string: "https://openclassrooms.com")!,
             statusCode: 500, httpVersion: nil, headerFields: [:])!
-
 
         // MARK: - Error
         class CurrencyError: Error {}

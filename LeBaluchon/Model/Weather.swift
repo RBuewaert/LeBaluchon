@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Weather
 struct Weather {
     var city: String
     var description: String
@@ -17,29 +18,19 @@ struct Weather {
     var temperatureMin: Double
     var temperatureMax: Double
     var pressure: Int
-    var humidity: Double
+    var humidity: Int
     var windSpeed: Double
-    var cloudiness: Double
+    var cloudiness: Int
+}
+
+// MARK: - WeatherResult extracted from JSON
+
+struct WeatherResult: Codable {
+    let cnt: Int
+    let list: [WeatherResultList]
 }
 
 struct WeatherResultList: Codable {
-    var name: String
-    var description: String
-//    var weatherDescription: String (faire directement dans weather)
-    var icon: String
-    var temp: Double
-    var feels_like: Double
-    var temp_min: Double
-    var temp_max: Double
-    var pressure: Int
-    var humidity: Int
-    var speed: Double
-    var all: Double
-}
-
-
-
-struct WeatherResult: Codable {
     let weather: [WeatherResultWeather]
     let main: WeatherResultMain
     let wind: WeatherResultWind
@@ -48,18 +39,25 @@ struct WeatherResult: Codable {
 }
 
 struct WeatherResultWeather: Codable {
-    let main: String
     let description: String
     let icon: String
 }
 
 struct WeatherResultMain: Codable {
     let temp: Double
-    let feels_like: Double
-    let temp_min: Double
-    let temp_max: Double
+    let feelsLike: Double
+    let tempMin: Double
+    let tempMax: Double
     let pressure: Int
-    let humidity: Double
+    let humidity: Int
+
+    enum CodingKeys: String, CodingKey {
+        case temp
+        case feelsLike = "feels_like"
+        case tempMin = "temp_min"
+        case tempMax = "temp_max"
+        case pressure, humidity
+    }
 }
 
 struct WeatherResultWind: Codable {
@@ -67,15 +65,9 @@ struct WeatherResultWind: Codable {
 }
 
 struct WeatherResultClouds: Codable {
-    let all: Double
+    let all: Int
 }
 
-struct WeatherResultName: Codable {
-    let name: String
-}
-
-    
-    
 //    var coord: [String: Double]
 //    var weather: [String: String]
 //    var base: String
@@ -135,4 +127,3 @@ struct WeatherResultName: Codable {
         "cod": 200
     }
  */
-
