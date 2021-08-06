@@ -66,8 +66,8 @@ class WeatherViewController: UIViewController {
     }
 
     private func updateWeatherView(weather: Weather, index: Int) {
-        cityLabel[index].text = "City: \(weather.city)"
-        weatherLabel[index].text = "Weather: \(weather.description)"
+        cityLabel[index].text = weather.city
+        weatherLabel[index].text = weather.description
         updateImageView(imageView: imageView[index], weather: weather)
         tempLabel[index].text = "Temperature : \(weather.temperature)°C"
         feltTempLabel[index].text = "Felt temperature : \(weather.feltTemperature)°C"

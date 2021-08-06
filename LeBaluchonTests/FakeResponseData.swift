@@ -11,7 +11,7 @@ class FakeResponseData {
     // MARK: - Data
 //        static var currencyCorrectData: Data? {
 //            let bundle = Bundle(for: FakeResponseData.self)
-//            let url = bundle.url(forResource: "Currency", withExtension: "json")!
+//            let url = bundle.url(forResource: "ExchangeRate", withExtension: "json")!
 //            return try! Data(contentsOf: url)
 //        }
 

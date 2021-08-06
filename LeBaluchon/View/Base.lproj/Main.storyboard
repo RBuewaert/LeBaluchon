@@ -230,7 +230,7 @@ in USD</string>
                             <constraint firstItem="Bor-Yc-ICj" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="hxp-HB-GPq"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Translation" id="UvS-hp-12B"/>
+                    <tabBarItem key="tabBarItem" title="Translation" image="translate" id="UvS-hp-12B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO7-yX-8e9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -490,6 +490,7 @@ in USD</string>
         <image name="currency" width="33.5" height="33.5"/>
         <image name="money" width="213.5" height="142"/>
         <image name="sun" width="33.5" height="33.5"/>
+        <image name="translate" width="33.5" height="25"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
