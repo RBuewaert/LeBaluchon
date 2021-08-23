@@ -44,21 +44,10 @@ class WeatherService {
                     callback(false, nil, nil)
                     return
                 }
-                guard let response = response as? HTTPURLResponse, (response.statusCode == 200) || (response.statusCode == 404) else {
+                guard let response = response as? HTTPURLResponse, (response.statusCode == 200) else {
                     callback(false, nil, nil)
                     return
                 }
-
-                if response.statusCode == 404 {
-                    print("city not found Throws!!!!")
-                }
-
-                /* ATTENTION PRENDRE EN COMPTE:
-                 {
-                     "cod": "404",
-                     "message": "city not found"
-                 }
-                 */
 
                 // Extract property indicated in Struc WeatherResult
                 guard let JSONresult = try? JSONDecoder().decode(WeatherResult.self, from: data) else {
@@ -111,7 +100,7 @@ class WeatherService {
         task?.resume()
     }
 
-    func getWeather(city: String, callback: @escaping (Bool, Weather?) -> Void) {
+    func getWeatherCity(city: String, callback: @escaping (Bool, Weather?) -> Void) {
         guard let url = URL(string: WeatherService.baseWeatherUrlCity + city + urlParameters) else {
             callback(false, nil)
             return
@@ -125,7 +114,8 @@ class WeatherService {
                     callback(false, nil)
                     return
                 }
-                guard let response = response as? HTTPURLResponse, (response.statusCode == 200) || (response.statusCode == 404) else {
+                guard let response = response as? HTTPURLResponse,
+                      (response.statusCode == 200) || (response.statusCode == 404) else {
                     callback(false, nil)
                     return
                 }
@@ -134,7 +124,7 @@ class WeatherService {
                     print("city not found Throws!!!!")
                 }
 
-                /* ATTENTION PRENDRE EN COMPTE:
+                /* ATTENTION StatusCode 404:
                  {
                      "cod": "404",
                      "message": "city not found"

@@ -8,18 +8,36 @@
 import Foundation
 
 class FakeResponseData {
-    // MARK: - Data
-//        static var currencyCorrectData: Data? {
-//            let bundle = Bundle(for: FakeResponseData.self)
-//            let url = bundle.url(forResource: "ExchangeRate", withExtension: "json")!
-//            return try! Data(contentsOf: url)
-//        }
+    // MARK: - Correct Data For Exchange Rate
+        static var currencyCorrectData: Data? {
+            let bundle = Bundle(for: FakeResponseData.self)
+            let url = bundle.url(forResource: "ExchangeRate", withExtension: "json")!
+            do {
+                return try Data(contentsOf: url)
+            } catch {
+                print(error.localizedDescription)
+            }
+            return nil
 
+//            return try! Data(contentsOf: url)
+        }
+
+    // MARK: - Correct Data For Weather
+        static var weatherGroupCorrectData: Data? {
+            let bundle = Bundle(for: FakeResponseData.self)
+            let url = bundle.url(forResource: "WeatherGroup", withExtension: "json")!
+            do {
+                return try Data(contentsOf: url)
+            } catch {
+                print(error.localizedDescription)
+            }
+            return nil
+        }
+
+    // MARK: - Incorrect Data For Exchange Rate, Weather and Translation
         static let currencyIncorrectData = "erreur".data(using: .utf8)!
 
-//        static let imageData = "image".data(using: .utf8)!
-
-        // MARK: - Response
+    // MARK: - Response
         static let responseOK = HTTPURLResponse(
             url: URL(string: "https://openclassrooms.com")!,
             statusCode: 200, httpVersion: nil, headerFields: [:])!
@@ -28,7 +46,7 @@ class FakeResponseData {
             url: URL(string: "https://openclassrooms.com")!,
             statusCode: 500, httpVersion: nil, headerFields: [:])!
 
-        // MARK: - Error
+    // MARK: - Error
         class CurrencyError: Error {}
         static let error = CurrencyError()
 }

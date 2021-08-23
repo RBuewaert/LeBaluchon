@@ -43,10 +43,8 @@ class WeatherViewController: UIViewController {
                 self.weatherRightCity = currentWeatherRightCity
                 self.updateWeatherView(weather: self.weatherLeftCity, index: 0)
                 self.updateWeatherView(weather: self.weatherRightCity, index: 1)
-                print("bravo 1")
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-                print("erreur de recup 1  ??????")
             }
         }
     }
