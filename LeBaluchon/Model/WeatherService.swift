@@ -30,6 +30,16 @@ class WeatherService {
     // New York id = 5128581
     // Beaumont de Lomagne id = 3034170
 
+    private func calculCityHour(timezone: Int) -> String {
+        let hour = NSDate.init(timeIntervalSinceNow: TimeInterval(timezone))
+
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.timeStyle = .short
+
+        return formatter.string(from: hour as Date)
+    }
+
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
         guard let url = URL(string: WeatherService.baseWeatherUrlGroup + idBeaumontNewYork + urlParameters) else {
             callback(false, nil, nil)
@@ -55,12 +65,14 @@ class WeatherService {
                 }
 
                 let resultBeaumont = JSONresult.list[0]
+                let resultTimezoneBeaumont = JSONresult.list[0].sys.timezone
                 let resultWeatherBeaumont = JSONresult.list[0].weather
                 let resultMainBeaumont = JSONresult.list[0].main
                 let resultWindBeaumont = JSONresult.list[0].wind
                 let resultCloudsBeaumont = JSONresult.list[0].clouds
 
                 let resultNewYork = JSONresult.list[1]
+                let resultTimezoneNewYork = JSONresult.list[1].sys.timezone
                 let resultWeatherNewYork = JSONresult.list[1].weather
                 let resultMainNewYork = JSONresult.list[1].main
                 let resultWindNewYork = JSONresult.list[1].wind
@@ -71,28 +83,26 @@ class WeatherService {
                 */
 
                 let weather1 = Weather(city: resultBeaumont.name,
-                                      description: resultWeatherBeaumont[0].description,
-                                      icon: resultWeatherBeaumont[0].icon,
-                                      temperature: round(resultMainBeaumont.temp * 10) / 10.0,
-                                      feltTemperature: round(resultMainBeaumont.feelsLike * 10) / 10.0,
-                                      temperatureMin: round(resultMainBeaumont.tempMin * 10) / 10.0,
-                                      temperatureMax: round(resultMainBeaumont.tempMax * 10) / 10.0,
-                                      pressure: resultMainBeaumont.pressure,
-                                      humidity: resultMainBeaumont.humidity,
-                                      windSpeed: (3.6 * resultWindBeaumont.speed).rounded(),
-                                      cloudiness: resultCloudsBeaumont.all)
+                                       hour: self.calculCityHour(timezone: resultTimezoneBeaumont),
+                                       description: resultWeatherBeaumont[0].description,
+                                       icon: resultWeatherBeaumont[0].icon,
+                                       temperature: round(resultMainBeaumont.temp * 10) / 10.0,
+                                       feltTemperature: round(resultMainBeaumont.feelsLike * 10) / 10.0,
+                                       pressure: resultMainBeaumont.pressure,
+                                       humidity: resultMainBeaumont.humidity,
+                                       windSpeed: (3.6 * resultWindBeaumont.speed).rounded(),
+                                       cloudiness: resultCloudsBeaumont.all)
 
                 let weather2 = Weather(city: resultNewYork.name,
-                                      description: resultWeatherNewYork[0].description,
-                                      icon: resultWeatherNewYork[0].icon,
-                                      temperature: round(resultMainNewYork.temp * 10) / 10.0,
-                                      feltTemperature: round(resultMainNewYork.feelsLike * 10) / 10.0,
-                                      temperatureMin: round(resultMainNewYork.tempMin * 10) / 10.0,
-                                      temperatureMax: round(resultMainNewYork.tempMax * 10) / 10.0,
-                                      pressure: resultMainNewYork.pressure,
-                                      humidity: resultMainNewYork.humidity,
-                                      windSpeed: (3.6 * resultWindNewYork.speed).rounded(),
-                                      cloudiness: resultCloudsNewYork.all)
+                                       hour: self.calculCityHour(timezone: resultTimezoneNewYork),
+                                       description: resultWeatherNewYork[0].description,
+                                       icon: resultWeatherNewYork[0].icon,
+                                       temperature: round(resultMainNewYork.temp * 10) / 10.0,
+                                       feltTemperature: round(resultMainNewYork.feelsLike * 10) / 10.0,
+                                       pressure: resultMainNewYork.pressure,
+                                       humidity: resultMainNewYork.humidity,
+                                       windSpeed: (3.6 * resultWindNewYork.speed).rounded(),
+                                       cloudiness: resultCloudsNewYork.all)
 
                 callback(true, weather1, weather2)
             }
@@ -137,6 +147,7 @@ class WeatherService {
                 }
 
                 let result = JSONresult
+                let resultTimezone = JSONresult.sys.timezone
                 let resultWeather = JSONresult.weather
                 let resultMain = JSONresult.main
                 let resultWind = JSONresult.wind
@@ -147,12 +158,11 @@ class WeatherService {
                 */
 
                 let weather = Weather(city: result.name,
+                                      hour: self.calculCityHour(timezone: resultTimezone),
                                       description: resultWeather[0].description,
                                       icon: resultWeather[0].icon,
                                       temperature: round(resultMain.temp * 10) / 10.0,
                                       feltTemperature: round(resultMain.feelsLike * 10) / 10.0,
-                                      temperatureMin: round(resultMain.tempMin * 10) / 10.0,
-                                      temperatureMax: round(resultMain.tempMax * 10) / 10.0,
                                       pressure: resultMain.pressure,
                                       humidity: resultMain.humidity,
                                       windSpeed: (3.6 * resultWind.speed).rounded(),

@@ -15,12 +15,11 @@ class WeatherViewController: UIViewController {
     var secondRequestFinished = false
 
     @IBOutlet var cityLabel: [UILabel]!
+    @IBOutlet var hourLabel: [UILabel]!
     @IBOutlet var weatherLabel: [UILabel]!
     @IBOutlet var imageView: [UIImageView]!
     @IBOutlet var tempLabel: [UILabel]!
     @IBOutlet var feltTempLabel: [UILabel]!
-    @IBOutlet var tempMinLabel: [UILabel]!
-    @IBOutlet var tempMaxLabel: [UILabel]!
     @IBOutlet var windLabel: [UILabel]!
     @IBOutlet var cloudinessLabel: [UILabel]!
     @IBOutlet var humidityLabel: [UILabel]!
@@ -51,12 +50,11 @@ class WeatherViewController: UIViewController {
 
     private func orderOutletCollectionWithTags() {
         cityLabel = cityLabel.sorted { $0.tag < $1.tag }
+        hourLabel = hourLabel.sorted { $0.tag < $1.tag }
         weatherLabel = weatherLabel.sorted { $0.tag < $1.tag }
         imageView = imageView.sorted { $0.tag < $1.tag }
         tempLabel = tempLabel.sorted { $0.tag < $1.tag }
         feltTempLabel = feltTempLabel.sorted { $0.tag < $1.tag }
-        tempMinLabel = tempMinLabel.sorted { $0.tag < $1.tag }
-        tempMaxLabel = tempMaxLabel.sorted { $0.tag < $1.tag }
         windLabel = windLabel.sorted { $0.tag < $1.tag }
         cloudinessLabel = cloudinessLabel.sorted { $0.tag < $1.tag }
         humidityLabel = humidityLabel.sorted { $0.tag < $1.tag }
@@ -65,12 +63,11 @@ class WeatherViewController: UIViewController {
 
     private func updateWeatherView(weather: Weather, index: Int) {
         cityLabel[index].text = weather.city
+        hourLabel[index].text = weather.hour
         weatherLabel[index].text = weather.description
         updateImageView(imageView: imageView[index], weather: weather)
         tempLabel[index].text = "Temperature : \(weather.temperature)°C"
         feltTempLabel[index].text = "Felt temperature : \(weather.feltTemperature)°C"
-        tempMinLabel[index].text = "Temperature min. : \(weather.temperatureMin)°C"
-        tempMaxLabel[index].text = "Temperature max. : \(weather.temperatureMax)°C"
         windLabel[index].text = "Wind : \(weather.windSpeed)km/h"
         cloudinessLabel[index].text = "Cloudiness: \(weather.cloudiness)%"
         humidityLabel[index].text = "Humidity : \(weather.humidity)%"
