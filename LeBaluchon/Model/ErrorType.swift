@@ -17,5 +17,5 @@ please contact us to update application
 The second currency was not found,
 please contact us to update application
 """
-    case downloadFailed = "The durrency download failed"
+    case downloadFailed = "The durrency download failed" // use for tapped button
 }

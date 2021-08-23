@@ -64,45 +64,37 @@ class WeatherService {
                     return callback(false, nil, nil)
                 }
 
-                let resultBeaumont = JSONresult.list[0]
-                let resultTimezoneBeaumont = JSONresult.list[0].sys.timezone
                 let resultWeatherBeaumont = JSONresult.list[0].weather
                 let resultMainBeaumont = JSONresult.list[0].main
-                let resultWindBeaumont = JSONresult.list[0].wind
-                let resultCloudsBeaumont = JSONresult.list[0].clouds
 
-                let resultNewYork = JSONresult.list[1]
-                let resultTimezoneNewYork = JSONresult.list[1].sys.timezone
                 let resultWeatherNewYork = JSONresult.list[1].weather
                 let resultMainNewYork = JSONresult.list[1].main
-                let resultWindNewYork = JSONresult.list[1].wind
-                let resultCloudsNewYork = JSONresult.list[1].clouds
 
                 /* vitesste du vent par défaut metre par s :
                 Une vitesse de 1 m/s correspond à 3,6 km/h soit 1,9 nœuds. Une vitesse de 25 m/s correspond à 90 km/h soit 49 nœuds. Une vitesse de 28 m/s correspond à 100 km/h soit 54 nœuds.
                 */
 
-                let weather1 = Weather(city: resultBeaumont.name,
-                                       hour: self.calculCityHour(timezone: resultTimezoneBeaumont),
+                let weather1 = Weather(city: JSONresult.list[0].name,
+                                       hour: self.calculCityHour(timezone: JSONresult.list[0].sys.timezone),
                                        description: resultWeatherBeaumont[0].description,
                                        icon: resultWeatherBeaumont[0].icon,
                                        temperature: round(resultMainBeaumont.temp * 10) / 10.0,
                                        feltTemperature: round(resultMainBeaumont.feelsLike * 10) / 10.0,
                                        pressure: resultMainBeaumont.pressure,
                                        humidity: resultMainBeaumont.humidity,
-                                       windSpeed: (3.6 * resultWindBeaumont.speed).rounded(),
-                                       cloudiness: resultCloudsBeaumont.all)
+                                       windSpeed: (3.6 * JSONresult.list[0].wind.speed).rounded(),
+                                       cloudiness: JSONresult.list[0].clouds.all)
 
-                let weather2 = Weather(city: resultNewYork.name,
-                                       hour: self.calculCityHour(timezone: resultTimezoneNewYork),
-                                       description: resultWeatherNewYork[0].description,
-                                       icon: resultWeatherNewYork[0].icon,
+                let weather2 = Weather(city: JSONresult.list[1].name,
+                                       hour: self.calculCityHour(timezone: JSONresult.list[1].sys.timezone),
+                                       description: resultWeatherNewYork[1].description,
+                                       icon: resultWeatherNewYork[1].icon,
                                        temperature: round(resultMainNewYork.temp * 10) / 10.0,
                                        feltTemperature: round(resultMainNewYork.feelsLike * 10) / 10.0,
                                        pressure: resultMainNewYork.pressure,
                                        humidity: resultMainNewYork.humidity,
-                                       windSpeed: (3.6 * resultWindNewYork.speed).rounded(),
-                                       cloudiness: resultCloudsNewYork.all)
+                                       windSpeed: (3.6 * JSONresult.list[1].wind.speed).rounded(),
+                                       cloudiness: JSONresult.list[1].clouds.all)
 
                 callback(true, weather1, weather2)
             }

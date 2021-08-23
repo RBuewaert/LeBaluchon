@@ -190,44 +190,52 @@ in USD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ciH-gh-4d0">
-                                <rect key="frame" x="20" y="208" width="374" height="218"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ciH-gh-4d0">
+                                <rect key="frame" x="20" y="178.5" width="374" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Français" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHZ-IL-i1l">
-                                <rect key="frame" x="82" y="131" width="251" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Français" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHZ-IL-i1l">
+                                <rect key="frame" x="160" y="124" width="94.5" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anglais" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-GV-aBy">
-                                <rect key="frame" x="82" y="492" width="251" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-an-u7j">
-                                <rect key="frame" x="20" y="551" width="374" height="218"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-an-u7j">
+                                <rect key="frame" x="20" y="533" width="374" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anglais" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-GV-aBy">
+                                <rect key="frame" x="164" y="478.5" width="86.5" height="34.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yoG-dd-xkc"/>
                         <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="ebV-an-u7j" firstAttribute="leading" secondItem="yoG-dd-xkc" secondAttribute="leading" constant="20" id="2sw-7o-zTx"/>
+                            <constraint firstItem="ebV-an-u7j" firstAttribute="height" secondItem="ciH-gh-4d0" secondAttribute="height" id="3L5-qG-Zny"/>
+                            <constraint firstItem="qU4-GV-aBy" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="3WX-cI-Dbr"/>
+                            <constraint firstItem="fHZ-IL-i1l" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="5vG-4e-Idh"/>
+                            <constraint firstItem="yoG-dd-xkc" firstAttribute="trailing" secondItem="ebV-an-u7j" secondAttribute="trailing" constant="20" id="Dpk-M5-82Y"/>
+                            <constraint firstItem="fHZ-IL-i1l" firstAttribute="top" secondItem="Bor-Yc-ICj" secondAttribute="bottom" constant="30" id="EIy-7D-ODl"/>
                             <constraint firstItem="Bor-Yc-ICj" firstAttribute="top" secondItem="yoG-dd-xkc" secondAttribute="top" id="ItV-OP-rwL"/>
+                            <constraint firstItem="ciH-gh-4d0" firstAttribute="leading" secondItem="yoG-dd-xkc" secondAttribute="leading" constant="20" id="Yk6-4n-z10"/>
+                            <constraint firstItem="ebV-an-u7j" firstAttribute="top" secondItem="qU4-GV-aBy" secondAttribute="bottom" constant="20" id="b9m-YU-cKt"/>
+                            <constraint firstItem="ciH-gh-4d0" firstAttribute="top" secondItem="fHZ-IL-i1l" secondAttribute="bottom" constant="20" id="eDF-YJ-4M3"/>
                             <constraint firstItem="Bor-Yc-ICj" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="hxp-HB-GPq"/>
+                            <constraint firstItem="yoG-dd-xkc" firstAttribute="trailing" secondItem="ciH-gh-4d0" secondAttribute="trailing" constant="20" id="x2e-vG-FjL"/>
+                            <constraint firstItem="yoG-dd-xkc" firstAttribute="bottom" secondItem="ebV-an-u7j" secondAttribute="bottom" constant="30" id="xlG-PW-EEo"/>
+                            <constraint firstItem="qU4-GV-aBy" firstAttribute="top" secondItem="ciH-gh-4d0" secondAttribute="bottom" constant="50" id="zs7-Bd-dfv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" image="translate" id="UvS-hp-12B"/>
