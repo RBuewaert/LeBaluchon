@@ -8,11 +8,11 @@
 import Foundation
 
 class CurrencyService {
-    // Pattern Singleton
+    // MARK: - Pattern Singleton
     static var shared = CurrencyService()
     private init() {}
 
-    // Dependency injection
+    // MARK: - Dependency injection
     private var task: URLSessionDataTask?
     private var currencySession = URLSession(configuration: .default)
 

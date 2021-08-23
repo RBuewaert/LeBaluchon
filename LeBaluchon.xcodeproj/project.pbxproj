@@ -27,6 +27,8 @@
 		697BD22826AF097E001EA117 /* CurrencyServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BD22726AF097E001EA117 /* CurrencyServiceTestCase.swift */; };
 		699327CE26D39A70009D6F6C /* WeatherServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699327CD26D39A70009D6F6C /* WeatherServiceTestCase.swift */; };
 		699327D226D39B94009D6F6C /* WeatherGroup.json in Resources */ = {isa = PBXBuildFile; fileRef = 699327D126D39B94009D6F6C /* WeatherGroup.json */; };
+		699327D426D3F34A009D6F6C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699327D326D3F34A009D6F6C /* Translation.swift */; };
+		699327D626D3F35A009D6F6C /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699327D526D3F35A009D6F6C /* TranslationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		697BD22726AF097E001EA117 /* CurrencyServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTestCase.swift; sourceTree = "<group>"; };
 		699327CD26D39A70009D6F6C /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		699327D126D39B94009D6F6C /* WeatherGroup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherGroup.json; sourceTree = "<group>"; };
+		699327D326D3F34A009D6F6C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		699327D526D3F35A009D6F6C /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				697BD20D26AF0660001EA117 /* CurrencyService.swift */,
 				6961A57C26B02DA400D96B90 /* Weather.swift */,
 				6961A57E26B034D600D96B90 /* WeatherService.swift */,
+				699327D326D3F34A009D6F6C /* Translation.swift */,
+				699327D526D3F35A009D6F6C /* TranslationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,10 +307,12 @@
 				697BD21226AF0865001EA117 /* APIKeys.swift in Sources */,
 				6961A57D26B02DA400D96B90 /* Weather.swift in Sources */,
 				697BD20626AEFCB5001EA117 /* ExchangeRateViewController.swift in Sources */,
+				699327D626D3F35A009D6F6C /* TranslationService.swift in Sources */,
 				697BD20E26AF0660001EA117 /* CurrencyService.swift in Sources */,
 				697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */,
 				697BD20C26AF0639001EA117 /* Currency.swift in Sources */,
 				697BD20826AEFCCA001EA117 /* TranslationViewController.swift in Sources */,
+				699327D426D3F34A009D6F6C /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

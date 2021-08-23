@@ -8,11 +8,11 @@
 import Foundation
 
 class WeatherService {
-    // Pattern Singleton
+    // MARK: - Pattern Singleton
     static var shared = WeatherService()
     private init() {}
 
-    // Dependency injection
+    // MARK: - Dependency injection
     private var task: URLSessionDataTask?
     private var weatherSession = URLSession(configuration: .default)
 
@@ -25,7 +25,7 @@ class WeatherService {
     private static let units = "&units=metric"
 
     private let urlParameters = "&appid=" + keyOpenWeather + units
-    private let idBeaumontNewYork = "3034170,5128581"
+    private let idBeaumontAndNewYork = "3034170,5128581"
     // Toulouse id = 2972315
     // New York id = 5128581
     // Beaumont de Lomagne id = 3034170
@@ -41,7 +41,7 @@ class WeatherService {
     }
 
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
-        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + idBeaumontNewYork + urlParameters) else {
+        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + idBeaumontAndNewYork + urlParameters) else {
             callback(false, nil, nil)
             return
         }
