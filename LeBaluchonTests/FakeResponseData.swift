@@ -35,7 +35,7 @@ class FakeResponseData {
         }
 
     // MARK: - Incorrect Data For Exchange Rate, Weather and Translation
-        static let currencyIncorrectData = "erreur".data(using: .utf8)!
+        static let incorrectData = "erreur".data(using: .utf8)!
 
     // MARK: - Response
         static let responseOK = HTTPURLResponse(

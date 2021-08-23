@@ -50,10 +50,13 @@ class ExchangeRateViewController: UIViewController {
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
 
+            let currencyToConvertName = currencyList[currency.currencyToConvert]
+            let currencyToObtainName = currencyList[currency.currencyToObtain]
+
             comparedCurrencyLabel.text = """
                 Today :
 
-                1 \(currencyList[currency.currencyToConvert]!) =  \(currencyForOne) \(currencyList[currency.currencyToObtain]!)
+                1 \(currencyToConvertName!) =  \(currencyForOne) \(currencyToObtainName!)
                 """
             leftCurrencyLabel.text = """
                 Enter your value:

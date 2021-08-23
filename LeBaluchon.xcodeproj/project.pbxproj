@@ -136,9 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				697BD21126AF0865001EA117 /* APIKeys.swift */,
+				697BD20F26AF0688001EA117 /* ErrorType.swift */,
 				697BD20B26AF0639001EA117 /* Currency.swift */,
 				697BD20D26AF0660001EA117 /* CurrencyService.swift */,
-				697BD20F26AF0688001EA117 /* ErrorType.swift */,
 				6961A57C26B02DA400D96B90 /* Weather.swift */,
 				6961A57E26B034D600D96B90 /* WeatherService.swift */,
 			);

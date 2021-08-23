@@ -61,7 +61,7 @@ class CurrencyServiceTestCase: XCTestCase {
 
     func testGetExchangeRateShouldPostFailedCallbackIfIncorrectData() {
         let currencyService = CurrencyService(currencySession: URLSessionFake(
-                                                data: FakeResponseData.currencyIncorrectData,
+                                                data: FakeResponseData.incorrectData,
                                                 response: FakeResponseData.responseOK, error: nil))
 
         // When
