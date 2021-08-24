@@ -23,6 +23,9 @@ class TranslationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
+        translateButton.layer.cornerRadius = 30
+        reverseButton.layer.cornerRadius = 15
+        
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
@@ -53,6 +56,12 @@ class TranslationViewController: UIViewController {
         reverseButton.isHidden = shown
     }
 
+    private func updateTranslationView(translation: Translation) {
+        resultTextView.text = translation.textToObtain
+    }
+    
+    
+    
     @IBAction func tappedReverseButton(_ sender: Any) {
     }
 

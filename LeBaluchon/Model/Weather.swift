@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Weather
+// MARK: - Struct for Weather
 struct Weather {
     var city: String
     var hour: String
@@ -21,7 +21,7 @@ struct Weather {
     var cloudiness: Int
 }
 
-// MARK: - WeatherResult extracted from JSON
+// MARK: - Struct result from JSON
 
 struct WeatherResult: Codable {
     let cnt: Int
