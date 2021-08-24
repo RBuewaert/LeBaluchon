@@ -30,7 +30,6 @@ class ExchangeRateViewController: UIViewController {
 //                    if success, let currentCurrency = currency {
 //                        self.currency = currentCurrency
 //                        self.updateExchangeRateView(currency: currentCurrency)
-//                        print(self.currency.exchangeRate)
 //                    } else {
 //                        self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
 //                    }
@@ -38,9 +37,9 @@ class ExchangeRateViewController: UIViewController {
 //    }
 
     private func toggleActivityIndicator(shown: Bool) {
-            activityIndicator.isHidden = !shown
-            convertButton.isHidden = shown
-        }
+        activityIndicator.isHidden = !shown
+        convertButton.isHidden = shown
+    }
 
     private func updateExchangeRateView(currency: Currency) {
         do {

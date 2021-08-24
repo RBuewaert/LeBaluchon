@@ -190,57 +190,126 @@ in USD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ciH-gh-4d0">
-                                <rect key="frame" x="20" y="178.5" width="374" height="250"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Français" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHZ-IL-i1l">
-                                <rect key="frame" x="160" y="124" width="94.5" height="34.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-an-u7j">
-                                <rect key="frame" x="20" y="533" width="374" height="250"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anglais" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-GV-aBy">
-                                <rect key="frame" x="164" y="478.5" width="86.5" height="34.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ykx-Rs-3uL">
+                                <rect key="frame" x="20" y="114" width="374" height="679"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Français" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHZ-IL-i1l">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ciH-gh-4d0">
+                                        <rect key="frame" x="0.0" y="49.5" width="374" height="245"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Bonjour !
+Passez une bonne journée !</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="vom-UR-2hx" id="yW8-Ia-zpI"/>
+                                        </connections>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WVF-cu-qz2">
+                                        <rect key="frame" x="0.0" y="309.5" width="374" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej9-CN-UbO">
+                                                <rect key="frame" x="0.0" y="0.0" width="82" height="60"/>
+                                                <color key="backgroundColor" red="0.11838372799999999" green="0.07407657057" blue="0.34713387489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="HdW-LJ-LWL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" image="doubleArrow">
+                                                    <color key="titleColor" systemColor="systemYellowColor"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedConvertButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="oes-p6-7eg"/>
+                                                    <action selector="tappedReverseButton:" destination="vom-UR-2hx" eventType="touchUpInside" id="Gqz-Rt-oWJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFe-OR-jKE">
+                                                <rect key="frame" x="102" y="0.0" width="272" height="60"/>
+                                                <color key="backgroundColor" red="0.11838372799999999" green="0.07407657057" blue="0.34713387489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Ama-tK-2am"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <state key="normal" title="TRANSLATE">
+                                                    <color key="titleColor" systemColor="systemYellowColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedConvertButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="SpL-BE-ghd"/>
+                                                    <action selector="tappedTranslateButton:" destination="vom-UR-2hx" eventType="touchUpInside" id="kQK-af-pkj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-GV-aBy">
+                                        <rect key="frame" x="0.0" y="384.5" width="374" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-an-u7j">
+                                        <rect key="frame" x="0.0" y="434" width="374" height="245"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <string key="text">Hello !
+Have a nice day !</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter" returnKeyType="continue"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ebV-an-u7j" firstAttribute="height" secondItem="ciH-gh-4d0" secondAttribute="height" id="Hhh-5P-wEH"/>
+                                </constraints>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Gah-qU-9yv">
+                                <rect key="frame" x="184.5" y="431" width="45" height="45"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="LWd-7U-sub"/>
+                                    <constraint firstAttribute="width" constant="45" id="N9a-kP-2wX"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yoG-dd-xkc"/>
                         <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="ebV-an-u7j" firstAttribute="leading" secondItem="yoG-dd-xkc" secondAttribute="leading" constant="20" id="2sw-7o-zTx"/>
-                            <constraint firstItem="ebV-an-u7j" firstAttribute="height" secondItem="ciH-gh-4d0" secondAttribute="height" id="3L5-qG-Zny"/>
-                            <constraint firstItem="qU4-GV-aBy" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="3WX-cI-Dbr"/>
-                            <constraint firstItem="fHZ-IL-i1l" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="5vG-4e-Idh"/>
-                            <constraint firstItem="yoG-dd-xkc" firstAttribute="trailing" secondItem="ebV-an-u7j" secondAttribute="trailing" constant="20" id="Dpk-M5-82Y"/>
-                            <constraint firstItem="fHZ-IL-i1l" firstAttribute="top" secondItem="Bor-Yc-ICj" secondAttribute="bottom" constant="30" id="EIy-7D-ODl"/>
                             <constraint firstItem="Bor-Yc-ICj" firstAttribute="top" secondItem="yoG-dd-xkc" secondAttribute="top" id="ItV-OP-rwL"/>
-                            <constraint firstItem="ciH-gh-4d0" firstAttribute="leading" secondItem="yoG-dd-xkc" secondAttribute="leading" constant="20" id="Yk6-4n-z10"/>
-                            <constraint firstItem="ebV-an-u7j" firstAttribute="top" secondItem="qU4-GV-aBy" secondAttribute="bottom" constant="20" id="b9m-YU-cKt"/>
-                            <constraint firstItem="ciH-gh-4d0" firstAttribute="top" secondItem="fHZ-IL-i1l" secondAttribute="bottom" constant="20" id="eDF-YJ-4M3"/>
+                            <constraint firstItem="Ykx-Rs-3uL" firstAttribute="top" secondItem="Bor-Yc-ICj" secondAttribute="bottom" constant="20" id="JKz-ul-hhG"/>
+                            <constraint firstItem="Gah-qU-9yv" firstAttribute="centerY" secondItem="Ykx-Rs-3uL" secondAttribute="centerY" id="KMA-D5-RJS"/>
                             <constraint firstItem="Bor-Yc-ICj" firstAttribute="centerX" secondItem="89D-Se-bPT" secondAttribute="centerX" id="hxp-HB-GPq"/>
-                            <constraint firstItem="yoG-dd-xkc" firstAttribute="trailing" secondItem="ciH-gh-4d0" secondAttribute="trailing" constant="20" id="x2e-vG-FjL"/>
-                            <constraint firstItem="yoG-dd-xkc" firstAttribute="bottom" secondItem="ebV-an-u7j" secondAttribute="bottom" constant="30" id="xlG-PW-EEo"/>
-                            <constraint firstItem="qU4-GV-aBy" firstAttribute="top" secondItem="ciH-gh-4d0" secondAttribute="bottom" constant="50" id="zs7-Bd-dfv"/>
+                            <constraint firstItem="yoG-dd-xkc" firstAttribute="trailing" secondItem="Ykx-Rs-3uL" secondAttribute="trailing" constant="20" id="lKD-E1-A8Y"/>
+                            <constraint firstItem="yoG-dd-xkc" firstAttribute="bottom" secondItem="Ykx-Rs-3uL" secondAttribute="bottom" constant="20" id="nbf-t4-UWA"/>
+                            <constraint firstItem="Ykx-Rs-3uL" firstAttribute="leading" secondItem="yoG-dd-xkc" secondAttribute="leading" constant="20" id="scO-Ic-g1U"/>
+                            <constraint firstItem="Gah-qU-9yv" firstAttribute="centerX" secondItem="Ykx-Rs-3uL" secondAttribute="centerX" id="vCA-76-UnN"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="m9H-Ms-a5L" appends="YES" id="Aw6-qC-A3U"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" image="translate" id="UvS-hp-12B"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Gah-qU-9yv" id="sag-0n-aOb"/>
+                        <outlet property="languageToObtainLabel" destination="qU4-GV-aBy" id="aK3-VK-bmF"/>
+                        <outlet property="languageToTranslateLabel" destination="fHZ-IL-i1l" id="PCn-pw-8ns"/>
+                        <outlet property="resultTextView" destination="ebV-an-u7j" id="XmN-WO-nNN"/>
+                        <outlet property="reverseButton" destination="ej9-CN-UbO" id="FB8-XT-jFR"/>
+                        <outlet property="textToTranslateTextView" destination="ciH-gh-4d0" id="viC-fE-4cw"/>
+                        <outlet property="translateButton" destination="DFe-OR-jKE" id="dOe-wa-zFq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO7-yX-8e9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="m9H-Ms-a5L">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="vom-UR-2hx" id="AoQ-LD-ya9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="873.91304347826099" y="-315.40178571428572"/>
         </scene>
@@ -481,6 +550,7 @@ in USD</string>
     </scenes>
     <resources>
         <image name="currency" width="33.5" height="33.5"/>
+        <image name="doubleArrow" width="82" height="96.5"/>
         <image name="money" width="213.5" height="142"/>
         <image name="sun" width="33.5" height="33.5"/>
         <image name="translate" width="33.5" height="25"/>

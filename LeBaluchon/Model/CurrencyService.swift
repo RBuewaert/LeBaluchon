@@ -32,14 +32,12 @@ class CurrencyService {
         task = currencySession.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
+                    return callback(false, nil)
                 }
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
+                    return callback(false, nil)
                 }
-                // Extract property indicated in Struc CurrencyResult
+                // Extract property indicated in Struct CurrencyResult
                 guard let result = try? JSONDecoder().decode(CurrencyResult.self, from: data) else {
                     return callback(false, nil)
                 }

@@ -11,9 +11,6 @@ class WeatherViewController: UIViewController {
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
 
-    var firstRequestFinished = false
-    var secondRequestFinished = false
-
     @IBOutlet var cityLabel: [UILabel]!
     @IBOutlet var hourLabel: [UILabel]!
     @IBOutlet var weatherLabel: [UILabel]!

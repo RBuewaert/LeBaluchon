@@ -51,15 +51,13 @@ class WeatherService {
         task = weatherSession.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
-                    callback(false, nil, nil)
-                    return
+                    return callback(false, nil, nil)
                 }
                 guard let response = response as? HTTPURLResponse, (response.statusCode == 200) else {
-                    callback(false, nil, nil)
-                    return
+                    return callback(false, nil, nil)
                 }
 
-                // Extract property indicated in Struc WeatherResult
+                // Extract property indicated in Struct WeatherResult
                 guard let JSONresult = try? JSONDecoder().decode(WeatherResult.self, from: data) else {
                     return callback(false, nil, nil)
                 }
@@ -87,8 +85,8 @@ class WeatherService {
 
                 let weather2 = Weather(city: JSONresult.list[1].name,
                                        hour: self.calculCityHour(timezone: JSONresult.list[1].sys.timezone),
-                                       description: resultWeatherNewYork[1].description,
-                                       icon: resultWeatherNewYork[1].icon,
+                                       description: resultWeatherNewYork[0].description,
+                                       icon: resultWeatherNewYork[0].icon,
                                        temperature: round(resultMainNewYork.temp * 10) / 10.0,
                                        feltTemperature: round(resultMainNewYork.feelsLike * 10) / 10.0,
                                        pressure: resultMainNewYork.pressure,
@@ -133,7 +131,7 @@ class WeatherService {
                  }
                  */
 
-                // Extract property indicated in Struc WeatherResult
+                // Extract property indicated in Struct WeatherResultList
                 guard let JSONresult = try? JSONDecoder().decode(WeatherResultList.self, from: data) else {
                     return callback(false, nil)
                 }

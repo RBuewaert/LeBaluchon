@@ -8,18 +8,22 @@
 import Foundation
 
 struct Translation {
-    let languageToConvert = "fr"
+    let languageToTranslate = "fr"
     let languageToObtain = "en"
-    let textToConvert: String
+    let textToTranslate: String
     let textToObtain: String
 }
 
 struct TranslationResult: Codable {
-    let data: TranslationResultText
+    let data: TranslationResultData
+}
+
+struct TranslationResultData: Codable {
+    let translations: [TranslationResultText]
 }
 
 struct TranslationResultText: Codable {
-    let translations: [String: String]
+    let translatedText: String
 }
 
 /*
