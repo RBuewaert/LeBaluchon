@@ -123,3 +123,18 @@ extension Dictionary where Value: Equatable {
         return first(where: { $1 == val })?.key
     }
 }
+
+/*
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
+}
+Example usage:
+
+let dict: [Int: String] = [1: "one", 2: "two", 4: "four"]
+
+if let key = dict.someKey(forValue: "two") {
+    print(key)
+} // 2
+*/

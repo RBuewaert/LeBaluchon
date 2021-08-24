@@ -29,6 +29,7 @@
 		699327D226D39B94009D6F6C /* WeatherGroup.json in Resources */ = {isa = PBXBuildFile; fileRef = 699327D126D39B94009D6F6C /* WeatherGroup.json */; };
 		699327D426D3F34A009D6F6C /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699327D326D3F34A009D6F6C /* Translation.swift */; };
 		699327D626D3F35A009D6F6C /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699327D526D3F35A009D6F6C /* TranslationService.swift */; };
+		69A0E7FE26D551F200F76539 /* ParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0E7FD26D551F200F76539 /* ParametersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		699327D126D39B94009D6F6C /* WeatherGroup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherGroup.json; sourceTree = "<group>"; };
 		699327D326D3F34A009D6F6C /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		699327D526D3F35A009D6F6C /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		69A0E7FD26D551F200F76539 /* ParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				697BD20526AEFCB5001EA117 /* ExchangeRateViewController.swift */,
 				697BD20726AEFCCA001EA117 /* TranslationViewController.swift */,
 				697BD20926AEFCDB001EA117 /* WeatherViewController.swift */,
+				69A0E7FD26D551F200F76539 /* ParametersViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				697BD1F026AEFB6F001EA117 /* SceneDelegate.swift in Sources */,
 				697BD20C26AF0639001EA117 /* Currency.swift in Sources */,
 				697BD20826AEFCCA001EA117 /* TranslationViewController.swift in Sources */,
+				69A0E7FE26D551F200F76539 /* ParametersViewController.swift in Sources */,
 				699327D426D3F34A009D6F6C /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
