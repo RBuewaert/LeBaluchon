@@ -61,6 +61,16 @@ class TranslationViewController: UIViewController {
     }
 
     @IBAction func tappedReverseButton(_ sender: Any) {
+        let originalText = textToTranslateTextView.text
+        textToTranslateTextView.text = resultTextView.text
+        resultTextView.text = originalText
+
+        let originalLanguage = translation.languageToTranslate
+        translation.languageToTranslate = translation.languageToObtain
+        translation.languageToObtain = originalLanguage
+
+        languageToTranslateLabel.text = languageList[translation.languageToTranslate]
+        languageToObtainLabel.text = languageList[translation.languageToObtain]
     }
 
     @IBAction func tappedTranslateButton(_ sender: Any) {

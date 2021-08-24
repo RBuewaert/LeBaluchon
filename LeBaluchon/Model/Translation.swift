@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: - Struct for Translation
 struct Translation {
-    let languageToTranslate = "fr"
-    let languageToObtain = "en"
-    let textToTranslate: String
-    let textToObtain: String
+    var languageToTranslate = "fr"
+    var languageToObtain = "en"
+    var textToTranslate: String
+    var textToObtain: String
 }
 
 // MARK: - Struct result from JSO
