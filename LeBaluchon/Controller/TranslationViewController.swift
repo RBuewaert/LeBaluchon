@@ -25,7 +25,7 @@ class TranslationViewController: UIViewController {
 
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
-        
+
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
@@ -33,17 +33,15 @@ class TranslationViewController: UIViewController {
         toolbar.sizeToFit()
         self.textToTranslateTextView.inputAccessoryView = toolbar
 
-        TranslationService.shared.getTranslation(textToTranslate: "Bonjour", languageToTranslate: "fr", languageToObtain: "en") { success, translation in
+        TranslationService.shared.getTranslation(textToTranslate: "Bonjour!", languageToTranslate: "fr", languageToObtain: "en") { success, translation in
 
             if success, let currentTranslation = translation {
                 self.translation = currentTranslation
-//                self.updateExchangeRateView(currency: currentCurrency)
-                print(self.translation.textToObtain)
+                self.updateTranslationView(translation: currentTranslation)
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
-
     }
 
     @objc func dismissMyKeyboard() {
@@ -57,15 +55,36 @@ class TranslationViewController: UIViewController {
     }
 
     private func updateTranslationView(translation: Translation) {
+        languageToTranslateLabel.text = languageList[translation.languageToTranslate]
+        languageToObtainLabel.text = languageList[translation.languageToObtain]
         resultTextView.text = translation.textToObtain
     }
-    
-    
-    
+
     @IBAction func tappedReverseButton(_ sender: Any) {
     }
 
     @IBAction func tappedTranslateButton(_ sender: Any) {
+        guard let textToTranslate = textToTranslateTextView.text else { return}
+        print(textToTranslate)
+
+        toggleActivityIndicator(shown: true)
+
+        TranslationService.shared.getTranslation(
+            textToTranslate: textToTranslate,
+            languageToTranslate: translation.languageToTranslate,
+            languageToObtain: translation.languageToObtain) { success, translation in
+
+            self.toggleActivityIndicator(shown: false)
+
+            if success, let currentTranslation = translation {
+                self.translation = currentTranslation
+                self.resultTextView.text = currentTranslation.textToObtain
+                print(translation?.textToTranslate)
+                print(translation?.textToObtain)
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
     }
 
     private func alertErrorMessage(message: String) {
@@ -85,5 +104,12 @@ extension TranslationViewController: UITextViewDelegate {
 
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         languageToTranslateLabel.endEditing(true)
+    }
+}
+
+// MARK: - Extension Dictionary (use to find key associated to language)
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
     }
 }

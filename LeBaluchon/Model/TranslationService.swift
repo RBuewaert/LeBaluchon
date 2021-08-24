@@ -28,6 +28,8 @@ class TranslationService {
         let urlParameters = textToTranslate + languageSource + languageTarget + "&key=" + keyGoogleTranslate
 
         guard let url = URL(string: TranslationService.baseTranslationUrl + urlParameters) else {
+            print(urlParameters)
+            print(TranslationService.baseTranslationUrl + urlParameters)
             callback(false, nil)
             return
         }
