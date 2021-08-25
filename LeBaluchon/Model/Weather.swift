@@ -29,7 +29,7 @@ struct WeatherResult: Codable {
 }
 
 struct WeatherResultList: Codable {
-    let sys : WeatherResultSys
+    let sys: WeatherResultSys
     let weather: [WeatherResultWeather]
     let main: WeatherResultMain
     let wind: WeatherResultWind

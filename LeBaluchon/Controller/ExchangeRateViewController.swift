@@ -18,11 +18,13 @@ class ExchangeRateViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+//    let segue = UIStoryboardSegue(identifier: "segueToParameters", source: ExchangeRateViewController, destination: ParametersViewController)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeParameters))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
 
 //        navigationItem.titleView?.isHidden = false
 //        navigationItem.title = "titi"
@@ -109,7 +111,10 @@ class ExchangeRateViewController: UIViewController {
         }
     }
 
-    @objc func changeParameters() {
+    @objc func launchParametersViewController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        self.present(parametersViewController, animated: true, completion: nil)
     }
 }
 
