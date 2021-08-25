@@ -15,6 +15,8 @@ struct City {
     let cityID: Int
 }
 
+// ID à garder ou recherche par nom??????? -> A TESTER
+
 let paris = City(name: "Paris", device: "EUR", language: "French", cityID: 2988507 )
 let london = City(name: "London", device: "GBP", language: "English", cityID: 2643743)
 let newYork = City(name: "New-York", device: "USD", language: "English", cityID: 5128581)

@@ -454,6 +454,9 @@ in USD</string>
                                                 <state key="normal" title="RESET">
                                                     <color key="titleColor" systemColor="systemYellowColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="tappedResetButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="CWw-Vn-B9b"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWT-yD-6ZP">
                                                 <rect key="frame" x="207" y="0.0" width="187" height="57"/>
@@ -462,6 +465,9 @@ in USD</string>
                                                 <state key="normal" title="VALIDATE">
                                                     <color key="titleColor" systemColor="systemYellowColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="tappedValidateButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="3p8-UP-E84"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -482,6 +488,16 @@ in USD</string>
                             <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="wNy-xk-qd7" secondAttribute="trailing" constant="10" id="yLZ-fM-Kks"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="firstCityTextField" destination="2ov-W5-gUd" id="Etv-X3-Vwt"/>
+                        <outlet property="firstDevicePickerView" destination="WDv-kM-VJD" id="1XS-cj-hqU"/>
+                        <outlet property="firstLanguagePickerView" destination="7uI-nC-imT" id="Uvx-ug-Ksn"/>
+                        <outlet property="firstSuggestionPickerView" destination="Avl-7L-76v" id="0Bt-ch-86A"/>
+                        <outlet property="secondCityTextField" destination="WGa-iB-pPW" id="MNd-NS-yuE"/>
+                        <outlet property="secondDevicePickerView" destination="JJx-ks-hk5" id="1c1-9S-2Tj"/>
+                        <outlet property="secondLanguagePickerView" destination="bc7-fn-Oto" id="sNB-oN-1Tr"/>
+                        <outlet property="secondSuggestionPickerView" destination="TSm-dK-d5k" id="Uvt-4s-k8Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bA6-xx-L4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
