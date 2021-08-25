@@ -127,17 +127,19 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
 
     private func selectDeviceNamesOnly() {
+        var array: [String] = []
         for (_, currencyName) in deviceList {
-            deviceNames.append(currencyName)
+            array.append(currencyName)
         }
-//        deviceNames.sort()
+        deviceNames = array.sorted()
     }
 
     private func selectLanguageNamesOnly() {
+        var array: [String] = []
         for (_, languageName) in languageList {
-            languageNames.append(languageName)
+            array.append(languageName)
         }
-//        languageNames.sort()
+        languageNames = array.sorted()
     }
 }
 
