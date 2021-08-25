@@ -60,8 +60,8 @@ class ExchangeRateViewController: UIViewController {
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
 
-            let currencyToConvertName = currencyList[currency.currencyToConvert]
-            let currencyToObtainName = currencyList[currency.currencyToObtain]
+            let currencyToConvertName = deviceList[currency.currencyToConvert]
+            let currencyToObtainName = deviceList[currency.currencyToObtain]
 
             comparedCurrencyLabel.text = """
                 Today :

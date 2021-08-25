@@ -336,13 +336,6 @@ in USD</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-6J-MEa">
-                                <rect key="frame" x="204.5" y="104" width="5" height="748"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="5" id="jmi-vK-hbB"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parameters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQg-Js-YLo">
                                 <rect key="frame" x="111.5" y="44" width="191.5" height="50"/>
                                 <constraints>
@@ -352,157 +345,6 @@ in USD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wNy-xk-qd7">
-                                <rect key="frame" x="10" y="104" width="394" height="748"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="c2q-mk-WvY">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="57"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First element to compare" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QC-Fq-ely">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="57"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second element to compare" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XK-7z-kbz">
-                                                <rect key="frame" x="197" y="0.0" width="197" height="57"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgv-n2-uoG">
-                                        <rect key="frame" x="0.0" y="77" width="394" height="56.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TZz-kx-pOh">
-                                        <rect key="frame" x="0.0" y="153.5" width="394" height="57"/>
-                                        <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Avl-7L-76v">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="57"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="st9-rx-1fS"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="OEj-Cu-CoN"/>
-                                                </connections>
-                                            </pickerView>
-                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSm-dK-d5k">
-                                                <rect key="frame" x="197" y="0.0" width="197" height="57"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="JcE-7M-Acp"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="a08-fX-lA1"/>
-                                                </connections>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Fw-0d-Pb0">
-                                        <rect key="frame" x="0.0" y="230.5" width="394" height="56.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3BR-nS-LTr">
-                                        <rect key="frame" x="0.0" y="307" width="394" height="57"/>
-                                        <subviews>
-                                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDv-kM-VJD">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="57"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="W5v-gd-miA"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="VPl-Q9-lkw"/>
-                                                </connections>
-                                            </pickerView>
-                                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJx-ks-hk5">
-                                                <rect key="frame" x="197" y="0.0" width="197" height="57"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="AN9-Ak-Mzw"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="Lvi-9j-Yqh"/>
-                                                </connections>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qdz-Kf-lQS">
-                                        <rect key="frame" x="0.0" y="384" width="394" height="57"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-sf-7Xc">
-                                        <rect key="frame" x="0.0" y="461" width="394" height="56.5"/>
-                                        <subviews>
-                                            <pickerView tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uI-nC-imT">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="56.5"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="oNY-AM-Vlb"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="Qz7-0q-oSn"/>
-                                                </connections>
-                                            </pickerView>
-                                            <pickerView tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-fn-Oto">
-                                                <rect key="frame" x="197" y="0.0" width="197" height="56.5"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="cZI-Df-6Wt"/>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="GKt-lc-uqe"/>
-                                                </connections>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Len-1y-x0z">
-                                        <rect key="frame" x="0.0" y="537.5" width="394" height="57"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="6HO-uW-SOH">
-                                        <rect key="frame" x="0.0" y="614.5" width="394" height="56.5"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2ov-W5-gUd">
-                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="56.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" textContentType="address-level2"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="e61-m9-0H9"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WGa-iB-pPW">
-                                                <rect key="frame" x="202.5" y="0.0" width="191.5" height="56.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" textContentType="address-level2"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="ugQ-8q-tfO"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UsB-6j-1fn">
-                                        <rect key="frame" x="0.0" y="691" width="394" height="57"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84Z-Ds-vXA">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="57"/>
-                                                <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                                <state key="normal" title="RESET">
-                                                    <color key="titleColor" systemColor="systemYellowColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tappedResetButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="CWw-Vn-B9b"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWT-yD-6ZP">
-                                                <rect key="frame" x="207" y="0.0" width="187" height="57"/>
-                                                <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                                <state key="normal" title="VALIDATE">
-                                                    <color key="titleColor" systemColor="systemYellowColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tappedValidateButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="3p8-UP-E84"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-bc-KFc">
                                 <rect key="frame" x="184" y="425" width="45" height="45"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -511,34 +353,156 @@ in USD</string>
                                     <constraint firstAttribute="height" constant="45" id="b1E-5g-HNW"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="sba-KD-i05">
+                                <rect key="frame" x="15" y="165" width="384" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHS-3L-7Ym">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a saved city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-lx-ReZ">
+                                        <rect key="frame" x="0.0" y="48" width="384" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Udo-sm-S5X"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0n-wx-Mea">
+                                        <rect key="frame" x="0.0" y="139" width="384" height="5"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5" id="V1m-mQ-QBW"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INDEPENDENT SELECTIONS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOA-TK-1Us">
+                                        <rect key="frame" x="0.0" y="164.5" width="384" height="30.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CR9-oC-nNC">
+                                        <rect key="frame" x="0.0" y="215.5" width="384" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pgd-Li-sws">
+                                        <rect key="frame" x="0.0" y="264" width="384" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ddb-Eb-hha"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="address-level2"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="oCD-TY-aNP" id="eGv-o1-Cav"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taa-T0-Hjm">
+                                        <rect key="frame" x="0.0" y="344.5" width="384" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-vo-rhd">
+                                        <rect key="frame" x="0.0" y="392.5" width="384" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="L8G-h9-V2J"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-JP-JT4">
+                                        <rect key="frame" x="0.0" y="473" width="384" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a device" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVw-3h-TtV">
+                                        <rect key="frame" x="0.0" y="521.5" width="384" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="vvL-vA-Yz4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qsj-Dm-GOl">
+                                        <rect key="frame" x="0.0" y="602" width="384" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vD-6e-Cl9">
+                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="45"/>
+                                                <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <state key="normal" title="RESET">
+                                                    <color key="titleColor" systemColor="systemYellowColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedResetButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="4ft-i2-mMq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-75-u23">
+                                                <rect key="frame" x="199.5" y="0.0" width="184.5" height="45"/>
+                                                <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <state key="normal" title="VALIDATE">
+                                                    <color key="titleColor" systemColor="systemYellowColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedValidateButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="I2Z-h3-s9E"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z51-mF-Hfu">
+                                <rect key="frame" x="15" y="114" width="384" height="32"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="2px-NL-CVe"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First element to compare"/>
+                                    <segment title="Second element to compare"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemYellowColor"/>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ms5-21-8Gj"/>
                         <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="3Ya-6J-MEa" firstAttribute="top" secondItem="wNy-xk-qd7" secondAttribute="top" id="8Sd-2g-HDh"/>
-                            <constraint firstItem="3Ya-6J-MEa" firstAttribute="bottom" secondItem="wNy-xk-qd7" secondAttribute="bottom" id="Bhm-ee-PI5"/>
-                            <constraint firstItem="Ms5-21-8Gj" firstAttribute="bottom" secondItem="wNy-xk-qd7" secondAttribute="bottom" constant="10" id="FJm-6L-wlz"/>
-                            <constraint firstItem="3Ya-6J-MEa" firstAttribute="centerX" secondItem="Ms5-21-8Gj" secondAttribute="centerX" id="bQL-ig-46P"/>
-                            <constraint firstItem="wNy-xk-qd7" firstAttribute="top" secondItem="VQg-Js-YLo" secondAttribute="bottom" constant="10" id="dwt-jf-BPf"/>
+                            <constraint firstItem="Z51-mF-Hfu" firstAttribute="top" secondItem="VQg-Js-YLo" secondAttribute="bottom" constant="20" id="5e3-WX-yCK"/>
+                            <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="sba-KD-i05" secondAttribute="trailing" constant="15" id="PK0-wQ-Wy0"/>
+                            <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="Z51-mF-Hfu" secondAttribute="trailing" constant="15" id="cFV-PC-7gC"/>
                             <constraint firstItem="VQg-Js-YLo" firstAttribute="top" secondItem="Ms5-21-8Gj" secondAttribute="top" id="gYh-ZG-vJf"/>
-                            <constraint firstItem="wNy-xk-qd7" firstAttribute="leading" secondItem="Ms5-21-8Gj" secondAttribute="leading" constant="10" id="jY1-Gv-r3d"/>
+                            <constraint firstItem="Z51-mF-Hfu" firstAttribute="leading" secondItem="Ms5-21-8Gj" secondAttribute="leading" constant="15" id="gtY-Qf-FdW"/>
+                            <constraint firstItem="sba-KD-i05" firstAttribute="leading" secondItem="Ms5-21-8Gj" secondAttribute="leading" constant="15" id="jdF-f6-Esa"/>
                             <constraint firstItem="VQg-Js-YLo" firstAttribute="centerX" secondItem="Ms5-21-8Gj" secondAttribute="centerX" id="nh3-31-vf0"/>
-                            <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="wNy-xk-qd7" secondAttribute="trailing" constant="10" id="yLZ-fM-Kks"/>
+                            <constraint firstItem="sba-KD-i05" firstAttribute="top" secondItem="Z51-mF-Hfu" secondAttribute="bottom" constant="20" id="rB9-2Q-njh"/>
+                            <constraint firstItem="Ms5-21-8Gj" firstAttribute="bottom" secondItem="sba-KD-i05" secondAttribute="bottom" constant="50" id="ySW-46-XE7"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cyc-oR-PrC" appends="YES" id="a86-uV-OBU"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Uyg-bc-KFc" id="zHQ-8N-iOK"/>
-                        <outlet property="firstCityTextField" destination="2ov-W5-gUd" id="Etv-X3-Vwt"/>
-                        <outlet property="firstDevicePickerView" destination="WDv-kM-VJD" id="1XS-cj-hqU"/>
-                        <outlet property="firstLanguagePickerView" destination="7uI-nC-imT" id="Uvx-ug-Ksn"/>
-                        <outlet property="firstSuggestionPickerView" destination="Avl-7L-76v" id="0Bt-ch-86A"/>
-                        <outlet property="secondCityTextField" destination="WGa-iB-pPW" id="MNd-NS-yuE"/>
-                        <outlet property="secondDevicePickerView" destination="JJx-ks-hk5" id="1c1-9S-2Tj"/>
-                        <outlet property="secondLanguagePickerView" destination="bc7-fn-Oto" id="sNB-oN-1Tr"/>
-                        <outlet property="secondSuggestionPickerView" destination="TSm-dK-d5k" id="Uvt-4s-k8Z"/>
+                        <outlet property="cityTextField" destination="Pgd-Li-sws" id="Ucv-pF-5ap"/>
+                        <outlet property="deviceTextField" destination="AVw-3h-TtV" id="l5E-aW-TYN"/>
+                        <outlet property="languageTextField" destination="RrS-vo-rhd" id="sV4-xZ-Woo"/>
+                        <outlet property="segmentControl" destination="Z51-mF-Hfu" id="myg-t0-0VS"/>
+                        <outlet property="suggestionTextField" destination="xCj-lx-ReZ" id="6eI-EO-JAo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bA6-xx-L4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cyc-oR-PrC">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="oCD-TY-aNP" id="fqM-1F-CSC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2198.5507246376815" y="-315.40178571428572"/>
         </scene>

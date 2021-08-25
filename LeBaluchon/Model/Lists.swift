@@ -24,8 +24,8 @@ let berlin = City(name: "Berlin", device: "EUR", language: "German", cityID: 295
 
 let listOfCities = [berlin, london, newYork, paris]
 
-// MARK: - List of Currency
-let currencyList = ["AED": "UAE dirham",
+// MARK: - List of Device
+let deviceList = ["AED": "UAE dirham",
                     "AFN": "Afghan afghani",
                     "ALL": "Albanian lek",
                     "AMD": "Armenian dram",
