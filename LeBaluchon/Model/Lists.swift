@@ -22,7 +22,7 @@ let london = City(name: "London", device: "GBP", language: "English", cityID: 26
 let newYork = City(name: "New-York", device: "USD", language: "English", cityID: 5128581)
 let berlin = City(name: "Berlin", device: "EUR", language: "German", cityID: 2950159)
 
-
+let listOfCities = [berlin, london, newYork, paris]
 
 // MARK: - List of Currency
 let currencyList = ["AED": "UAE dirham",

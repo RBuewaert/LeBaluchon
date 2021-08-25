@@ -383,9 +383,17 @@ in USD</string>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Avl-7L-76v">
                                                 <rect key="frame" x="0.0" y="0.0" width="197" height="57"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="st9-rx-1fS"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="OEj-Cu-CoN"/>
+                                                </connections>
                                             </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSm-dK-d5k">
+                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSm-dK-d5k">
                                                 <rect key="frame" x="197" y="0.0" width="197" height="57"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="JcE-7M-Acp"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="a08-fX-lA1"/>
+                                                </connections>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -398,11 +406,19 @@ in USD</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3BR-nS-LTr">
                                         <rect key="frame" x="0.0" y="307" width="394" height="57"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDv-kM-VJD">
+                                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDv-kM-VJD">
                                                 <rect key="frame" x="0.0" y="0.0" width="197" height="57"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="W5v-gd-miA"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="VPl-Q9-lkw"/>
+                                                </connections>
                                             </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJx-ks-hk5">
+                                            <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJx-ks-hk5">
                                                 <rect key="frame" x="197" y="0.0" width="197" height="57"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="AN9-Ak-Mzw"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="Lvi-9j-Yqh"/>
+                                                </connections>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -415,11 +431,19 @@ in USD</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-sf-7Xc">
                                         <rect key="frame" x="0.0" y="461" width="394" height="56.5"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uI-nC-imT">
+                                            <pickerView tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uI-nC-imT">
                                                 <rect key="frame" x="0.0" y="0.0" width="197" height="56.5"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="oNY-AM-Vlb"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="Qz7-0q-oSn"/>
+                                                </connections>
                                             </pickerView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-fn-Oto">
+                                            <pickerView tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-fn-Oto">
                                                 <rect key="frame" x="197" y="0.0" width="197" height="56.5"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oCD-TY-aNP" id="cZI-Df-6Wt"/>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="GKt-lc-uqe"/>
+                                                </connections>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -436,11 +460,17 @@ in USD</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="191.5" height="56.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" textContentType="address-level2"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="e61-m9-0H9"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WGa-iB-pPW">
                                                 <rect key="frame" x="202.5" y="0.0" width="191.5" height="56.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" textContentType="address-level2"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="oCD-TY-aNP" id="ugQ-8q-tfO"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -473,6 +503,14 @@ in USD</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-bc-KFc">
+                                <rect key="frame" x="184" y="425" width="45" height="45"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="GHZ-23-Nxw"/>
+                                    <constraint firstAttribute="height" constant="45" id="b1E-5g-HNW"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ms5-21-8Gj"/>
                         <color key="backgroundColor" red="0.91936323050000002" green="1" blue="0.90419374149999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -489,6 +527,7 @@ in USD</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Uyg-bc-KFc" id="zHQ-8N-iOK"/>
                         <outlet property="firstCityTextField" destination="2ov-W5-gUd" id="Etv-X3-Vwt"/>
                         <outlet property="firstDevicePickerView" destination="WDv-kM-VJD" id="1XS-cj-hqU"/>
                         <outlet property="firstLanguagePickerView" destination="7uI-nC-imT" id="Uvx-ug-Ksn"/>
