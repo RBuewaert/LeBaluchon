@@ -12,15 +12,15 @@ struct City {
     let name: String
     let device: String
     let language: String
-    let cityID: Int
+    let cityId: Int
 }
 
 // ID à garder ou recherche par nom??????? -> A TESTER
 
-let paris = City(name: "Paris", device: "EUR", language: "French", cityID: 2988507 )
-let london = City(name: "London", device: "GBP", language: "English", cityID: 2643743)
-let newYork = City(name: "New-York", device: "USD", language: "English", cityID: 5128581)
-let berlin = City(name: "Berlin", device: "EUR", language: "German", cityID: 2950159)
+let paris = City(name: "Paris", device: "EUR", language: "French", cityId: 2988507 )
+let london = City(name: "London", device: "GBP", language: "English", cityId: 2643743)
+let newYork = City(name: "New York", device: "USD", language: "English", cityId: 5128581)
+let berlin = City(name: "Berlin", device: "EUR", language: "German", cityId: 2950159)
 
 let listOfCities = [berlin, london, newYork, paris]
 

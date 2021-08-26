@@ -20,12 +20,14 @@ class WeatherService {
         self.weatherSession = weatherSession
     }
 
+    var cityIsFound = true
+
     private static let baseWeatherUrlCity = "http://api.openweathermap.org/data/2.5/weather?q="
     private static let baseWeatherUrlGroup = "http://api.openweathermap.org/data/2.5/group?id="
     private static let units = "&units=metric"
 
     private let urlParameters = "&appid=" + keyOpenWeather + units
-    private let idBeaumontAndNewYork = "3034170,5128581"
+//    private let idBeaumontAndNewYork = "3034170,5128581"
     // Toulouse id = 2972315
     // New York id = 5128581
     // Beaumont de Lomagne id = 3034170
@@ -41,7 +43,7 @@ class WeatherService {
     }
 
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
-        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + idBeaumontAndNewYork + urlParameters) else {
+        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + selectedId + urlParameters) else {
             callback(false, nil, nil)
             return
         }
@@ -67,10 +69,6 @@ class WeatherService {
 
                 let resultWeatherNewYork = JSONresult.list[1].weather
                 let resultMainNewYork = JSONresult.list[1].main
-
-                /* vitesste du vent par défaut metre par s :
-                Une vitesse de 1 m/s correspond à 3,6 km/h soit 1,9 nœuds. Une vitesse de 25 m/s correspond à 90 km/h soit 49 nœuds. Une vitesse de 28 m/s correspond à 100 km/h soit 54 nœuds.
-                */
 
                 let weather1 = Weather(city: JSONresult.list[0].name,
                                        hour: self.calculCityHour(timezone: JSONresult.list[0].sys.timezone),
@@ -101,11 +99,15 @@ class WeatherService {
     }
 
     func getWeatherCity(city: String, callback: @escaping (Bool, Weather?) -> Void) {
+        cityIsFound = true
+
         guard let url = URL(string: WeatherService.baseWeatherUrlCity + city + urlParameters) else {
+            print(WeatherService.baseWeatherUrlCity + city + urlParameters)
             callback(false, nil)
             return
         }
 
+        print(WeatherService.baseWeatherUrlCity + city + urlParameters)
         task?.cancel()
 
         task = weatherSession.dataTask(with: url) { (data, response, error) in
@@ -121,6 +123,7 @@ class WeatherService {
                 }
 
                 if response.statusCode == 404 {
+                    self.cityIsFound = false
                     print("city not found Throws!!!!")
                 }
 
@@ -142,10 +145,6 @@ class WeatherService {
                 let resultMain = JSONresult.main
                 let resultWind = JSONresult.wind
                 let resultClouds = JSONresult.clouds
-
-                /* vitesste du vent par défaut metre par s :
-                Une vitesse de 1 m/s correspond à 3,6 km/h soit 1,9 nœuds. Une vitesse de 25 m/s correspond à 90 km/h soit 49 nœuds. Une vitesse de 28 m/s correspond à 100 km/h soit 54 nœuds.
-                */
 
                 let weather = Weather(city: result.name,
                                       hour: self.calculCityHour(timezone: resultTimezone),

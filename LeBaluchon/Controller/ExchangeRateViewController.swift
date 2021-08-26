@@ -18,29 +18,22 @@ class ExchangeRateViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-//    let segue = UIStoryboardSegue(identifier: "segueToParameters", source: ExchangeRateViewController, destination: ParametersViewController)
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
 
-//        navigationItem.titleView?.isHidden = false
-//        navigationItem.title = "titi"
-//        self.tabBarController?.navigationItem.title = "Exchange Rate"
-//        navigationController?.title = "Exchange Rate"
-//        navigationItem.title = "Exchange Rate"
-//        navigationController?.navigationBar.prefersLargeTitles = true
-
         convertButton.layer.cornerRadius = 30
+
+        currency = selectedCurrency
 
 //        CurrencyService.shared.getExchangeRate { (success, currency) in
 //                    self.toggleActivityIndicator(shown: false)
 //
 //                    if success, let currentCurrency = currency {
-//                        self.currency = currentCurrency
-//                        self.updateExchangeRateView(currency: currentCurrency)
+//                        self.currency.exchangeRate = currentCurrency.exchangeRate
+//                        self.updateExchangeRateView(currency: self.currency)
 //                    } else {
 //                        self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
 //                    }

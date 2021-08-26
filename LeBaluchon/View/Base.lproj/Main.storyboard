@@ -125,7 +125,7 @@ in USD</string>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HWU-ez-mQT"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0e-IB-soc">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0e-IB-soc">
                                                 <rect key="frame" x="193.5" y="0.0" width="180.5" height="50"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="20"/>
@@ -345,12 +345,12 @@ in USD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-bc-KFc">
-                                <rect key="frame" x="184" y="425" width="45" height="45"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-bc-KFc">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="GHZ-23-Nxw"/>
-                                    <constraint firstAttribute="height" constant="45" id="b1E-5g-HNW"/>
+                                    <constraint firstAttribute="width" constant="100" id="GHZ-23-Nxw"/>
+                                    <constraint firstAttribute="height" constant="100" id="b1E-5g-HNW"/>
                                 </constraints>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="sba-KD-i05">
@@ -383,7 +383,7 @@ in USD</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CR9-oC-nNC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CR9-oC-nNC">
                                         <rect key="frame" x="0.0" y="215.5" width="384" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -400,7 +400,7 @@ in USD</string>
                                             <outlet property="delegate" destination="oCD-TY-aNP" id="eGv-o1-Cav"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taa-T0-Hjm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taa-T0-Hjm">
                                         <rect key="frame" x="0.0" y="344.5" width="384" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -414,7 +414,7 @@ in USD</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-JP-JT4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-JP-JT4">
                                         <rect key="frame" x="0.0" y="473" width="384" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -431,19 +431,8 @@ in USD</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qsj-Dm-GOl">
                                         <rect key="frame" x="0.0" y="602" width="384" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vD-6e-Cl9">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.5" height="45"/>
-                                                <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                                <state key="normal" title="RESET">
-                                                    <color key="titleColor" systemColor="systemYellowColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="tappedResetButton:" destination="oCD-TY-aNP" eventType="touchUpInside" id="4ft-i2-mMq"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-75-u23">
-                                                <rect key="frame" x="199.5" y="0.0" width="184.5" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="45"/>
                                                 <color key="backgroundColor" red="0.11838372796773911" green="0.074076570570468903" blue="0.34713387489318848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <state key="normal" title="VALIDATE">
@@ -477,9 +466,11 @@ in USD</string>
                             <constraint firstItem="Z51-mF-Hfu" firstAttribute="top" secondItem="VQg-Js-YLo" secondAttribute="bottom" constant="20" id="5e3-WX-yCK"/>
                             <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="sba-KD-i05" secondAttribute="trailing" constant="15" id="PK0-wQ-Wy0"/>
                             <constraint firstItem="Ms5-21-8Gj" firstAttribute="trailing" secondItem="Z51-mF-Hfu" secondAttribute="trailing" constant="15" id="cFV-PC-7gC"/>
+                            <constraint firstItem="Uyg-bc-KFc" firstAttribute="centerY" secondItem="cNH-Di-54w" secondAttribute="centerY" id="fnk-QX-bA6"/>
                             <constraint firstItem="VQg-Js-YLo" firstAttribute="top" secondItem="Ms5-21-8Gj" secondAttribute="top" id="gYh-ZG-vJf"/>
                             <constraint firstItem="Z51-mF-Hfu" firstAttribute="leading" secondItem="Ms5-21-8Gj" secondAttribute="leading" constant="15" id="gtY-Qf-FdW"/>
                             <constraint firstItem="sba-KD-i05" firstAttribute="leading" secondItem="Ms5-21-8Gj" secondAttribute="leading" constant="15" id="jdF-f6-Esa"/>
+                            <constraint firstItem="Uyg-bc-KFc" firstAttribute="centerX" secondItem="cNH-Di-54w" secondAttribute="centerX" id="nA5-Fc-G5c"/>
                             <constraint firstItem="VQg-Js-YLo" firstAttribute="centerX" secondItem="Ms5-21-8Gj" secondAttribute="centerX" id="nh3-31-vf0"/>
                             <constraint firstItem="sba-KD-i05" firstAttribute="top" secondItem="Z51-mF-Hfu" secondAttribute="bottom" constant="20" id="rB9-2Q-njh"/>
                             <constraint firstItem="Ms5-21-8Gj" firstAttribute="bottom" secondItem="sba-KD-i05" secondAttribute="bottom" constant="50" id="ySW-46-XE7"/>
@@ -495,6 +486,7 @@ in USD</string>
                         <outlet property="languageTextField" destination="RrS-vo-rhd" id="sV4-xZ-Woo"/>
                         <outlet property="segmentControl" destination="Z51-mF-Hfu" id="myg-t0-0VS"/>
                         <outlet property="suggestionTextField" destination="xCj-lx-ReZ" id="6eI-EO-JAo"/>
+                        <outlet property="validateButton" destination="KAl-75-u23" id="h8Y-8U-Vz9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bA6-xx-L4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

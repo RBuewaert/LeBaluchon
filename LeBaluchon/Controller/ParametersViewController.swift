@@ -12,6 +12,10 @@ class ParametersViewController: UIViewController {
     var translation: Translation!
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
+    var currentWeather: Weather!
+
+    var cityResearch = true
+    var idLinkToPickerView = 0
 
     var deviceNames: [String] = []
     var languageNames: [String] = []
@@ -23,6 +27,7 @@ class ParametersViewController: UIViewController {
     @IBOutlet weak var deviceTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var validateButton: UIButton!
 
     var suggestionPickerView = UIPickerView()
     var devicePickerView = UIPickerView()
@@ -33,28 +38,127 @@ class ParametersViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
+        validateButton.layer.cornerRadius = 30
+
         suggestionTextField.inputView = suggestionPickerView
         deviceTextField.inputView = devicePickerView
         languageTextField.inputView = languagePickerView
 
-        suggestionPickerView.delegate = self
-        suggestionPickerView.dataSource = self
-        devicePickerView.delegate = self
-        devicePickerView.dataSource = self
-        languagePickerView.delegate = self
-        languagePickerView.dataSource = self
+        initializePickerView(pickerView: suggestionPickerView)
+        initializePickerView(pickerView: devicePickerView)
+        initializePickerView(pickerView: languagePickerView)
 
         suggestionPickerView.tag = 0
         devicePickerView.tag = 1
         languagePickerView.tag = 2
     }
 
-    @IBAction func tappedResetButton(_ sender: Any) {
+    private func initializePickerView(pickerView: UIPickerView) {
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
 
     @IBAction func tappedValidateButton(_ sender: Any) {
+        toggleActivityIndicator(shown: true)
+
+        if suggestionTextField.text == "" && languageTextField.text == "" && deviceTextField.text == "" && cityTextField.text == "" {
+            alertErrorMessage(message: ErrorType.noValue.rawValue)
+        }
+
+        checkCityName(cityTapped: cityTextField)
+
+        let suggestion = suggestionTextField.text
+        let language = languageTextField.text
+        let device = deviceTextField.text
+
+        if suggestion == nil && language == nil && device == nil && cityResearch == false {
+            alertErrorMessage(message: ErrorType.noValue.rawValue)
+        }
+
+        extractValues()
+
+        toggleActivityIndicator(shown: false)
     }
 
+    private func checkCityName(cityTapped: UITextField) {
+//        let citySearched = cityTapped.text?.replacingOccurrences(of: " ", with: "-")
+
+//        guard cityTapped.text != nil && cityTapped.text != "" else { return }
+
+        WeatherService.shared.getWeatherCity(city: cityTapped.text!) { success, weather in
+            if success, let currentWeather = weather {
+                self.currentWeather = currentWeather
+                self.cityResearch = true
+            } else if WeatherService.shared.cityIsFound == false {
+                self.cityResearch = false
+                self.alertErrorMessage(message: ErrorType.cityNotFound.rawValue)
+            } else {
+                self.cityResearch = false
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+    }
+
+    private func extractValues() {
+        if segmentControl.selectedSegmentIndex == 0 {
+            if suggestionTextField.text != nil {
+                firstSelectedId = idLinkToPickerView
+                return
+            }
+            if languageTextField.text != nil {
+                if let key = languageList.someKey(forValue: languageTextField.text!) {
+                    selectedTranslation.languageToTranslate = key
+                }
+            }
+            if deviceTextField.text != nil {
+                if let key = deviceList.someKey(forValue: deviceTextField.text!) {
+                    selectedCurrency.currencyToConvert = key
+                }
+            }
+            if cityResearch == true {
+                selectedWeatherLeftCity = currentWeather
+            }
+            succesMessage(element: "the first element")
+        } else { // segmentControl.selectedSegmentIndex == 1
+            if suggestionTextField.text != nil {
+                secondSelectedId = idLinkToPickerView
+                return
+            }
+            if languageTextField.text != nil {
+                if let key = languageList.someKey(forValue: languageTextField.text!) {
+                    selectedTranslation.languageToObtain = key
+                }
+            }
+            if deviceTextField.text != nil {
+                if let key = deviceList.someKey(forValue: deviceTextField.text!) {
+                    selectedCurrency.currencyToObtain = key
+                }
+            }
+            if cityResearch == true {
+                selectedWeatherRightCity = currentWeather
+            }
+            succesMessage(element: "the second element")
+        }
+    }
+
+    private func alertErrorMessage(message: String) {
+        let alertVC = UIAlertController(title: "Error!", message: message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func succesMessage(element: String) {
+        let alertVC = UIAlertController(title: "Success!", message: "The parameters are changed for \(element)!",
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        validateButton.isHidden = shown
+    }
 }
 
 // MARK: - Keyboard
@@ -114,6 +218,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
             let cityDevice = listOfCities[row].device
             let cityLanguage = listOfCities[row].language
             suggestionTextField.text = "\(cityName), \(cityDevice), \(cityLanguage)"
+            idLinkToPickerView = listOfCities[row].cityId
             suggestionTextField.resignFirstResponder()
         case 1:
             deviceTextField.text = deviceNames[row]

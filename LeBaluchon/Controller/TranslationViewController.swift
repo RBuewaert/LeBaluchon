@@ -26,6 +26,8 @@ class TranslationViewController: UIViewController {
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
 
+        translation = selectedTranslation
+
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
@@ -33,7 +35,9 @@ class TranslationViewController: UIViewController {
         toolbar.sizeToFit()
         self.textToTranslateTextView.inputAccessoryView = toolbar
 
-        TranslationService.shared.getTranslation(textToTranslate: "Bonjour!", languageToTranslate: "fr", languageToObtain: "en") { success, translation in
+        TranslationService.shared.getTranslation(textToTranslate: translation.textToTranslate,
+                            languageToTranslate: translation.languageToTranslate,
+                            languageToObtain: translation.languageToObtain) { success, translation in
 
             if success, let currentTranslation = translation {
                 self.translation = currentTranslation
