@@ -44,14 +44,8 @@ final class ExchangeRateViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         if requestSuccess == true {
-            print(SelectedParameters.selectedCurrency)
-            print(SelectedParameters.selectedCurrency.exchangeRate)
-//            currency = SelectedParameters.selectedCurrency
-            print(SelectedParameters.selectedCurrency)
-            print(SelectedParameters.selectedCurrency.exchangeRate)
             updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
         }
-//        updateExchangeRateView(currency: currency)
     }
 
     private func toggleActivityIndicator(shown: Bool) {

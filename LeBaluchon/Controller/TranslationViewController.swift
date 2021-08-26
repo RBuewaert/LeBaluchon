@@ -9,6 +9,7 @@ import UIKit
 
 final class TranslationViewController: UIViewController {
     var translation: Translation!
+    var requestSuccess = false
 
     @IBOutlet weak var languageToTranslateLabel: UILabel!
     @IBOutlet weak var languageToObtainLabel: UILabel!
@@ -35,6 +36,16 @@ final class TranslationViewController: UIViewController {
         toolbar.sizeToFit()
         self.textToTranslateTextView.inputAccessoryView = toolbar
 
+        launchGetTranslation()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if requestSuccess == true {
+            launchGetTranslation()
+        }
+    }
+
+    private func launchGetTranslation() {
         TranslationService.shared.getTranslation(textToTranslate: translation.textToTranslate,
                             languageToTranslate: translation.languageToTranslate,
                             languageToObtain: translation.languageToObtain) { success, translation in
@@ -42,18 +53,11 @@ final class TranslationViewController: UIViewController {
             if success, let currentTranslation = translation {
                 self.translation = currentTranslation
                 self.updateTranslationView(translation: currentTranslation)
+                self.requestSuccess = true
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillApear Google")
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewDidApear Google(seconde vue)")
     }
 
     @objc func dismissMyKeyboard() {

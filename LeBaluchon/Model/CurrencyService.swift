@@ -63,8 +63,6 @@ final class CurrencyService {
     func convertCurrency(currency: Currency, currencyToConvert: String,
                          currencyToObtain: String, valueToConvert: String?) throws -> String? {
         let value = try valueIsCorrect(userValue: valueToConvert)
-        print(SelectedParameters.selectedCurrency)
-        print(SelectedParameters.selectedCurrency.exchangeRate)
         guard let currencyToConvertValue = currency.exchangeRate[currencyToConvert] else {
             throw ErrorType.firstCurrencyIsIncorrect
         }
