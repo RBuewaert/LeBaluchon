@@ -8,7 +8,6 @@
 import UIKit
 
 final class ExchangeRateViewController: UIViewController {
-    var currency: Currency!
     var requestSuccess = false
 
     @IBOutlet weak var comparedCurrencyLabel: UILabel!
@@ -27,19 +26,17 @@ final class ExchangeRateViewController: UIViewController {
 
         convertButton.layer.cornerRadius = 30
 
-        currency = SelectedParameters.selectedCurrency
-
-        CurrencyService.shared.getExchangeRate { (success, currency) in
-            self.toggleActivityIndicator(shown: false)
-
-            if success, let currentCurrency = currency {
-                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
-                self.updateExchangeRateView(currency: currentCurrency)
-                self.requestSuccess = true
-            } else {
-                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-            }
-        }
+//        CurrencyService.shared.getExchangeRate { (success, currency) in
+//            self.toggleActivityIndicator(shown: false)
+//
+//            if success, let currentCurrency = currency {
+//                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+//                self.updateExchangeRateView(currency: currentCurrency)
+//                self.requestSuccess = true
+//            } else {
+//                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+//            }
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

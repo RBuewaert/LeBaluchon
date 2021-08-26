@@ -27,7 +27,6 @@ final class WeatherService {
     private static let units = "&units=metric"
 
     private let urlParameters = "&appid=" + keyOpenWeather + units
-//    private let idBeaumontAndNewYork = "3034170,5128581"
     // Toulouse id = 2972315
     // New York id = 5128581
     // Beaumont de Lomagne id = 3034170
@@ -71,15 +70,16 @@ final class WeatherService {
                 let resultMainNewYork = JSONresult.list[1].main
 
                 let weather1 = Weather(city: JSONresult.list[0].name,
-                                       hour: self.calculCityHour(timezone: JSONresult.list[0].sys.timezone),
-                                       description: resultWeatherBeaumont[0].description,
-                                       icon: resultWeatherBeaumont[0].icon,
-                                       temperature: round(resultMainBeaumont.temp * 10) / 10.0,
-                                       feltTemperature: round(resultMainBeaumont.feelsLike * 10) / 10.0,
-                                       pressure: resultMainBeaumont.pressure,
-                                       humidity: resultMainBeaumont.humidity,
-                                       windSpeed: (3.6 * JSONresult.list[0].wind.speed).rounded(),
-                                       cloudiness: JSONresult.list[0].clouds.all)
+                                        hour: self.calculCityHour(timezone: JSONresult.list[0].sys.timezone),
+                                        description: resultWeatherBeaumont[0].description,
+                                        icon: resultWeatherBeaumont[0].icon,
+                                        temperature: round(resultMainBeaumont.temp * 10) / 10.0,
+                                        feltTemperature: round(resultMainBeaumont.feelsLike * 10) / 10.0,
+                                        pressure: resultMainBeaumont.pressure,
+                                        humidity: resultMainBeaumont.humidity,
+                                        windSpeed: (3.6 * JSONresult.list[0].wind.speed).rounded(),
+                                        cloudiness: JSONresult.list[0].clouds.all,
+                                        id: JSONresult.list[0].id)
 
                 let weather2 = Weather(city: JSONresult.list[1].name,
                                        hour: self.calculCityHour(timezone: JSONresult.list[1].sys.timezone),
@@ -90,7 +90,8 @@ final class WeatherService {
                                        pressure: resultMainNewYork.pressure,
                                        humidity: resultMainNewYork.humidity,
                                        windSpeed: (3.6 * JSONresult.list[1].wind.speed).rounded(),
-                                       cloudiness: JSONresult.list[1].clouds.all)
+                                       cloudiness: JSONresult.list[1].clouds.all,
+                                       id: JSONresult.list[1].id)
 
                 callback(true, weather1, weather2)
             }
@@ -101,13 +102,11 @@ final class WeatherService {
     func getWeatherCity(city: String, callback: @escaping (Bool, Weather?) -> Void) {
         cityIsFound = true
 
-        guard let url = URL(string: WeatherService.baseWeatherUrlCity + city + urlParameters) else {
-            print(WeatherService.baseWeatherUrlCity + city + urlParameters)
+        guard let url = URL(string: WeatherService.baseWeatherUrlCity + city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + urlParameters) else {
             callback(false, nil)
             return
         }
 
-        print(WeatherService.baseWeatherUrlCity + city + urlParameters)
         task?.cancel()
 
         task = weatherSession.dataTask(with: url) { (data, response, error) in
@@ -154,9 +153,10 @@ final class WeatherService {
                                       pressure: resultMain.pressure,
                                       humidity: resultMain.humidity,
                                       windSpeed: (3.6 * resultWind.speed).rounded(),
-                                      cloudiness: resultClouds.all)
+                                      cloudiness: resultClouds.all,
+                                      id: JSONresult.id)
                 callback(true, weather)
-
+                print("new id dans MODEL \(weather.id)")
             }
         }
         task?.resume()

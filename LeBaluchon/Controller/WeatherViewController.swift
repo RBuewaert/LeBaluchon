@@ -8,8 +8,7 @@
 import UIKit
 
 final class WeatherViewController: UIViewController {
-    var weatherLeftCity: Weather!
-    var weatherRightCity: Weather!
+    var requestSuccess = false
 
     @IBOutlet var cityLabel: [UILabel]!
     @IBOutlet var hourLabel: [UILabel]!
@@ -22,25 +21,20 @@ final class WeatherViewController: UIViewController {
     @IBOutlet var humidityLabel: [UILabel]!
     @IBOutlet var pressureLabel: [UILabel]!
 
-    /*
-     TESTER : Diminuer le nbre de label ci-dessus avec les tag !!!
-     */
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        weatherLeftCity = SelectedParameters.selectedWeatherLeftCity
-        weatherRightCity = SelectedParameters.selectedWeatherRightCity
 
         orderOutletCollectionWithTags()
 
         WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
             if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
-                self.weatherLeftCity = currentWeatherLeftCity
-                self.weatherRightCity = currentWeatherRightCity
-                self.updateWeatherView(weather: self.weatherLeftCity, index: 0)
-                self.updateWeatherView(weather: self.weatherRightCity, index: 1)
+                SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
+                SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
+                self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
+                self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
+                self.requestSuccess = true
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
@@ -48,7 +42,18 @@ final class WeatherViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        //
+        if requestSuccess == true {
+            WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
+                if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
+                    SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
+                    SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
+                    self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
+                    self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
+                } else {
+                    self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+                }
+            }
+        }
     }
 
     private func orderOutletCollectionWithTags() {

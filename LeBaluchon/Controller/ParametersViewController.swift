@@ -8,14 +8,10 @@
 import UIKit
 
 final class ParametersViewController: UIViewController {
-    var currency: Currency!
-    var translation: Translation!
-    var weatherLeftCity: Weather!
-    var weatherRightCity: Weather!
     var currentWeather: Weather!
-
     var cityResearch = false
     var idLinkToPickerView = 0
+    var idLinkToCity = 0
 
     var deviceNames: [String] = []
     var languageNames: [String] = []
@@ -61,6 +57,8 @@ final class ParametersViewController: UIViewController {
     @IBAction func tappedValidateButton(_ sender: Any) {
         toggleActivityIndicator(shown: true)
 
+        print(SelectedParameters.secondSelectedId)
+
         if suggestionTextField.text == "" && languageTextField.text == "" && deviceTextField.text == "" && cityTextField.text == "" {
             alertErrorMessage(message: ErrorType.noValue.rawValue)
         }
@@ -68,18 +66,22 @@ final class ParametersViewController: UIViewController {
         if cityTextField.text != nil && cityTextField.text != "" {
             checkCityName(cityTapped: cityTextField)
         }
-        
-        let suggestion = suggestionTextField.text
-        let language = languageTextField.text
-        let device = deviceTextField.text
-
-        if suggestion == nil && language == nil && device == nil && cityResearch == false {
-            alertErrorMessage(message: ErrorType.noValue.rawValue)
+        else {
+            extractValues()
+            toggleActivityIndicator(shown: false)
         }
 
-        extractValues()
+//        let suggestion = suggestionTextField.text
+//        let language = languageTextField.text
+//        let device = deviceTextField.text
 
-        toggleActivityIndicator(shown: false)
+//        if suggestion == nil && language == nil && device == nil && cityResearch == false {
+//            alertErrorMessage(message: ErrorType.noValue.rawValue)
+//        }
+
+//        extractValues()
+
+//        toggleActivityIndicator(shown: false)
     }
 
     private func checkCityName(cityTapped: UITextField) {
@@ -87,10 +89,16 @@ final class ParametersViewController: UIViewController {
 
 //        if cityTapped.text != nil && cityTapped.text != "" { break }
 
+        print(SelectedParameters.secondSelectedId)
+        
         WeatherService.shared.getWeatherCity(city: cityTapped.text!) { success, weather in
             if success, let currentWeather = weather {
                 self.currentWeather = currentWeather
+                self.idLinkToCity = currentWeather.id
                 self.cityResearch = true
+                self.extractValues()
+                self.toggleActivityIndicator(shown: false)
+                print(SelectedParameters.secondSelectedId)
             } else if WeatherService.shared.cityIsFound == false {
                 self.cityResearch = false
                 self.alertErrorMessage(message: ErrorType.cityNotFound.rawValue)
@@ -119,6 +127,7 @@ final class ParametersViewController: UIViewController {
             }
             if cityResearch == true {
                 SelectedParameters.selectedWeatherLeftCity = currentWeather
+                SelectedParameters.firstSelectedId = idLinkToCity
             }
             succesMessage(element: "the first element")
         } else { // segmentControl.selectedSegmentIndex == 1
@@ -137,8 +146,15 @@ final class ParametersViewController: UIViewController {
                 }
             }
             if cityResearch == true {
+                print("rfirst print pour le true \(SelectedParameters.secondSelectedId)")
                 SelectedParameters.selectedWeatherRightCity = currentWeather
+                SelectedParameters.secondSelectedId = idLinkToCity
+                print(SelectedParameters.secondSelectedId)
+                print(SelectedParameters.selectedId)
             }
+            print("print de fin pour le second element \(SelectedParameters.secondSelectedId)")
+            print(SelectedParameters.selectedId)
+            print("seco,nd print de fin pour le second element \(SelectedParameters.secondSelectedId)")
             succesMessage(element: "the second element")
         }
     }

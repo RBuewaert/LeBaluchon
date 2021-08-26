@@ -8,7 +8,6 @@
 import UIKit
 
 final class TranslationViewController: UIViewController {
-    var translation: Translation!
     var requestSuccess = false
 
     @IBOutlet weak var languageToTranslateLabel: UILabel!
@@ -27,8 +26,6 @@ final class TranslationViewController: UIViewController {
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
 
-        translation = SelectedParameters.selectedTranslation
-
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
@@ -46,12 +43,12 @@ final class TranslationViewController: UIViewController {
     }
 
     private func launchGetTranslation() {
-        TranslationService.shared.getTranslation(textToTranslate: translation.textToTranslate,
-                            languageToTranslate: translation.languageToTranslate,
-                            languageToObtain: translation.languageToObtain) { success, translation in
+        TranslationService.shared.getTranslation(textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+                    languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+                    languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
 
             if success, let currentTranslation = translation {
-                self.translation = currentTranslation
+                SelectedParameters.selectedTranslation = currentTranslation
                 self.updateTranslationView(translation: currentTranslation)
                 self.requestSuccess = true
             } else {
@@ -81,12 +78,12 @@ final class TranslationViewController: UIViewController {
         textToTranslateTextView.text = resultTextView.text
         resultTextView.text = originalText
 
-        let originalLanguage = translation.languageToTranslate
-        translation.languageToTranslate = translation.languageToObtain
-        translation.languageToObtain = originalLanguage
+        let originalLanguage = SelectedParameters.selectedTranslation.languageToTranslate
+        SelectedParameters.selectedTranslation.languageToTranslate = SelectedParameters.selectedTranslation.languageToObtain
+        SelectedParameters.selectedTranslation.languageToObtain = originalLanguage
 
-        languageToTranslateLabel.text = languageList[translation.languageToTranslate]
-        languageToObtainLabel.text = languageList[translation.languageToObtain]
+        languageToTranslateLabel.text = languageList[SelectedParameters.selectedTranslation.languageToTranslate]
+        languageToObtainLabel.text = languageList[SelectedParameters.selectedTranslation.languageToObtain]
     }
 
     @IBAction func tappedTranslateButton(_ sender: Any) {
@@ -97,16 +94,14 @@ final class TranslationViewController: UIViewController {
 
         TranslationService.shared.getTranslation(
             textToTranslate: textToTranslate,
-            languageToTranslate: translation.languageToTranslate,
-            languageToObtain: translation.languageToObtain) { success, translation in
+            languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+            languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
 
             self.toggleActivityIndicator(shown: false)
 
             if success, let currentTranslation = translation {
-                self.translation = currentTranslation
+                SelectedParameters.selectedTranslation = currentTranslation
                 self.resultTextView.text = currentTranslation.textToObtain
-                print(translation?.textToTranslate)
-                print(translation?.textToObtain)
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
@@ -132,4 +127,3 @@ extension TranslationViewController: UITextViewDelegate {
         languageToTranslateLabel.endEditing(true)
     }
 }
-

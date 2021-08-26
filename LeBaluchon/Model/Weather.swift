@@ -19,6 +19,7 @@ struct Weather {
     var humidity: Int
     var windSpeed: Double
     var cloudiness: Int
+    var id: Int
 }
 
 // MARK: - Struct result from JSON
@@ -35,6 +36,7 @@ struct WeatherResultListGroup: Codable {
     let wind: WeatherResultWind
     let clouds: WeatherResultClouds
     let name: String
+    let id: Int
 }
 struct WeatherResultListCity: Codable {
     let weather: [WeatherResultWeather]
@@ -42,6 +44,7 @@ struct WeatherResultListCity: Codable {
     let wind: WeatherResultWind
     let clouds: WeatherResultClouds
     let timezone: Int
+    let id: Int
 }
 
 struct WeatherResultSys: Codable {
