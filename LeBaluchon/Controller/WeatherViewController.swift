@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
 
@@ -30,8 +30,8 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        weatherLeftCity = selectedWeatherLeftCity
-        weatherRightCity = selectedWeatherRightCity
+        weatherLeftCity = SelectedParameters.selectedWeatherLeftCity
+        weatherRightCity = SelectedParameters.selectedWeatherRightCity
 
         orderOutletCollectionWithTags()
 
@@ -45,6 +45,10 @@ class WeatherViewController: UIViewController {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        //
     }
 
     private func orderOutletCollectionWithTags() {

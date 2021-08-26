@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TranslationViewController: UIViewController {
+final class TranslationViewController: UIViewController {
     var translation: Translation!
 
     @IBOutlet weak var languageToTranslateLabel: UILabel!
@@ -26,7 +26,7 @@ class TranslationViewController: UIViewController {
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
 
-        translation = selectedTranslation
+        translation = SelectedParameters.selectedTranslation
 
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -46,6 +46,14 @@ class TranslationViewController: UIViewController {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillApear Google")
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidApear Google(seconde vue)")
     }
 
     @objc func dismissMyKeyboard() {

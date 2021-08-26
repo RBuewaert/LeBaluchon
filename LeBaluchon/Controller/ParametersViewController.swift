@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ParametersViewController: UIViewController {
+final class ParametersViewController: UIViewController {
     var currency: Currency!
     var translation: Translation!
     var weatherLeftCity: Weather!
     var weatherRightCity: Weather!
     var currentWeather: Weather!
 
-    var cityResearch = true
+    var cityResearch = false
     var idLinkToPickerView = 0
 
     var deviceNames: [String] = []
@@ -65,8 +65,10 @@ class ParametersViewController: UIViewController {
             alertErrorMessage(message: ErrorType.noValue.rawValue)
         }
 
-        checkCityName(cityTapped: cityTextField)
-
+        if cityTextField.text != nil && cityTextField.text != "" {
+            checkCityName(cityTapped: cityTextField)
+        }
+        
         let suggestion = suggestionTextField.text
         let language = languageTextField.text
         let device = deviceTextField.text
@@ -83,7 +85,7 @@ class ParametersViewController: UIViewController {
     private func checkCityName(cityTapped: UITextField) {
 //        let citySearched = cityTapped.text?.replacingOccurrences(of: " ", with: "-")
 
-//        guard cityTapped.text != nil && cityTapped.text != "" else { return }
+//        if cityTapped.text != nil && cityTapped.text != "" { break }
 
         WeatherService.shared.getWeatherCity(city: cityTapped.text!) { success, weather in
             if success, let currentWeather = weather {
@@ -101,41 +103,41 @@ class ParametersViewController: UIViewController {
 
     private func extractValues() {
         if segmentControl.selectedSegmentIndex == 0 {
-            if suggestionTextField.text != nil {
-                firstSelectedId = idLinkToPickerView
+            if suggestionTextField.text != "" {
+                SelectedParameters.firstSelectedId = idLinkToPickerView
                 return
             }
-            if languageTextField.text != nil {
+            if languageTextField.text != "" {
                 if let key = languageList.someKey(forValue: languageTextField.text!) {
-                    selectedTranslation.languageToTranslate = key
+                    SelectedParameters.selectedLanguageToTranslate = key
                 }
             }
-            if deviceTextField.text != nil {
+            if deviceTextField.text != "" {
                 if let key = deviceList.someKey(forValue: deviceTextField.text!) {
-                    selectedCurrency.currencyToConvert = key
+                    SelectedParameters.selectedCurrency.currencyToConvert = key
                 }
             }
             if cityResearch == true {
-                selectedWeatherLeftCity = currentWeather
+                SelectedParameters.selectedWeatherLeftCity = currentWeather
             }
             succesMessage(element: "the first element")
         } else { // segmentControl.selectedSegmentIndex == 1
-            if suggestionTextField.text != nil {
-                secondSelectedId = idLinkToPickerView
+            if suggestionTextField.text != "" {
+                SelectedParameters.secondSelectedId = idLinkToPickerView
                 return
             }
-            if languageTextField.text != nil {
+            if languageTextField.text != "" {
                 if let key = languageList.someKey(forValue: languageTextField.text!) {
-                    selectedTranslation.languageToObtain = key
+                    SelectedParameters.selectedLanguageToObtain = key
                 }
             }
-            if deviceTextField.text != nil {
+            if deviceTextField.text != "" {
                 if let key = deviceList.someKey(forValue: deviceTextField.text!) {
-                    selectedCurrency.currencyToObtain = key
+                    SelectedParameters.selectedCurrency.currencyToObtain = key
                 }
             }
             if cityResearch == true {
-                selectedWeatherRightCity = currentWeather
+                SelectedParameters.selectedWeatherRightCity = currentWeather
             }
             succesMessage(element: "the second element")
         }

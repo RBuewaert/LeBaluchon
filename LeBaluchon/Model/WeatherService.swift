@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherService {
+final class WeatherService {
     // MARK: - Pattern Singleton
     static var shared = WeatherService()
     private init() {}
@@ -43,7 +43,7 @@ class WeatherService {
     }
 
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
-        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + selectedId + urlParameters) else {
+        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + SelectedParameters.selectedId + urlParameters) else {
             callback(false, nil, nil)
             return
         }
@@ -135,18 +135,17 @@ class WeatherService {
                  */
 
                 // Extract property indicated in Struct WeatherResultList
-                guard let JSONresult = try? JSONDecoder().decode(WeatherResultList.self, from: data) else {
+                guard let JSONresult = try? JSONDecoder().decode(WeatherResultListCity.self, from: data) else {
                     return callback(false, nil)
                 }
 
-                let result = JSONresult
-                let resultTimezone = JSONresult.sys.timezone
+                let resultTimezone = JSONresult.timezone
                 let resultWeather = JSONresult.weather
                 let resultMain = JSONresult.main
                 let resultWind = JSONresult.wind
                 let resultClouds = JSONresult.clouds
 
-                let weather = Weather(city: result.name,
+                let weather = Weather(city: city,
                                       hour: self.calculCityHour(timezone: resultTimezone),
                                       description: resultWeather[0].description,
                                       icon: resultWeather[0].icon,

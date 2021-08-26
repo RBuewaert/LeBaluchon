@@ -25,16 +25,23 @@ struct Weather {
 
 struct WeatherResult: Codable {
     let cnt: Int
-    let list: [WeatherResultList]
+    let list: [WeatherResultListGroup]
 }
 
-struct WeatherResultList: Codable {
+struct WeatherResultListGroup: Codable {
     let sys: WeatherResultSys
     let weather: [WeatherResultWeather]
     let main: WeatherResultMain
     let wind: WeatherResultWind
     let clouds: WeatherResultClouds
     let name: String
+}
+struct WeatherResultListCity: Codable {
+    let weather: [WeatherResultWeather]
+    let main: WeatherResultMain
+    let wind: WeatherResultWind
+    let clouds: WeatherResultClouds
+    let timezone: Int
 }
 
 struct WeatherResultSys: Codable {

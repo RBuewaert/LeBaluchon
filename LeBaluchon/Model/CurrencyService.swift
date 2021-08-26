@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CurrencyService {
+final class CurrencyService {
     // MARK: - Pattern Singleton
     static var shared = CurrencyService()
     private init() {}
@@ -63,6 +63,8 @@ class CurrencyService {
     func convertCurrency(currency: Currency, currencyToConvert: String,
                          currencyToObtain: String, valueToConvert: String?) throws -> String? {
         let value = try valueIsCorrect(userValue: valueToConvert)
+        print(SelectedParameters.selectedCurrency)
+        print(SelectedParameters.selectedCurrency.exchangeRate)
         guard let currencyToConvertValue = currency.exchangeRate[currencyToConvert] else {
             throw ErrorType.firstCurrencyIsIncorrect
         }
@@ -71,7 +73,16 @@ class CurrencyService {
         }
 
         let result = value * (currencyToObtainValue / currencyToConvertValue)
-        return String(result)
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = SelectedParameters.selectedCurrency.currencyToObtain
+        formatter.maximumFractionDigits = 2
+
+        let formatterResult = NSNumber(value: result)
+        return formatter.string(from: formatterResult)
+
+//        return String(result)
     }
 
         /*

@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - Struct for Translation
 struct Translation {
-    var languageToTranslate = "fr"
-    var languageToObtain = "en"
+    var languageToTranslate: String
+    var languageToObtain: String
     var textToTranslate: String
     var textToObtain: String
 }

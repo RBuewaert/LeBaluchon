@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TranslationService {
+final class TranslationService {
     // MARK: - Pattern Singleton
     static var shared = TranslationService()
     private init() {}
@@ -25,7 +25,7 @@ class TranslationService {
     func getTranslation(textToTranslate: String, languageToTranslate: String, languageToObtain: String, callback: @escaping (Bool, Translation?) -> Void) {
         let languageSource = "&source=" + languageToTranslate
         let languageTarget = "&target=" + languageToObtain
-        let urlParameters = textToTranslate + languageSource + languageTarget + "&key=" + keyGoogleTranslate
+        let urlParameters = textToTranslate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + languageSource + languageTarget + "&key=" + keyGoogleTranslate
 
         guard let url = URL(string: TranslationService.baseTranslationUrl + urlParameters) else {
             print(urlParameters)
@@ -50,7 +50,10 @@ class TranslationService {
                     return callback(false, nil)
                 }
 
-                let translation = Translation(textToTranslate: textToTranslate, textToObtain: result.data.translations[0].translatedText)
+                let translation = Translation(languageToTranslate: SelectedParameters.selectedLanguageToTranslate,
+                                              languageToObtain: SelectedParameters.selectedLanguageToObtain,
+                                              textToTranslate: textToTranslate,
+                                              textToObtain: result.data.translations[0].translatedText)
                 callback(true, translation)
             }
         }

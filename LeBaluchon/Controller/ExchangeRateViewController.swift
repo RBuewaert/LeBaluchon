@@ -7,8 +7,9 @@
 
 import UIKit
 
-class ExchangeRateViewController: UIViewController {
+final class ExchangeRateViewController: UIViewController {
     var currency: Currency!
+    var requestSuccess = false
 
     @IBOutlet weak var comparedCurrencyLabel: UILabel!
     @IBOutlet weak var leftCurrencyLabel: UILabel!
@@ -26,18 +27,31 @@ class ExchangeRateViewController: UIViewController {
 
         convertButton.layer.cornerRadius = 30
 
-        currency = selectedCurrency
+        currency = SelectedParameters.selectedCurrency
 
-//        CurrencyService.shared.getExchangeRate { (success, currency) in
-//                    self.toggleActivityIndicator(shown: false)
-//
-//                    if success, let currentCurrency = currency {
-//                        self.currency.exchangeRate = currentCurrency.exchangeRate
-//                        self.updateExchangeRateView(currency: self.currency)
-//                    } else {
-//                        self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-//                    }
-//                }
+        CurrencyService.shared.getExchangeRate { (success, currency) in
+            self.toggleActivityIndicator(shown: false)
+
+            if success, let currentCurrency = currency {
+                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+                self.updateExchangeRateView(currency: currentCurrency)
+                self.requestSuccess = true
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if requestSuccess == true {
+            print(SelectedParameters.selectedCurrency)
+            print(SelectedParameters.selectedCurrency.exchangeRate)
+//            currency = SelectedParameters.selectedCurrency
+            print(SelectedParameters.selectedCurrency)
+            print(SelectedParameters.selectedCurrency.exchangeRate)
+            updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
+        }
+//        updateExchangeRateView(currency: currency)
     }
 
     private func toggleActivityIndicator(shown: Bool) {
@@ -90,9 +104,9 @@ class ExchangeRateViewController: UIViewController {
     @IBAction func tappedConvertButton() {
         do {
             resultValueLabel.text = try CurrencyService.shared.convertCurrency(
-                currency: currency,
-                currencyToConvert: currency.currencyToConvert,
-                currencyToObtain: currency.currencyToObtain,
+                currency: SelectedParameters.selectedCurrency,
+                currencyToConvert: SelectedParameters.selectedCurrency.currencyToConvert,
+                currencyToObtain: SelectedParameters.selectedCurrency.currencyToObtain,
                 valueToConvert: userValueTextField.text)
 
         } catch ErrorType.userValueIsIncorrect {
