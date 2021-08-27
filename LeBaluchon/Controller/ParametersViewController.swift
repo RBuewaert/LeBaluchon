@@ -50,15 +50,17 @@ final class ParametersViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        // A compléter pour l'écran juste en dessous!!!!!!!
+
+        
     }
-    
-//    private func determineActiveViewController(vc: UIViewController) -> UIViewController? {
-//        if vc.viewIfLoaded?.window != nil {
-//            return vc
-//        }
-//    } return nil
-    
+
+    private func determineActiveViewController(vc: UIViewController) -> Bool {
+        
+        
+        guard vc.viewIfLoaded?.window != nil else {return false }
+        return true
+    }
+
     /*
      check si view controller visible
     if viewController.viewIfLoaded?.window != nil {

@@ -24,17 +24,17 @@ final class ExchangeRateViewController: UIViewController {
 
         convertButton.layer.cornerRadius = 30
 
-        CurrencyService.shared.getExchangeRate { (success, currency) in
-            self.toggleActivityIndicator(shown: false)
-
-            if success, let currentCurrency = currency {
-                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
-                self.updateExchangeRateView(currency: currentCurrency)
-                CurrencyService.shared.requestSuccess = true
-            } else {
-                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-            }
-        }
+//        CurrencyService.shared.getExchangeRate { (success, currency) in
+//            self.toggleActivityIndicator(shown: false)
+//
+//            if success, let currentCurrency = currency {
+//                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+//                self.updateExchangeRateView(currency: currentCurrency)
+//                CurrencyService.shared.requestSuccess = true
+//            } else {
+//                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+//            }
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
