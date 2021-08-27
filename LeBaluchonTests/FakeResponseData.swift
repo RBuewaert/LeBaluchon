@@ -46,6 +46,10 @@ class FakeResponseData {
             url: URL(string: "https://openclassrooms.com")!,
             statusCode: 500, httpVersion: nil, headerFields: [:])!
 
+        static let responseKOCode404 = HTTPURLResponse(
+            url: URL(string: "https://openclassrooms.com")!,
+            statusCode: 404, httpVersion: nil, headerFields: [:])!
+
     // MARK: - Error
         class CurrencyError: Error {}
         static let error = CurrencyError()
