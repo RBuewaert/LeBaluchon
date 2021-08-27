@@ -20,6 +20,8 @@ final class CurrencyService {
         self.currencySession = currencySession
     }
 
+    var requestSuccess = false
+
     private static let baseCurrencyUrl = "http://data.fixer.io/api/latest?access_key="
 
     func getExchangeRate(callback: @escaping (Bool, Currency?) -> Void ) {

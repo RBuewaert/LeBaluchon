@@ -49,6 +49,25 @@ final class ParametersViewController: UIViewController {
         languagePickerView.tag = 2
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        // A compléter pour l'écran juste en dessous!!!!!!!
+    }
+    
+//    private func determineActiveViewController(vc: UIViewController) -> UIViewController? {
+//        if vc.viewIfLoaded?.window != nil {
+//            return vc
+//        }
+//    } return nil
+    
+    /*
+     check si view controller visible
+    if viewController.viewIfLoaded?.window != nil {
+        // viewController is visible
+    }
+ */
+
+ 
+ 
     private func initializePickerView(pickerView: UIPickerView) {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -116,12 +135,12 @@ final class ParametersViewController: UIViewController {
                 return
             }
             if languageTextField.text != "" {
-                if let key = languageList.someKey(forValue: languageTextField.text!) {
+                if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
                     SelectedParameters.selectedLanguageToTranslate = key
                 }
             }
             if deviceTextField.text != "" {
-                if let key = deviceList.someKey(forValue: deviceTextField.text!) {
+                if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
                     SelectedParameters.selectedCurrency.currencyToConvert = key
                 }
             }
@@ -136,12 +155,12 @@ final class ParametersViewController: UIViewController {
                 return
             }
             if languageTextField.text != "" {
-                if let key = languageList.someKey(forValue: languageTextField.text!) {
+                if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
                     SelectedParameters.selectedLanguageToObtain = key
                 }
             }
             if deviceTextField.text != "" {
-                if let key = deviceList.someKey(forValue: deviceTextField.text!) {
+                if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
                     SelectedParameters.selectedCurrency.currencyToObtain = key
                 }
             }
@@ -201,11 +220,11 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 0:
-            return listOfCities.count
+            return Lists.listOfCities.count
         case 1:
-            return deviceList.count
+            return Lists.deviceList.count
         case 2:
-            return languageList.count
+            return Lists.languageList.count
         default:
             return 1
         }
@@ -214,9 +233,9 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 0:
-            let cityName = listOfCities[row].name
-            let cityDevice = listOfCities[row].device
-            let cityLanguage = listOfCities[row].language
+            let cityName = Lists.listOfCities[row].name
+            let cityDevice = Lists.listOfCities[row].device
+            let cityLanguage = Lists.listOfCities[row].language
             return "\(cityName), \(cityDevice), \(cityLanguage)"
         case 1:
             selectDeviceNamesOnly()
@@ -232,11 +251,11 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 0:
-            let cityName = listOfCities[row].name
-            let cityDevice = listOfCities[row].device
-            let cityLanguage = listOfCities[row].language
+            let cityName = Lists.listOfCities[row].name
+            let cityDevice = Lists.listOfCities[row].device
+            let cityLanguage = Lists.listOfCities[row].language
             suggestionTextField.text = "\(cityName), \(cityDevice), \(cityLanguage)"
-            idLinkToPickerView = listOfCities[row].cityId
+            idLinkToPickerView = Lists.listOfCities[row].cityId
             suggestionTextField.resignFirstResponder()
         case 1:
             deviceTextField.text = deviceNames[row]
@@ -251,7 +270,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
 
     private func selectDeviceNamesOnly() {
         var array: [String] = []
-        for (_, currencyName) in deviceList {
+        for (_, currencyName) in Lists.deviceList {
             array.append(currencyName)
         }
         deviceNames = array.sorted()
@@ -259,7 +278,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
 
     private func selectLanguageNamesOnly() {
         var array: [String] = []
-        for (_, languageName) in languageList {
+        for (_, languageName) in Lists.languageList {
             array.append(languageName)
         }
         languageNames = array.sorted()

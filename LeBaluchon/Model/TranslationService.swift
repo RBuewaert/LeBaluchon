@@ -20,6 +20,8 @@ final class TranslationService {
         self.translationSession = translationSession
     }
 
+    var requestSuccess = false
+
     private static let baseTranslationUrl = "https://translation.googleapis.com/language/translate/v2?q="
 
     func getTranslation(textToTranslate: String, languageToTranslate: String, languageToObtain: String, callback: @escaping (Bool, Translation?) -> Void) {

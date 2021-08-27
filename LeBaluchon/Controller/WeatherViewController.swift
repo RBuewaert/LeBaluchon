@@ -8,8 +8,6 @@
 import UIKit
 
 final class WeatherViewController: UIViewController {
-    var requestSuccess = false
-
     @IBOutlet var cityLabel: [UILabel]!
     @IBOutlet var hourLabel: [UILabel]!
     @IBOutlet var weatherLabel: [UILabel]!
@@ -34,7 +32,7 @@ final class WeatherViewController: UIViewController {
                 SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
                 self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
                 self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
-                self.requestSuccess = true
+                WeatherService.shared.requestSuccess = true
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
@@ -42,7 +40,7 @@ final class WeatherViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if requestSuccess == true {
+        if WeatherService.shared.requestSuccess == true {
             WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
                 if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
                     SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity

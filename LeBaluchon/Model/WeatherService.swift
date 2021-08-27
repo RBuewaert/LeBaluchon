@@ -20,6 +20,7 @@ final class WeatherService {
         self.weatherSession = weatherSession
     }
 
+    var requestSuccess = false
     var cityIsFound = true
 
     private static let baseWeatherUrlCity = "http://api.openweathermap.org/data/2.5/weather?q="

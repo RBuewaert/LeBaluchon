@@ -8,8 +8,6 @@
 import UIKit
 
 final class ExchangeRateViewController: UIViewController {
-    var requestSuccess = false
-
     @IBOutlet weak var comparedCurrencyLabel: UILabel!
     @IBOutlet weak var leftCurrencyLabel: UILabel!
     @IBOutlet weak var rightCurrencyLabel: UILabel!
@@ -26,21 +24,21 @@ final class ExchangeRateViewController: UIViewController {
 
         convertButton.layer.cornerRadius = 30
 
-//        CurrencyService.shared.getExchangeRate { (success, currency) in
-//            self.toggleActivityIndicator(shown: false)
-//
-//            if success, let currentCurrency = currency {
-//                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
-//                self.updateExchangeRateView(currency: currentCurrency)
-//                self.requestSuccess = true
-//            } else {
-//                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-//            }
-//        }
+        CurrencyService.shared.getExchangeRate { (success, currency) in
+            self.toggleActivityIndicator(shown: false)
+
+            if success, let currentCurrency = currency {
+                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+                self.updateExchangeRateView(currency: currentCurrency)
+                CurrencyService.shared.requestSuccess = true
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if requestSuccess == true {
+        if CurrencyService.shared.requestSuccess == true {
             updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
         }
     }
@@ -58,8 +56,8 @@ final class ExchangeRateViewController: UIViewController {
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
 
-            let currencyToConvertName = deviceList[currency.currencyToConvert]
-            let currencyToObtainName = deviceList[currency.currencyToObtain]
+            let currencyToConvertName = Lists.deviceList[currency.currencyToConvert]
+            let currencyToObtainName = Lists.deviceList[currency.currencyToObtain]
 
             comparedCurrencyLabel.text = """
                 Today :

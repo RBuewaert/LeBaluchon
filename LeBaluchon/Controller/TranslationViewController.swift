@@ -8,8 +8,6 @@
 import UIKit
 
 final class TranslationViewController: UIViewController {
-    var requestSuccess = false
-
     @IBOutlet weak var languageToTranslateLabel: UILabel!
     @IBOutlet weak var languageToObtainLabel: UILabel!
     @IBOutlet weak var textToTranslateTextView: UITextView!
@@ -37,7 +35,7 @@ final class TranslationViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if requestSuccess == true {
+        if TranslationService.shared.requestSuccess == true {
             launchGetTranslation()
         }
     }
@@ -50,7 +48,7 @@ final class TranslationViewController: UIViewController {
             if success, let currentTranslation = translation {
                 SelectedParameters.selectedTranslation = currentTranslation
                 self.updateTranslationView(translation: currentTranslation)
-                self.requestSuccess = true
+                TranslationService.shared.requestSuccess = true
             } else {
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
@@ -68,8 +66,8 @@ final class TranslationViewController: UIViewController {
     }
 
     private func updateTranslationView(translation: Translation) {
-        languageToTranslateLabel.text = languageList[translation.languageToTranslate]
-        languageToObtainLabel.text = languageList[translation.languageToObtain]
+        languageToTranslateLabel.text = Lists.languageList[translation.languageToTranslate]
+        languageToObtainLabel.text = Lists.languageList[translation.languageToObtain]
         resultTextView.text = translation.textToObtain
     }
 
@@ -82,8 +80,8 @@ final class TranslationViewController: UIViewController {
         SelectedParameters.selectedTranslation.languageToTranslate = SelectedParameters.selectedTranslation.languageToObtain
         SelectedParameters.selectedTranslation.languageToObtain = originalLanguage
 
-        languageToTranslateLabel.text = languageList[SelectedParameters.selectedTranslation.languageToTranslate]
-        languageToObtainLabel.text = languageList[SelectedParameters.selectedTranslation.languageToObtain]
+        languageToTranslateLabel.text = Lists.languageList[SelectedParameters.selectedTranslation.languageToTranslate]
+        languageToObtainLabel.text = Lists.languageList[SelectedParameters.selectedTranslation.languageToObtain]
     }
 
     @IBAction func tappedTranslateButton(_ sender: Any) {
