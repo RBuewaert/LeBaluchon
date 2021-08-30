@@ -57,7 +57,8 @@ final class ParametersViewController: UIViewController {
     @IBAction func tappedValidateButton(_ sender: Any) {
         toggleActivityIndicator(shown: true)
 
-        if suggestionTextField.text == "" && languageTextField.text == "" && deviceTextField.text == "" && cityTextField.text == "" {
+        if suggestionTextField.text == "" && languageTextField.text == ""
+                    && deviceTextField.text == "" && cityTextField.text == "" {
             toggleActivityIndicator(shown: false)
             alertErrorMessage(message: ErrorType.noValue.rawValue)
         }

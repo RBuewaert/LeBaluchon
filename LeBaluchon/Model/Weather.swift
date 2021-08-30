@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
 // MARK: - Struct for Weather
 struct Weather {
     var city: String
@@ -76,3 +77,4 @@ struct WeatherResultWind: Codable {
 struct WeatherResultClouds: Codable {
     let all: Int
 }
+// swiftlint:enable identifier_name

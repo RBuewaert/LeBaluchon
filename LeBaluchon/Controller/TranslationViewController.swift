@@ -23,15 +23,18 @@ final class TranslationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
-        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                            target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                            target: self, action: #selector(updateCurrentViewController))
 
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
 
-        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 30))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(
+                title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
         toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
         self.textToTranslateTextView.inputAccessoryView = toolbar
@@ -90,7 +93,8 @@ final class TranslationViewController: UIViewController {
 
     // MARK: - Private Methods
     private func launchGetTranslation() {
-        TranslationService.shared.getTranslation(textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+        TranslationService.shared.getTranslation(
+            textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
                     languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
                     languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
 
@@ -137,7 +141,8 @@ extension TranslationViewController {
 extension TranslationViewController {
     @objc func launchParametersViewController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        guard let parametersViewController = storyBoard.instantiateViewController(
+                withIdentifier: "Parameters") as? ParametersViewController else { return}
         self.present(parametersViewController, animated: true, completion: nil)
     }
 

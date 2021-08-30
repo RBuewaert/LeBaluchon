@@ -26,8 +26,10 @@ final class WeatherViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
-        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                            target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                            target: self, action: #selector(updateCurrentViewController))
 
         orderOutletCollectionWithTags()
 
@@ -49,7 +51,8 @@ final class WeatherViewController: UIViewController {
 
         if WeatherService.shared.requestSuccess == true {
             WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
-                if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
+                if success, let currentWeatherLeftCity = weatherLeftCity,
+                            let currentWeatherRightCity = weatherRightCity {
                     SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
                     SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
                     self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
@@ -88,6 +91,7 @@ final class WeatherViewController: UIViewController {
         pressureLabel[index].text = "Pressure : \(weather.pressure)hPa"
     }
 
+    // swiftlint:disable cyclomatic_complexity
     private func updateImageView(imageView: UIImageView, weather: Weather) {
         switch weather.icon {
         case "01d":
@@ -117,6 +121,7 @@ final class WeatherViewController: UIViewController {
         default:
             return
         }
+        // swiftlint:enable cyclomatic_complexity
     }
 
     // MARK: - UIAlertController
@@ -132,7 +137,8 @@ final class WeatherViewController: UIViewController {
 extension WeatherViewController {
     @objc func launchParametersViewController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        guard let parametersViewController = storyBoard.instantiateViewController(
+                withIdentifier: "Parameters") as? ParametersViewController else { return}
         self.present(parametersViewController, animated: true, completion: nil)
     }
 

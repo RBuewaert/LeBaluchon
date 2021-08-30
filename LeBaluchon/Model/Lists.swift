@@ -15,6 +15,7 @@ struct City {
     let cityId: Int
 }
 
+// swiftlint:disable type_body_length
 final class Lists {
     static let paris = City(name: "Paris", device: "EUR", language: "French", cityId: 2988507 )
     static let london = City(name: "London", device: "GBP", language: "English", cityId: 2643743)
@@ -294,3 +295,4 @@ final class Lists {
                         "yo": "Yoruba",
                         "zu": "Zulu"]
 }
+// swiftlint:enable type_body_length

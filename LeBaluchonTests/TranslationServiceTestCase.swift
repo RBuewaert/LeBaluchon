@@ -9,6 +9,4 @@ import XCTest
 
 class TranslationServiceTestCase: XCTestCase {
 
-  
-
 }

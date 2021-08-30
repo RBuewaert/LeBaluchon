@@ -27,14 +27,15 @@ final class TranslationService {
     private static let baseTranslationUrl = "https://translation.googleapis.com/language/translate/v2?q="
 
     // MARK: - Request
-    func getTranslation(textToTranslate: String, languageToTranslate: String, languageToObtain: String, callback: @escaping (Bool, Translation?) -> Void) {
+    func getTranslation(textToTranslate: String, languageToTranslate: String,
+                        languageToObtain: String, callback: @escaping (Bool, Translation?) -> Void) {
         let languageSource = "&source=" + languageToTranslate
         let languageTarget = "&target=" + languageToObtain
-        let urlParameters = textToTranslate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + languageSource + languageTarget + "&key=" + keyGoogleTranslate
+        let urlParameters = languageSource + languageTarget + "&key=" + keyGoogleTranslate
 
-        guard let url = URL(string: TranslationService.baseTranslationUrl + urlParameters) else {
-            print(urlParameters)
-            print(TranslationService.baseTranslationUrl + urlParameters)
+        guard let url = URL(string: TranslationService.baseTranslationUrl +
+                        textToTranslate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                        + urlParameters) else {
             callback(false, nil)
             return
         }

@@ -22,8 +22,10 @@ final class ExchangeRateViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
-        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                        target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                        target: self, action: #selector(updateCurrentViewController))
 
         convertButton.layer.cornerRadius = 30
 
@@ -74,10 +76,8 @@ final class ExchangeRateViewController: UIViewController {
                 currencyToConvert: currency.currencyToConvert,
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
-            guard let numberOneFormatter: String = CurrencyService.shared.formatterCurrencyCode(value: 1, currency: SelectedParameters.selectedCurrency.currencyToConvert) else { return }
-
-            let currencyToConvert = SelectedParameters.selectedCurrency.currencyToConvert
-            let currencyToObtainName = Lists.deviceList[currency.currencyToObtain]
+            guard let numberOneFormatter: String = CurrencyService.shared.formatterCurrencyCode(value: 1,
+                        currency: SelectedParameters.selectedCurrency.currencyToConvert) else { return }
 
             comparedCurrencyLabel.text = """
                 Today :
@@ -121,7 +121,8 @@ final class ExchangeRateViewController: UIViewController {
 extension ExchangeRateViewController {
     @objc func launchParametersViewController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        guard let parametersViewController = storyBoard.instantiateViewController(
+                withIdentifier: "Parameters") as? ParametersViewController else { return}
         self.present(parametersViewController, animated: true, completion: nil)
     }
 

@@ -33,8 +33,10 @@ final class WeatherService {
     private let urlParameters = "&appid=" + keyOpenWeather + units
 
     // MARK: - Request
+    // swiftlint:disable function_body_length
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
-        guard let url = URL(string: WeatherService.baseWeatherUrlGroup + SelectedParameters.selectedId + urlParameters) else {
+        guard let url = URL(string:
+                WeatherService.baseWeatherUrlGroup + SelectedParameters.selectedId + urlParameters) else {
             callback(false, nil, nil)
             return
         }
@@ -90,11 +92,14 @@ final class WeatherService {
         }
         task?.resume()
     }
+    // swiftlint:enable function_body_length
 
     func getWeatherCity(city: String, callback: @escaping (Bool, Weather?) -> Void) {
         cityIsFound = true
 
-        guard let url = URL(string: WeatherService.baseWeatherUrlCity + city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + urlParameters) else {
+        guard let url = URL(string: WeatherService.baseWeatherUrlCity +
+                                city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                                + urlParameters) else {
             callback(false, nil)
             return
         }
