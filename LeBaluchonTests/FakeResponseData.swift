@@ -18,8 +18,6 @@ class FakeResponseData {
                 print(error.localizedDescription)
             }
             return nil
-
-//            return try! Data(contentsOf: url)
         }
 
     // MARK: - Correct Data For Weather

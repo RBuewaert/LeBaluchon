@@ -40,6 +40,5 @@ class URLSessionDataTaskFake: URLSessionDataTask {
         completionHandler?(data, urlResponse, responseError)
     }
 
-    // Vide car on ne fera pas de vrai appel donc rien à stopper
     override func cancel() {}
 }
