@@ -27,15 +27,3 @@ struct TranslationResultData: Codable {
 struct TranslationResultText: Codable {
     let translatedText: String
 }
-
-/*
-{
-    "data": {
-        "translations": [
-            {
-                "translatedText": "Hello, my name is Romain"
-            }
-        ]
-    }
-}
-*/

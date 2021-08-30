@@ -23,7 +23,6 @@ struct Weather {
 }
 
 // MARK: - Struct result from JSON
-
 struct WeatherResult: Codable {
     let cnt: Int
     let list: [WeatherResultListGroup]
@@ -38,6 +37,7 @@ struct WeatherResultListGroup: Codable {
     let name: String
     let id: Int
 }
+
 struct WeatherResultListCity: Codable {
     let weather: [WeatherResultWeather]
     let main: WeatherResultMain

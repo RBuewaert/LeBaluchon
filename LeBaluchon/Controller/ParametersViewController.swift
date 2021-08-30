@@ -11,7 +11,10 @@ final class ParametersViewController: UIViewController {
     var currentWeather: Weather!
     var cityResearch = false
     var idLinkToPickerView = 0
-    var idLinkToCity = 0
+    var deviceLinkToPickerView = ""
+    var languageLinkToPickerView = ""
+    var nameLinkToPickerView = ""
+    var idLinkToCitySearched = 0
 
     var deviceNames: [String] = []
     var languageNames: [String] = []
@@ -49,27 +52,6 @@ final class ParametersViewController: UIViewController {
         languagePickerView.tag = 2
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-
-        
-    }
-
-    private func determineActiveViewController(vc: UIViewController) -> Bool {
-        
-        
-        guard vc.viewIfLoaded?.window != nil else {return false }
-        return true
-    }
-
-    /*
-     check si view controller visible
-    if viewController.viewIfLoaded?.window != nil {
-        // viewController is visible
-    }
- */
-
- 
- 
     private func initializePickerView(pickerView: UIPickerView) {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -78,12 +60,10 @@ final class ParametersViewController: UIViewController {
     @IBAction func tappedValidateButton(_ sender: Any) {
         toggleActivityIndicator(shown: true)
 
-        print(SelectedParameters.secondSelectedId)
-
         if suggestionTextField.text == "" && languageTextField.text == "" && deviceTextField.text == "" && cityTextField.text == "" {
+            toggleActivityIndicator(shown: false)
             alertErrorMessage(message: ErrorType.noValue.rawValue)
         }
-
         if cityTextField.text != nil && cityTextField.text != "" {
             checkCityName(cityTapped: cityTextField)
         }
@@ -91,40 +71,23 @@ final class ParametersViewController: UIViewController {
             extractValues()
             toggleActivityIndicator(shown: false)
         }
-
-//        let suggestion = suggestionTextField.text
-//        let language = languageTextField.text
-//        let device = deviceTextField.text
-
-//        if suggestion == nil && language == nil && device == nil && cityResearch == false {
-//            alertErrorMessage(message: ErrorType.noValue.rawValue)
-//        }
-
-//        extractValues()
-
-//        toggleActivityIndicator(shown: false)
     }
 
     private func checkCityName(cityTapped: UITextField) {
-//        let citySearched = cityTapped.text?.replacingOccurrences(of: " ", with: "-")
-
-//        if cityTapped.text != nil && cityTapped.text != "" { break }
-
-        print(SelectedParameters.secondSelectedId)
-        
         WeatherService.shared.getWeatherCity(city: cityTapped.text!) { success, weather in
             if success, let currentWeather = weather {
                 self.currentWeather = currentWeather
-                self.idLinkToCity = currentWeather.id
+                self.idLinkToCitySearched = currentWeather.id
                 self.cityResearch = true
                 self.extractValues()
                 self.toggleActivityIndicator(shown: false)
-                print(SelectedParameters.secondSelectedId)
             } else if WeatherService.shared.cityIsFound == false {
                 self.cityResearch = false
+                self.toggleActivityIndicator(shown: false)
                 self.alertErrorMessage(message: ErrorType.cityNotFound.rawValue)
             } else {
                 self.cityResearch = false
+                self.toggleActivityIndicator(shown: false)
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
@@ -132,53 +95,161 @@ final class ParametersViewController: UIViewController {
 
     private func extractValues() {
         if segmentControl.selectedSegmentIndex == 0 {
-            if suggestionTextField.text != "" {
-                SelectedParameters.firstSelectedId = idLinkToPickerView
-                return
-            }
-            if languageTextField.text != "" {
-                if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
-                    SelectedParameters.selectedLanguageToTranslate = key
-                }
-            }
-            if deviceTextField.text != "" {
-                if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
-                    SelectedParameters.selectedCurrency.currencyToConvert = key
-                }
-            }
-            if cityResearch == true {
-                SelectedParameters.selectedWeatherLeftCity = currentWeather
-                SelectedParameters.firstSelectedId = idLinkToCity
-            }
-            succesMessage(element: "the first element")
+            extractValuesForFirstSelectedSegment()
         } else { // segmentControl.selectedSegmentIndex == 1
-            if suggestionTextField.text != "" {
-                SelectedParameters.secondSelectedId = idLinkToPickerView
-                return
-            }
-            if languageTextField.text != "" {
-                if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
-                    SelectedParameters.selectedLanguageToObtain = key
-                }
-            }
-            if deviceTextField.text != "" {
-                if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
-                    SelectedParameters.selectedCurrency.currencyToObtain = key
-                }
-            }
-            if cityResearch == true {
-                print("rfirst print pour le true \(SelectedParameters.secondSelectedId)")
-                SelectedParameters.selectedWeatherRightCity = currentWeather
-                SelectedParameters.secondSelectedId = idLinkToCity
-                print(SelectedParameters.secondSelectedId)
-                print(SelectedParameters.selectedId)
-            }
-            print("print de fin pour le second element \(SelectedParameters.secondSelectedId)")
-            print(SelectedParameters.selectedId)
-            print("seco,nd print de fin pour le second element \(SelectedParameters.secondSelectedId)")
-            succesMessage(element: "the second element")
+            extractValuesForSecondSelectedSegment()
         }
     }
+
+    private func extractValuesForFirstSelectedSegment() {
+        if suggestionTextField.text != "" {
+            extractValueForFirstSuggestion()
+        }
+        if languageTextField.text != "" {
+            if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
+                SelectedParameters.selectedLanguageToTranslate = key
+                SelectedParameters.selectedTranslation.languageToTranslate = key
+            }
+            toggleActivityIndicator(shown: true)
+            TranslationService.shared.getTranslation(
+                textToTranslate: "Bonjour",
+                languageToTranslate: "fr",
+                languageToObtain: SelectedParameters.selectedTranslation.languageToTranslate) { success, translation in
+                if success, let currentTranslation = translation {
+                    self.toggleActivityIndicator(shown: false)
+                    SelectedParameters.selectedTranslation.textToTranslate = currentTranslation.textToObtain
+                } else {
+                    self.toggleActivityIndicator(shown: false)
+                    self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+                }
+            }
+        }
+        if deviceTextField.text != "" {
+            if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
+                SelectedParameters.selectedCurrency.currencyToConvert = key
+            }
+        }
+        if cityResearch == true {
+            SelectedParameters.selectedWeatherLeftCity = currentWeather
+            SelectedParameters.firstSelectedId = idLinkToCitySearched
+        }
+        succesMessage(element: "the first element")
+    }
+
+    private func extractValuesForSecondSelectedSegment() {
+        if suggestionTextField.text != "" {
+            extractValueForSecondSuggestion()
+        }
+        if languageTextField.text != "" {
+            if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
+                SelectedParameters.selectedLanguageToObtain = key
+                SelectedParameters.selectedTranslation.languageToObtain = key
+            }
+            toggleActivityIndicator(shown: true)
+            TranslationService.shared.getTranslation(
+                textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+                languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+                languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
+                if success, let currentTranslation = translation {
+                    self.toggleActivityIndicator(shown: false)
+                    SelectedParameters.selectedTranslation.textToObtain = currentTranslation.textToObtain
+                } else {
+                    self.toggleActivityIndicator(shown: false)
+                    self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+                }
+            }
+        }
+        if deviceTextField.text != "" {
+            if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
+                SelectedParameters.selectedCurrency.currencyToObtain = key
+            }
+        }
+        if cityResearch == true {
+            SelectedParameters.selectedWeatherRightCity = currentWeather
+            SelectedParameters.secondSelectedId = idLinkToCitySearched
+        }
+        succesMessage(element: "the second element")
+    }
+    
+    private func extractValueForFirstSuggestion() {
+        SelectedParameters.selectedCurrency.currencyToConvert = deviceLinkToPickerView
+        if let key = Lists.languageList.someKey(forValue: languageLinkToPickerView) {
+            SelectedParameters.selectedLanguageToTranslate = key
+            SelectedParameters.selectedTranslation.languageToTranslate = key
+        }
+        toggleActivityIndicator(shown: true)
+        TranslationService.shared.getTranslation(
+            textToTranslate: "Bonjour",
+            languageToTranslate: "fr",
+            languageToObtain: SelectedParameters.selectedTranslation.languageToTranslate) { success, translation in
+            if success, let currentTranslation = translation {
+                self.toggleActivityIndicator(shown: false)
+                SelectedParameters.selectedTranslation.textToTranslate = currentTranslation.textToObtain
+            } else {
+                self.toggleActivityIndicator(shown: false)
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+        SelectedParameters.firstSelectedId = idLinkToPickerView
+        toggleActivityIndicator(shown: true)
+        WeatherService.shared.getWeatherCity(city: nameLinkToPickerView) { success, weather in
+            if success, let currentWeather = weather {
+                SelectedParameters.selectedWeatherLeftCity = currentWeather
+                self.toggleActivityIndicator(shown: false)
+            } else {
+                self.cityResearch = false
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+        succesMessage(element: "the first element")
+        return
+    }
+    
+    private func extractValueForSecondSuggestion() {
+        SelectedParameters.selectedCurrency.currencyToObtain = deviceLinkToPickerView
+        if let key = Lists.languageList.someKey(forValue: languageLinkToPickerView) {
+            SelectedParameters.selectedLanguageToObtain = key
+            SelectedParameters.selectedTranslation.languageToObtain = key
+        }
+        toggleActivityIndicator(shown: true)
+        TranslationService.shared.getTranslation(
+            textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+            languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+            languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
+            if success, let currentTranslation = translation {
+                self.toggleActivityIndicator(shown: false)
+                SelectedParameters.selectedTranslation.textToObtain = currentTranslation.textToObtain
+            } else {
+                self.toggleActivityIndicator(shown: false)
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+        SelectedParameters.secondSelectedId = idLinkToPickerView
+        toggleActivityIndicator(shown: true)
+        WeatherService.shared.getWeatherCity(city: nameLinkToPickerView) { success, weather in
+            if success, let currentWeather = weather {
+                SelectedParameters.selectedWeatherRightCity = currentWeather
+                self.toggleActivityIndicator(shown: false)
+            } else {
+                self.cityResearch = false
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+        succesMessage(element: "the second element")
+        return
+    }
+
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
@@ -198,6 +269,15 @@ final class ParametersViewController: UIViewController {
         activityIndicator.isHidden = !shown
         validateButton.isHidden = shown
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 // MARK: - Keyboard
@@ -258,6 +338,9 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
             let cityLanguage = Lists.listOfCities[row].language
             suggestionTextField.text = "\(cityName), \(cityDevice), \(cityLanguage)"
             idLinkToPickerView = Lists.listOfCities[row].cityId
+            nameLinkToPickerView = cityName
+            deviceLinkToPickerView = cityDevice
+            languageLinkToPickerView = cityLanguage
             suggestionTextField.resignFirstResponder()
         case 1:
             deviceTextField.text = deviceNames[row]

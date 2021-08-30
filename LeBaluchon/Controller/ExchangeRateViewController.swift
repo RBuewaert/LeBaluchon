@@ -21,23 +21,26 @@ final class ExchangeRateViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
 
         convertButton.layer.cornerRadius = 30
 
-//        CurrencyService.shared.getExchangeRate { (success, currency) in
-//            self.toggleActivityIndicator(shown: false)
-//
-//            if success, let currentCurrency = currency {
-//                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
-//                self.updateExchangeRateView(currency: currentCurrency)
-//                CurrencyService.shared.requestSuccess = true
-//            } else {
-//                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-//            }
-//        }
+        CurrencyService.shared.getExchangeRate { (success, currency) in
+            self.toggleActivityIndicator(shown: false)
+
+            if success, let currentCurrency = currency {
+                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+                self.updateExchangeRateView(currency: currentCurrency)
+                CurrencyService.shared.requestSuccess = true
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
         if CurrencyService.shared.requestSuccess == true {
             updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
         }
@@ -48,21 +51,22 @@ final class ExchangeRateViewController: UIViewController {
         convertButton.isHidden = shown
     }
 
-    private func updateExchangeRateView(currency: Currency) {
+    func updateExchangeRateView(currency: Currency) {
         do {
             let currencyForOne: String = try CurrencyService.shared.convertCurrency(
                 currency: currency,
                 currencyToConvert: currency.currencyToConvert,
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
+            guard let numberOneFormatter: String = CurrencyService.shared.formatterCurrencyCode(value: 1, currency: SelectedParameters.selectedCurrency.currencyToConvert) else { return }
 
-            let currencyToConvertName = Lists.deviceList[currency.currencyToConvert]
+            let currencyToConvert = SelectedParameters.selectedCurrency.currencyToConvert
             let currencyToObtainName = Lists.deviceList[currency.currencyToObtain]
 
             comparedCurrencyLabel.text = """
                 Today :
 
-                1 \(currencyToConvertName!) =  \(currencyForOne) \(currencyToObtainName!)
+                \(numberOneFormatter) =  \(currencyForOne)
                 """
             leftCurrencyLabel.text = """
                 Enter your value:
@@ -111,6 +115,10 @@ final class ExchangeRateViewController: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
         self.present(parametersViewController, animated: true, completion: nil)
+    }
+
+    @objc func updateCurrentViewController() {
+        updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
     }
 }
 

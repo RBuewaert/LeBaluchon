@@ -16,13 +16,12 @@ struct City {
 }
 
 final class Lists {
-    // ID à garder ou recherche par nom??????? -> A TESTER
-
     static let paris = City(name: "Paris", device: "EUR", language: "French", cityId: 2988507 )
     static let london = City(name: "London", device: "GBP", language: "English", cityId: 2643743)
     static let newYork = City(name: "New York", device: "USD", language: "English", cityId: 5128581)
     static let berlin = City(name: "Berlin", device: "EUR", language: "German", cityId: 2950159)
 
+    // MARK: - List of Suggested cities
     static let listOfCities = [berlin, london, newYork, paris]
 
     // MARK: - List of Device
@@ -36,7 +35,7 @@ final class Lists {
                         "AUD": "Australian dollar",
                         "AWG": "Aruban florin",
                         "AZN": "Azerbaijani manat",
-                        "BAM": "Bosnia and Herzegovina convertible mark",
+                        "BAM": "Bosnia and Herz. convert. mark",
                         "BBD": "Barbados dollar",
                         "BDT": "Bangladeshi taka",
                         "BGN": "Bulgarian lev",

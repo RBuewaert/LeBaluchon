@@ -308,7 +308,7 @@ in USD</string>
                             <outletCollection property="gestureRecognizers" destination="m9H-Ms-a5L" appends="YES" id="Aw6-qC-A3U"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Translation" image="translate" id="UvS-hp-12B"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Translation" image="translate" id="UvS-hp-12B"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Gah-qU-9yv" id="sag-0n-aOb"/>
                         <outlet property="languageToObtainLabel" destination="qU4-GV-aBy" id="aK3-VK-bmF"/>

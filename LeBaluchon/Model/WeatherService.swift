@@ -20,28 +20,19 @@ final class WeatherService {
         self.weatherSession = weatherSession
     }
 
+    // MARK: - Property to check if request is in progress or already realised on ViewDidLoad Controller
     var requestSuccess = false
+
+    // MARK: - Property to check if city is found during a search in the Parameter Controller
     var cityIsFound = true
 
+    // MARK: - Url
     private static let baseWeatherUrlCity = "http://api.openweathermap.org/data/2.5/weather?q="
     private static let baseWeatherUrlGroup = "http://api.openweathermap.org/data/2.5/group?id="
     private static let units = "&units=metric"
-
     private let urlParameters = "&appid=" + keyOpenWeather + units
-    // Toulouse id = 2972315
-    // New York id = 5128581
-    // Beaumont de Lomagne id = 3034170
 
-    private func calculCityHour(timezone: Int) -> String {
-        let hour = NSDate.init(timeIntervalSinceNow: TimeInterval(timezone))
-
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
-        formatter.timeStyle = .short
-
-        return formatter.string(from: hour as Date)
-    }
-
+    // MARK: - Request
     func getWeatherGroup(callback: @escaping (Bool, Weather?, Weather?) -> Void) {
         guard let url = URL(string: WeatherService.baseWeatherUrlGroup + SelectedParameters.selectedId + urlParameters) else {
             callback(false, nil, nil)
@@ -124,17 +115,9 @@ final class WeatherService {
 
                 if response.statusCode == 404 {
                     self.cityIsFound = false
-                    print("city not found Throws!!!!")
                 }
 
-                /* ATTENTION StatusCode 404:
-                 {
-                     "cod": "404",
-                     "message": "city not found"
-                 }
-                 */
-
-                // Extract property indicated in Struct WeatherResultList
+                // Extract property indicated in Struct WeatherResultListCity
                 guard let JSONresult = try? JSONDecoder().decode(WeatherResultListCity.self, from: data) else {
                     return callback(false, nil)
                 }
@@ -157,9 +140,19 @@ final class WeatherService {
                                       cloudiness: resultClouds.all,
                                       id: JSONresult.id)
                 callback(true, weather)
-                print("new id dans MODEL \(weather.id)")
             }
         }
         task?.resume()
+    }
+
+    // MARK: - Method to obtain local time with extracted property "timezone"
+    private func calculCityHour(timezone: Int) -> String {
+        let hour = NSDate.init(timeIntervalSinceNow: TimeInterval(timezone))
+
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.timeStyle = .short
+
+        return formatter.string(from: hour as Date)
     }
 }

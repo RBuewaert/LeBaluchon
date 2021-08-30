@@ -24,6 +24,9 @@ final class WeatherViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
+
         orderOutletCollectionWithTags()
 
         WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
@@ -40,6 +43,8 @@ final class WeatherViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
         if WeatherService.shared.requestSuccess == true {
             WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
                 if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
@@ -67,7 +72,7 @@ final class WeatherViewController: UIViewController {
         pressureLabel = pressureLabel.sorted { $0.tag < $1.tag }
     }
 
-    private func updateWeatherView(weather: Weather, index: Int) {
+    func updateWeatherView(weather: Weather, index: Int) {
         cityLabel[index].text = weather.city
         hourLabel[index].text = weather.hour
         weatherLabel[index].text = weather.description
@@ -116,5 +121,17 @@ final class WeatherViewController: UIViewController {
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
+    }
+
+    
+    @objc func launchParametersViewController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        self.present(parametersViewController, animated: true, completion: nil)
+    }
+
+    @objc func updateCurrentViewController() {
+        self.updateWeatherView(weather: SelectedParameters.selectedWeatherLeftCity, index: 0)
+        self.updateWeatherView(weather: SelectedParameters.selectedWeatherRightCity, index: 1)
     }
 }

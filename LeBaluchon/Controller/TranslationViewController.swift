@@ -21,6 +21,9 @@ final class TranslationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(updateCurrentViewController))
+
         translateButton.layer.cornerRadius = 30
         reverseButton.layer.cornerRadius = 15
 
@@ -35,6 +38,8 @@ final class TranslationViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
         if TranslationService.shared.requestSuccess == true {
             launchGetTranslation()
         }
@@ -65,9 +70,10 @@ final class TranslationViewController: UIViewController {
         reverseButton.isHidden = shown
     }
 
-    private func updateTranslationView(translation: Translation) {
+    func updateTranslationView(translation: Translation) {
         languageToTranslateLabel.text = Lists.languageList[translation.languageToTranslate]
         languageToObtainLabel.text = Lists.languageList[translation.languageToObtain]
+        textToTranslateTextView.text = translation.textToTranslate
         resultTextView.text = translation.textToObtain
     }
 
@@ -75,10 +81,12 @@ final class TranslationViewController: UIViewController {
         let originalText = textToTranslateTextView.text
         textToTranslateTextView.text = resultTextView.text
         resultTextView.text = originalText
-
-        let originalLanguage = SelectedParameters.selectedTranslation.languageToTranslate
-        SelectedParameters.selectedTranslation.languageToTranslate = SelectedParameters.selectedTranslation.languageToObtain
-        SelectedParameters.selectedTranslation.languageToObtain = originalLanguage
+        
+        let copyStructTranslation = SelectedParameters.selectedTranslation
+        SelectedParameters.selectedLanguageToObtain = copyStructTranslation.languageToObtain
+        SelectedParameters.selectedLanguageToTranslate = copyStructTranslation.languageToTranslate
+        SelectedParameters.selectedTranslation.languageToTranslate = copyStructTranslation.languageToObtain
+        SelectedParameters.selectedTranslation.languageToObtain = copyStructTranslation.languageToTranslate
 
         languageToTranslateLabel.text = Lists.languageList[SelectedParameters.selectedTranslation.languageToTranslate]
         languageToObtainLabel.text = Lists.languageList[SelectedParameters.selectedTranslation.languageToObtain]
@@ -94,13 +102,12 @@ final class TranslationViewController: UIViewController {
             textToTranslate: textToTranslate,
             languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
             languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
-
-            self.toggleActivityIndicator(shown: false)
-
             if success, let currentTranslation = translation {
                 SelectedParameters.selectedTranslation = currentTranslation
+                self.toggleActivityIndicator(shown: false)
                 self.resultTextView.text = currentTranslation.textToObtain
             } else {
+                self.toggleActivityIndicator(shown: false)
                 self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
@@ -112,6 +119,25 @@ final class TranslationViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
+
+    
+    
+    
+    @objc func launchParametersViewController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
+        self.present(parametersViewController, animated: true, completion: nil)
+    }
+
+    @objc func updateCurrentViewController() {
+        updateTranslationView(translation: SelectedParameters.selectedTranslation)
+    }
+    
+    
+    
+    
+    
+    
 }
 
 // MARK: - Keyboard

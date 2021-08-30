@@ -20,10 +20,13 @@ final class CurrencyService {
         self.currencySession = currencySession
     }
 
+    // MARK: - Property to check if request is in progress or already realised on ViewDidLoad Controller
     var requestSuccess = false
 
+    // MARK: - Url
     private static let baseCurrencyUrl = "http://data.fixer.io/api/latest?access_key="
 
+    // MARK: - Request
     func getExchangeRate(callback: @escaping (Bool, Currency?) -> Void ) {
         guard let url = URL(string: CurrencyService.baseCurrencyUrl + keyFixerIo) else {
             callback(false, nil)
@@ -50,6 +53,7 @@ final class CurrencyService {
         task?.resume()
     }
 
+    // MARK: - Methods to check and convert user Value
     private func valueIsCorrect(userValue: String?) throws -> Double {
         guard let userValue: String = userValue else {
             print("Please enter a correct value")
@@ -74,40 +78,15 @@ final class CurrencyService {
 
         let result = value * (currencyToObtainValue / currencyToConvertValue)
 
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = SelectedParameters.selectedCurrency.currencyToObtain
-        formatter.maximumFractionDigits = 2
-
-        let formatterResult = NSNumber(value: result)
-        return formatter.string(from: formatterResult)
-
-//        return String(result)
+        return formatterCurrencyCode(value: result, currency: SelectedParameters.selectedCurrency.currencyToObtain)
     }
 
-        /*
-        a= 1 euro = >c= 10.57 dirham maroc
-        b= 1 euro => d= 1.18 (1dirham : x= 0.11) dolar
-         
-         
-         d/c = 0.11
-         
-         
-         a= 1 euro => c= 1.18 dollar americain
-         b= 1 euro => d= 359.22 (1dollar : x= 304.97) florin
-          
-          
-          d/c = 304.423
-          
-         
-         a= 1 euro => c= 359.26 florin
-         b= 1 euro => d= 11249,25 (1florin : x= 31.32) kip laotien
-        
-          
-          d/c = 31.3122
-          
-         
-         
-         
-        */
+    func formatterCurrencyCode(value: Double, currency: String) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = currency
+        formatter.maximumFractionDigits = 2
+        let formatterresult = NSNumber(value: value)
+        return formatter.string(from: formatterresult)
+    }
 }
