@@ -223,9 +223,6 @@ in USD</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="vom-UR-2hx" id="yW8-Ia-zpI"/>
-                                        </connections>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WVF-cu-qz2">
                                         <rect key="frame" x="0.0" y="287.5" width="374" height="60"/>
@@ -304,9 +301,6 @@ in USD</string>
                             <constraint firstItem="Ykx-Rs-3uL" firstAttribute="leading" secondItem="TDZ-f9-MQj" secondAttribute="leading" constant="20" id="scO-Ic-g1U"/>
                             <constraint firstItem="Gah-qU-9yv" firstAttribute="centerX" secondItem="Ykx-Rs-3uL" secondAttribute="centerX" id="vCA-76-UnN"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="m9H-Ms-a5L" appends="YES" id="Aw6-qC-A3U"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Translation" image="translate" id="UvS-hp-12B"/>
                     <connections>
@@ -320,11 +314,6 @@ in USD</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO7-yX-8e9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="m9H-Ms-a5L">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="vom-UR-2hx" id="AoQ-LD-ya9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="873.91304347826099" y="-315.40178571428572"/>
         </scene>
@@ -352,6 +341,7 @@ in USD</string>
                                     <constraint firstAttribute="width" constant="100" id="GHZ-23-Nxw"/>
                                     <constraint firstAttribute="height" constant="100" id="b1E-5g-HNW"/>
                                 </constraints>
+                                <color key="color" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="sba-KD-i05">
                                 <rect key="frame" x="15" y="165" width="384" height="647"/>

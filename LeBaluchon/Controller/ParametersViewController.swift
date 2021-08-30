@@ -8,6 +8,7 @@
 import UIKit
 
 final class ParametersViewController: UIViewController {
+    // MARK: - Properties
     var currentWeather: Weather!
     var cityResearch = false
     var idLinkToPickerView = 0
@@ -15,11 +16,14 @@ final class ParametersViewController: UIViewController {
     var languageLinkToPickerView = ""
     var nameLinkToPickerView = ""
     var idLinkToCitySearched = 0
-
     var deviceNames: [String] = []
     var languageNames: [String] = []
     var suggestedCities: [String] = []
+    var suggestionPickerView = UIPickerView()
+    var devicePickerView = UIPickerView()
+    var languagePickerView = UIPickerView()
 
+    // MARK: - Outlets
     @IBOutlet weak var suggestionTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var languageTextField: UITextField!
@@ -28,10 +32,7 @@ final class ParametersViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var validateButton: UIButton!
 
-    var suggestionPickerView = UIPickerView()
-    var devicePickerView = UIPickerView()
-    var languagePickerView = UIPickerView()
-
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,11 +53,7 @@ final class ParametersViewController: UIViewController {
         languagePickerView.tag = 2
     }
 
-    private func initializePickerView(pickerView: UIPickerView) {
-        pickerView.delegate = self
-        pickerView.dataSource = self
-    }
-
+    // MARK: - Actions
     @IBAction func tappedValidateButton(_ sender: Any) {
         toggleActivityIndicator(shown: true)
 
@@ -66,11 +63,16 @@ final class ParametersViewController: UIViewController {
         }
         if cityTextField.text != nil && cityTextField.text != "" {
             checkCityName(cityTapped: cityTextField)
-        }
-        else {
+        } else {
             extractValues()
             toggleActivityIndicator(shown: false)
         }
+    }
+
+    // MARK: - Private methods
+    private func initializePickerView(pickerView: UIPickerView) {
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
 
     private func checkCityName(cityTapped: UITextField) {
@@ -170,7 +172,7 @@ final class ParametersViewController: UIViewController {
         }
         succesMessage(element: "the second element")
     }
-    
+
     private func extractValueForFirstSuggestion() {
         SelectedParameters.selectedCurrency.currencyToConvert = deviceLinkToPickerView
         if let key = Lists.languageList.someKey(forValue: languageLinkToPickerView) {
@@ -204,7 +206,7 @@ final class ParametersViewController: UIViewController {
         succesMessage(element: "the first element")
         return
     }
-    
+
     private func extractValueForSecondSuggestion() {
         SelectedParameters.selectedCurrency.currencyToObtain = deviceLinkToPickerView
         if let key = Lists.languageList.someKey(forValue: languageLinkToPickerView) {
@@ -239,18 +241,12 @@ final class ParametersViewController: UIViewController {
         return
     }
 
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        validateButton.isHidden = shown
+    }
 
+    // MARK: - UIAlertController
     private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
                                         preferredStyle: .alert)
@@ -264,25 +260,11 @@ final class ParametersViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
-
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        validateButton.isHidden = shown
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
-// MARK: - Keyboard
-extension ParametersViewController: UITextViewDelegate {
-    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+// MARK: - Keyboard for UITextFieldDelegate
+extension ParametersViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textView: UITextField) -> Bool {
         textView.resignFirstResponder()
         return true
     }
@@ -294,7 +276,6 @@ extension ParametersViewController: UITextViewDelegate {
 
 // MARK: - PickerView
 extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -353,6 +334,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
         }
     }
 
+    // MARK: - PickerView: Private methods
     private func selectDeviceNamesOnly() {
         var array: [String] = []
         for (_, currencyName) in Lists.deviceList {
@@ -376,18 +358,3 @@ extension Dictionary where Value: Equatable {
         return first(where: { $1 == val })?.key
     }
 }
-
-/*
-extension Dictionary where Value: Equatable {
-    func someKey(forValue val: Value) -> Key? {
-        return first(where: { $1 == val })?.key
-    }
-}
-Example usage:
-
-let dict: [Int: String] = [1: "one", 2: "two", 4: "four"]
-
-if let key = dict.someKey(forValue: "two") {
-    print(key)
-} // 2
-*/

@@ -8,6 +8,7 @@
 import UIKit
 
 final class WeatherViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet var cityLabel: [UILabel]!
     @IBOutlet var hourLabel: [UILabel]!
     @IBOutlet var weatherLabel: [UILabel]!
@@ -19,6 +20,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet var humidityLabel: [UILabel]!
     @IBOutlet var pressureLabel: [UILabel]!
 
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,7 @@ final class WeatherViewController: UIViewController {
         }
     }
 
+    // MARK: - Private methods
     private func orderOutletCollectionWithTags() {
         cityLabel = cityLabel.sorted { $0.tag < $1.tag }
         hourLabel = hourLabel.sorted { $0.tag < $1.tag }
@@ -72,7 +75,7 @@ final class WeatherViewController: UIViewController {
         pressureLabel = pressureLabel.sorted { $0.tag < $1.tag }
     }
 
-    func updateWeatherView(weather: Weather, index: Int) {
+    private func updateWeatherView(weather: Weather, index: Int) {
         cityLabel[index].text = weather.city
         hourLabel[index].text = weather.hour
         weatherLabel[index].text = weather.description
@@ -116,14 +119,17 @@ final class WeatherViewController: UIViewController {
         }
     }
 
+    // MARK: - UIAlertController
     private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
+}
 
-    
+// MARK: - Methods for NavigationItem Buttons
+extension WeatherViewController {
     @objc func launchParametersViewController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}

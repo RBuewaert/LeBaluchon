@@ -8,6 +8,7 @@
 import UIKit
 
 final class TranslationViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet weak var languageToTranslateLabel: UILabel!
     @IBOutlet weak var languageToObtainLabel: UILabel!
     @IBOutlet weak var textToTranslateTextView: UITextView!
@@ -16,6 +17,7 @@ final class TranslationViewController: UIViewController {
     @IBOutlet weak var translateButton: UIButton!
     @IBOutlet weak var reverseButton: UIButton!
 
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,43 +47,12 @@ final class TranslationViewController: UIViewController {
         }
     }
 
-    private func launchGetTranslation() {
-        TranslationService.shared.getTranslation(textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
-                    languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
-                    languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
-
-            if success, let currentTranslation = translation {
-                SelectedParameters.selectedTranslation = currentTranslation
-                self.updateTranslationView(translation: currentTranslation)
-                TranslationService.shared.requestSuccess = true
-            } else {
-                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-            }
-        }
-    }
-
-    @objc func dismissMyKeyboard() {
-        view.endEditing(true)
-    }
-
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        translateButton.isHidden = shown
-        reverseButton.isHidden = shown
-    }
-
-    func updateTranslationView(translation: Translation) {
-        languageToTranslateLabel.text = Lists.languageList[translation.languageToTranslate]
-        languageToObtainLabel.text = Lists.languageList[translation.languageToObtain]
-        textToTranslateTextView.text = translation.textToTranslate
-        resultTextView.text = translation.textToObtain
-    }
-
+    // MARK: - Actions
     @IBAction func tappedReverseButton(_ sender: Any) {
         let originalText = textToTranslateTextView.text
         textToTranslateTextView.text = resultTextView.text
         resultTextView.text = originalText
-        
+
         let copyStructTranslation = SelectedParameters.selectedTranslation
         SelectedParameters.selectedLanguageToObtain = copyStructTranslation.languageToObtain
         SelectedParameters.selectedLanguageToTranslate = copyStructTranslation.languageToTranslate
@@ -113,16 +84,53 @@ final class TranslationViewController: UIViewController {
         }
     }
 
+    // MARK: - Private Methods
+    private func launchGetTranslation() {
+        TranslationService.shared.getTranslation(textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+                    languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+                    languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
+
+            if success, let currentTranslation = translation {
+                SelectedParameters.selectedTranslation = currentTranslation
+                self.updateTranslationView(translation: currentTranslation)
+                TranslationService.shared.requestSuccess = true
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
+    }
+
+    private func updateTranslationView(translation: Translation) {
+        languageToTranslateLabel.text = Lists.languageList[translation.languageToTranslate]
+        languageToObtainLabel.text = Lists.languageList[translation.languageToObtain]
+        textToTranslateTextView.text = translation.textToTranslate
+        resultTextView.text = translation.textToObtain
+    }
+
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        translateButton.isHidden = shown
+        reverseButton.isHidden = shown
+    }
+
+    // MARK: - UIAlertController
     private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
+}
 
-    
-    
-    
+// MARK: - keyboard for UItextView
+extension TranslationViewController {
+    @objc private func dismissMyKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+// MARK: - Methods for NavigationItem Buttons
+extension TranslationViewController {
     @objc func launchParametersViewController() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let parametersViewController = storyBoard.instantiateViewController(withIdentifier: "Parameters") as? ParametersViewController else { return}
@@ -131,23 +139,5 @@ final class TranslationViewController: UIViewController {
 
     @objc func updateCurrentViewController() {
         updateTranslationView(translation: SelectedParameters.selectedTranslation)
-    }
-    
-    
-    
-    
-    
-    
-}
-
-// MARK: - Keyboard
-extension TranslationViewController: UITextViewDelegate {
-    func textViewShouldReturn(_ textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-        return true
-    }
-
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        languageToTranslateLabel.endEditing(true)
     }
 }
