@@ -32,6 +32,29 @@ class FakeResponseData {
             return nil
         }
 
+    static var weatherCityCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "WeatherCity", withExtension: "json")!
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+
+    // MARK: - Correct Data For Weather
+    static var TranslationCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "Translation", withExtension: "json")!
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+
     // MARK: - Incorrect Data For Exchange Rate, Weather and Translation
         static let incorrectData = "erreur".data(using: .utf8)!
 

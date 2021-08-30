@@ -84,7 +84,7 @@ final class ParametersViewController: UIViewController {
                 self.cityResearch = true
                 self.extractValues()
                 self.toggleActivityIndicator(shown: false)
-            } else if WeatherService.shared.cityIsFound == false {
+            } else if WeatherService.cityIsFound == false {
                 self.cityResearch = false
                 self.toggleActivityIndicator(shown: false)
                 self.alertErrorMessage(message: ErrorType.cityNotFound.rawValue)

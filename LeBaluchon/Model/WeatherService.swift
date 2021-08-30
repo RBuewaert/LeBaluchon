@@ -24,7 +24,7 @@ final class WeatherService {
     var requestSuccess = false
 
     // MARK: - Property to check if city is found during a search in the Parameter Controller
-    var cityIsFound = true
+    static var cityIsFound = true
 
     // MARK: - Url
     private static let baseWeatherUrlCity = "http://api.openweathermap.org/data/2.5/weather?q="
@@ -95,7 +95,7 @@ final class WeatherService {
     // swiftlint:enable function_body_length
 
     func getWeatherCity(city: String, callback: @escaping (Bool, Weather?) -> Void) {
-        cityIsFound = true
+        WeatherService.cityIsFound = true
 
         guard let url = URL(string: WeatherService.baseWeatherUrlCity +
                                 city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -119,7 +119,9 @@ final class WeatherService {
                 }
 
                 if response.statusCode == 404 {
-                    self.cityIsFound = false
+                    WeatherService.cityIsFound = false
+                    callback(false, nil)
+                    return
                 }
 
                 // Extract property indicated in Struct WeatherResultListCity
