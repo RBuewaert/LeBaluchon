@@ -43,7 +43,7 @@ class FakeResponseData {
         return nil
     }
 
-    // MARK: - Correct Data For Weather
+    // MARK: - Correct Data For Translation
     static var TranslationCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "Translation", withExtension: "json")!
