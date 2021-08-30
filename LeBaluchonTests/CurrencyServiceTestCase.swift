@@ -22,7 +22,6 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -38,7 +37,6 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -55,7 +53,6 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -72,7 +69,6 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -93,7 +89,6 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNotNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -168,5 +163,10 @@ class CurrencyServiceTestCase: XCTestCase {
                                         currencyToConvert: currency.currencyToConvert,
                                         currencyToObtain: currency.currencyToObtain,
                                 valueToConvert: "15.5")!)
+        XCTAssertEqual("$18.28", try CurrencyService.shared.convertCurrency(
+                        currency: currency,
+                        currencyToConvert: currency.currencyToConvert,
+                        currencyToObtain: currency.currencyToObtain,
+                valueToConvert: "15.5")!)
     }
 }
