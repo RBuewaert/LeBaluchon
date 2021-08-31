@@ -44,7 +44,7 @@ class FakeResponseData {
     }
 
     // MARK: - Correct Data For Translation
-    static var TranslationCorrectData: Data? {
+    static var translationCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "Translation", withExtension: "json")!
         do {
@@ -72,6 +72,6 @@ class FakeResponseData {
             statusCode: 404, httpVersion: nil, headerFields: [:])!
 
     // MARK: - Error
-        class CurrencyError: Error {}
-        static let error = CurrencyError()
+        class ErrorRequest: Error {}
+        static let error = ErrorRequest()
 }

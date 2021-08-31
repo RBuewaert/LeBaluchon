@@ -9,6 +9,7 @@ import XCTest
 @testable import LeBaluchon
 
 class CurrencyServiceTestCase: XCTestCase {
+    // MARK: - Method getExchangeRate
     func testGetExchangeRateShouldPostFailedCallbackIfError() {
         // Given
         let currencyService = CurrencyService(currencySession: URLSessionFake(
@@ -73,7 +74,6 @@ class CurrencyServiceTestCase: XCTestCase {
     }
 
     func testGetExchangeRateShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
-        // COMPLETER LES DATAS !!!!!
         let currencyService = CurrencyService(currencySession: URLSessionFake(
                                                 data: FakeResponseData.currencyCorrectData,
                                                 response: FakeResponseData.responseOK, error: nil))
@@ -92,6 +92,7 @@ class CurrencyServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
+    // MARK: - Other Method of the Model
     func testConvertCurrencyShouldFailedIfThereIsUserValueEntered() {
         // Given
         let currency = Currency(exchangeRate: ["USD": 1.179419])
