@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - List of City
+// MARK: - List of available parameters
 struct City {
     let name: String
     let device: String
