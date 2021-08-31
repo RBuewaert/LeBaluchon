@@ -14,7 +14,7 @@ class WeatherServiceTestCase: XCTestCase {
         // Given
         let weatherService = WeatherService(weatherSession: URLSessionFake(
                                                 data: nil, response: nil, error: FakeResponseData.error))
-        
+
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         weatherService.getWeatherGroup { (success, weather1, weather2) in

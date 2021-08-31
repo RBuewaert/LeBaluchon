@@ -21,9 +21,23 @@ final class Lists {
     static let london = City(name: "London", device: "GBP", language: "English", cityId: 2643743)
     static let newYork = City(name: "New York", device: "USD", language: "English", cityId: 5128581)
     static let berlin = City(name: "Berlin", device: "EUR", language: "German", cityId: 2950159)
+    static let sydney = City(name: "Sydney", device: "AUD", language: "English", cityId: 2147714)
+    static let tokyo = City(name: "Tokyo", device: "JPY", language: "Japanese", cityId: 1850144)
+    static let sanFrancisco = City(name: "San Francisco", device: "USD", language: "English", cityId: 5391959)
+    static let moscow = City(name: "Moscow", device: "RUB", language: "Russian", cityId: 524901)
+    static let montreal = City(name: "Montreal", device: "CAD", language: "French", cityId: 6077243)
+    static let vancouver = City(name: "Vancouver", device: "CAD", language: "English", cityId: 6173331)
+    static let casablanca = City(name: "Casablanca", device: "MAD", language: "Arabic", cityId: 2553604)
+    static let rome = City(name: "Rome", device: "EUR", language: "Italian", cityId: 4219762)
+    static let madrid = City(name: "Madrid", device: "EUR", language: "Spanish", cityId: 3117735)
+    static let lisbon = City(name: "Lisbon", device: "EUR", language: "Portuguese", cityId: 2267057)
+    static let oslo = City(name: "oslo", device: "NOK", language: "Norwegian", cityId: 3143244)
+    static let cairo = City(name: "Cairo", device: "EGP", language: "Arabic", cityId: 360630)
+    static let athens = City(name: "Athens", device: "EUR", language: "Greek", cityId: 264371)
 
     // MARK: - List of Suggested cities
-    static let listOfCities = [berlin, london, newYork, paris]
+    static let listOfCities = [athens, berlin, cairo, casablanca, lisbon, london, madrid,
+                               montreal, moscow, newYork, oslo, paris, rome, sanFrancisco, sydney, tokyo, vancouver]
 
     // MARK: - List of Device
     static let deviceList = ["AED": "UAE dirham",

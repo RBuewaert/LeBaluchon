@@ -62,7 +62,7 @@ final class ParametersViewController: UIViewController {
             toggleActivityIndicator(shown: false)
             alertErrorMessage(message: ErrorType.noValue.rawValue)
         }
-        if cityTextField.text != nil && cityTextField.text != "" {
+        if cityTextField.text != nil && cityTextField.text != "" && suggestionTextField.text == "" {
             checkCityName(cityTapped: cityTextField)
         } else {
             extractValues()
