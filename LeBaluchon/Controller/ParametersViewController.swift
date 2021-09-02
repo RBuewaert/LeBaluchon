@@ -108,7 +108,7 @@ final class ParametersViewController: UIViewController {
         if suggestionTextField.text != "" {
             extractValueForFirstSuggestion()
         }
-        if languageTextField.text != "" {
+        if languageTextField.text != "" && suggestionTextField.text == "" {
             if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
                 SelectedParameters.selectedLanguageToTranslate = key
                 SelectedParameters.selectedTranslation.languageToTranslate = key
@@ -127,12 +127,12 @@ final class ParametersViewController: UIViewController {
                 }
             }
         }
-        if deviceTextField.text != "" {
+        if deviceTextField.text != "" && suggestionTextField.text == "" {
             if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
                 SelectedParameters.selectedCurrency.currencyToConvert = key
             }
         }
-        if cityResearch == true {
+        if cityResearch == true && suggestionTextField.text == "" {
             SelectedParameters.selectedWeatherLeftCity = currentWeather
             SelectedParameters.firstSelectedId = idLinkToCitySearched
         }
@@ -143,7 +143,7 @@ final class ParametersViewController: UIViewController {
         if suggestionTextField.text != "" {
             extractValueForSecondSuggestion()
         }
-        if languageTextField.text != "" {
+        if languageTextField.text != "" && suggestionTextField.text == "" {
             if let key = Lists.languageList.someKey(forValue: languageTextField.text!) {
                 SelectedParameters.selectedLanguageToObtain = key
                 SelectedParameters.selectedTranslation.languageToObtain = key
@@ -162,12 +162,12 @@ final class ParametersViewController: UIViewController {
                 }
             }
         }
-        if deviceTextField.text != "" {
+        if deviceTextField.text != "" && suggestionTextField.text == "" {
             if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
                 SelectedParameters.selectedCurrency.currencyToObtain = key
             }
         }
-        if cityResearch == true {
+        if cityResearch == true && suggestionTextField.text == "" {
             SelectedParameters.selectedWeatherRightCity = currentWeather
             SelectedParameters.secondSelectedId = idLinkToCitySearched
         }
