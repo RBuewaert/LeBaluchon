@@ -43,7 +43,7 @@ final class ExchangeRateViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
 
         if CurrencyService.shared.requestSuccess == true {
             updateExchangeRateView(currency: SelectedParameters.selectedCurrency)

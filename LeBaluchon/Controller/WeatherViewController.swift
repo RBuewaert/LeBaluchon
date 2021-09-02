@@ -47,7 +47,7 @@ final class WeatherViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
 
         if WeatherService.shared.requestSuccess == true {
             WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
