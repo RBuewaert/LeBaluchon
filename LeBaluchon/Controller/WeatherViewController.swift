@@ -33,33 +33,20 @@ final class WeatherViewController: UIViewController {
 
         orderOutletCollectionWithTags()
 
-        WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
-            if success, let currentWeatherLeftCity = weatherLeftCity, let currentWeatherRightCity = weatherRightCity {
-                SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
-                SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
-                self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
-                self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
-                WeatherService.shared.requestSuccess = true
-            } else {
-                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-            }
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if WeatherService.shared.requestSuccess == true {
-            WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
-                if success, let currentWeatherLeftCity = weatherLeftCity,
-                            let currentWeatherRightCity = weatherRightCity {
-                    SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
-                    SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
-                    self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
-                    self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
-                } else {
-                    self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-                }
+        WeatherService.shared.getWeatherGroup { success, weatherLeftCity, weatherRightCity in
+            if success, let currentWeatherLeftCity = weatherLeftCity,
+                        let currentWeatherRightCity = weatherRightCity {
+                SelectedParameters.selectedWeatherLeftCity = currentWeatherLeftCity
+                SelectedParameters.selectedWeatherRightCity = currentWeatherRightCity
+                self.updateWeatherView(weather: currentWeatherLeftCity, index: 0)
+                self.updateWeatherView(weather: currentWeatherRightCity, index: 1)
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
             }
         }
     }

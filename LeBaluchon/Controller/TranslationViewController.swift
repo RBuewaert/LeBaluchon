@@ -38,15 +38,22 @@ final class TranslationViewController: UIViewController {
         toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
         self.textToTranslateTextView.inputAccessoryView = toolbar
-
-        launchGetTranslation()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if TranslationService.shared.requestSuccess == true {
-            launchGetTranslation()
+        TranslationService.shared.getTranslation(
+            textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
+                    languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
+                    languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
+
+            if success, let currentTranslation = translation {
+                SelectedParameters.selectedTranslation = currentTranslation
+                self.updateTranslationView(translation: currentTranslation)
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
         }
     }
 
@@ -92,22 +99,6 @@ final class TranslationViewController: UIViewController {
     }
 
     // MARK: - Private Methods
-    private func launchGetTranslation() {
-        TranslationService.shared.getTranslation(
-            textToTranslate: SelectedParameters.selectedTranslation.textToTranslate,
-                    languageToTranslate: SelectedParameters.selectedTranslation.languageToTranslate,
-                    languageToObtain: SelectedParameters.selectedTranslation.languageToObtain) { success, translation in
-
-            if success, let currentTranslation = translation {
-                SelectedParameters.selectedTranslation = currentTranslation
-                self.updateTranslationView(translation: currentTranslation)
-                TranslationService.shared.requestSuccess = true
-            } else {
-                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
-            }
-        }
-    }
-
     private func updateTranslationView(translation: Translation) {
         languageToTranslateLabel.text = Lists.languageList[translation.languageToTranslate]
         languageToObtainLabel.text = Lists.languageList[translation.languageToObtain]

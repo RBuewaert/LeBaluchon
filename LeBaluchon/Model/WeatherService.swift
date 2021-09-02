@@ -20,9 +20,6 @@ final class WeatherService {
         self.weatherSession = weatherSession
     }
 
-    // MARK: - Property to check if request is in progress or already realised on ViewDidLoad Controller
-    var requestSuccess = false
-
     // MARK: - Property to check if city is found during a search in the Parameter Controller
     static var cityIsFound = true
 

@@ -20,9 +20,6 @@ final class TranslationService {
         self.translationSession = translationSession
     }
 
-    // MARK: - Property to check if request is in progress or already realised on ViewDidLoad Controller
-    var requestSuccess = false
-
     // MARK: - Url
     private static let baseTranslationUrl = "https://translation.googleapis.com/language/translate/v2?q="
 
