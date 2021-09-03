@@ -128,7 +128,7 @@ final class ParametersViewController: UIViewController {
             }
         }
         if deviceTextField.text != "" && suggestionTextField.text == "" {
-            if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
+            if let key = Lists.currencyList.someKey(forValue: deviceTextField.text!) {
                 SelectedParameters.selectedCurrency.currencyToConvert = key
             }
         }
@@ -163,7 +163,7 @@ final class ParametersViewController: UIViewController {
             }
         }
         if deviceTextField.text != "" && suggestionTextField.text == "" {
-            if let key = Lists.deviceList.someKey(forValue: deviceTextField.text!) {
+            if let key = Lists.currencyList.someKey(forValue: deviceTextField.text!) {
                 SelectedParameters.selectedCurrency.currencyToObtain = key
             }
         }
@@ -286,7 +286,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case 0:
             return Lists.listOfCities.count
         case 1:
-            return Lists.deviceList.count
+            return Lists.currencyList.count
         case 2:
             return Lists.languageList.count
         default:
@@ -298,7 +298,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
         switch pickerView.tag {
         case 0:
             let cityName = Lists.listOfCities[row].name
-            let cityDevice = Lists.listOfCities[row].device
+            let cityDevice = Lists.listOfCities[row].currency
             let cityLanguage = Lists.listOfCities[row].language
             return "\(cityName), \(cityDevice), \(cityLanguage)"
         case 1:
@@ -316,7 +316,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
         switch pickerView.tag {
         case 0:
             let cityName = Lists.listOfCities[row].name
-            let cityDevice = Lists.listOfCities[row].device
+            let cityDevice = Lists.listOfCities[row].currency
             let cityLanguage = Lists.listOfCities[row].language
             suggestionTextField.text = "\(cityName), \(cityDevice), \(cityLanguage)"
             idLinkToPickerView = Lists.listOfCities[row].cityId
@@ -338,7 +338,7 @@ extension ParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate
     // MARK: - PickerView: Private methods
     private func selectDeviceNamesOnly() {
         var array: [String] = []
-        for (_, currencyName) in Lists.deviceList {
+        for (_, currencyName) in Lists.currencyList {
             array.append(currencyName)
         }
         deviceNames = array.sorted()

@@ -10,37 +10,37 @@ import Foundation
 // MARK: - List of available parameters
 struct City {
     let name: String
-    let device: String
+    let currency: String
     let language: String
     let cityId: Int
 }
 
 // swiftlint:disable type_body_length
 final class Lists {
-    static let paris = City(name: "Paris", device: "EUR", language: "French", cityId: 2988507 )
-    static let london = City(name: "London", device: "GBP", language: "English", cityId: 2643743)
-    static let newYork = City(name: "New York", device: "USD", language: "English", cityId: 5128581)
-    static let berlin = City(name: "Berlin", device: "EUR", language: "German", cityId: 2950159)
-    static let sydney = City(name: "Sydney", device: "AUD", language: "English", cityId: 2147714)
-    static let tokyo = City(name: "Tokyo", device: "JPY", language: "Japanese", cityId: 1850144)
-    static let sanFrancisco = City(name: "San Francisco", device: "USD", language: "English", cityId: 5391959)
-    static let moscow = City(name: "Moscow", device: "RUB", language: "Russian", cityId: 524901)
-    static let montreal = City(name: "Montreal", device: "CAD", language: "French", cityId: 6077243)
-    static let vancouver = City(name: "Vancouver", device: "CAD", language: "English", cityId: 6173331)
-    static let casablanca = City(name: "Casablanca", device: "MAD", language: "Arabic", cityId: 2553604)
-    static let rome = City(name: "Rome", device: "EUR", language: "Italian", cityId: 4219762)
-    static let madrid = City(name: "Madrid", device: "EUR", language: "Spanish", cityId: 3117735)
-    static let lisbon = City(name: "Lisbon", device: "EUR", language: "Portuguese", cityId: 2267057)
-    static let oslo = City(name: "oslo", device: "NOK", language: "Norwegian", cityId: 3143244)
-    static let cairo = City(name: "Cairo", device: "EGP", language: "Arabic", cityId: 360630)
-    static let athens = City(name: "Athens", device: "EUR", language: "Greek", cityId: 264371)
+    static let paris = City(name: "Paris", currency: "EUR", language: "French", cityId: 2988507 )
+    static let london = City(name: "London", currency: "GBP", language: "English", cityId: 2643743)
+    static let newYork = City(name: "New York", currency: "USD", language: "English", cityId: 5128581)
+    static let berlin = City(name: "Berlin", currency: "EUR", language: "German", cityId: 2950159)
+    static let sydney = City(name: "Sydney", currency: "AUD", language: "English", cityId: 2147714)
+    static let tokyo = City(name: "Tokyo", currency: "JPY", language: "Japanese", cityId: 1850144)
+    static let sanFrancisco = City(name: "San Francisco", currency: "USD", language: "English", cityId: 5391959)
+    static let moscow = City(name: "Moscow", currency: "RUB", language: "Russian", cityId: 524901)
+    static let montreal = City(name: "Montreal", currency: "CAD", language: "French", cityId: 6077243)
+    static let vancouver = City(name: "Vancouver", currency: "CAD", language: "English", cityId: 6173331)
+    static let casablanca = City(name: "Casablanca", currency: "MAD", language: "Arabic", cityId: 2553604)
+    static let rome = City(name: "Rome", currency: "EUR", language: "Italian", cityId: 4219762)
+    static let madrid = City(name: "Madrid", currency: "EUR", language: "Spanish", cityId: 3117735)
+    static let lisbon = City(name: "Lisbon", currency: "EUR", language: "Portuguese", cityId: 2267057)
+    static let oslo = City(name: "oslo", currency: "NOK", language: "Norwegian", cityId: 3143244)
+    static let cairo = City(name: "Cairo", currency: "EGP", language: "Arabic", cityId: 360630)
+    static let athens = City(name: "Athens", currency: "EUR", language: "Greek", cityId: 264371)
 
     // MARK: - List of Suggested cities
     static let listOfCities = [athens, berlin, cairo, casablanca, lisbon, london, madrid,
                                montreal, moscow, newYork, oslo, paris, rome, sanFrancisco, sydney, tokyo, vancouver]
 
     // MARK: - List of Device
-    static let deviceList = ["AED": "UAE dirham",
+    static let currencyList = ["AED": "UAE dirham",
                         "AFN": "Afghan afghani",
                         "ALL": "Albanian lek",
                         "AMD": "Armenian dram",
