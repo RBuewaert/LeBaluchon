@@ -7,97 +7,131 @@
 
 import UIKit
 
-class ExchangeRateViewController: UIViewController {
-    var currency: Currency!
-
+final class ExchangeRateViewController: UIViewController {
+    // MARK: - Outlets
     @IBOutlet weak var comparedCurrencyLabel: UILabel!
-    @IBOutlet weak var firstCurrencyLabel: UILabel!
-    @IBOutlet weak var secondCurrencyLabel: UILabel!
+    @IBOutlet weak var leftCurrencyLabel: UILabel!
+    @IBOutlet weak var rightCurrencyLabel: UILabel!
     @IBOutlet weak var userValueTextField: UITextField!
     @IBOutlet weak var resultValueLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        CurrencyService.shared.getExchangeRate { (success, currency) in
-                    self.toggleActivityIndicator(shown: false)
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                        target: self, action: #selector(launchParametersViewController))
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                        target: self, action: #selector(updateCurrentViewController))
 
-                    if success, let currentCurrency = currency {
-                        self.currency = currentCurrency
-                        self.update(currency: currentCurrency)
-                        print(self.currency.exchangeRate)
-                    } else {
-                        self.errorMessage(message: ErrorType.downloadFailed.rawValue)
-                    }
-                }
+        convertButton.layer.cornerRadius = 30
+
+        CurrencyService.shared.getExchangeRate { (success, currency) in
+            self.toggleActivityIndicator(shown: false)
+
+            if success, let currentCurrency = currency {
+                SelectedParameters.selectedCurrency.exchangeRate = currentCurrency.exchangeRate
+                self.updateExchangeRateView(currency: currentCurrency)
+                CurrencyService.shared.requestSuccess = true
+            } else {
+                self.alertErrorMessage(message: ErrorType.downloadFailed.rawValue)
+            }
+        }
     }
 
-    private func toggleActivityIndicator(shown: Bool) {
-            activityIndicator.isHidden = !shown
-            convertButton.isHidden = shown
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-    private func update(currency: Currency) {
+        if CurrencyService.shared.requestSuccess == true {
+            updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
+        }
+    }
+
+    // MARK: - Action
+    @IBAction func tappedConvertButton() {
+        do {
+            resultValueLabel.text = try CurrencyService.shared.convertCurrency(
+                currency: SelectedParameters.selectedCurrency,
+                currencyToConvert: SelectedParameters.selectedCurrency.currencyToConvert,
+                currencyToObtain: SelectedParameters.selectedCurrency.currencyToObtain,
+                valueToConvert: userValueTextField.text)
+
+        } catch ErrorType.userValueIsIncorrect {
+            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
+        } catch ErrorType.firstCurrencyIsIncorrect {
+            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
+        } catch {
+            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
+        }
+    }
+
+    // MARK: - Privates methods
+    private func updateExchangeRateView(currency: Currency) {
         do {
             let currencyForOne: String = try CurrencyService.shared.convertCurrency(
                 currency: currency,
                 currencyToConvert: currency.currencyToConvert,
                 currencyToObtain: currency.currencyToObtain,
                 valueToConvert: "1")!
+            guard let numberOneFormatter: String = CurrencyService.shared.formatterCurrencyCode(value: 1,
+                        currency: SelectedParameters.selectedCurrency.currencyToConvert) else { return }
 
             comparedCurrencyLabel.text = """
                 Today :
 
-                1 \(currencyList[currency.currencyToConvert]!) =  \(currencyForOne) \(currencyList[currency.currencyToObtain]!)
+                \(numberOneFormatter) =  \(currencyForOne)
                 """
-            firstCurrencyLabel.text = """
+            leftCurrencyLabel.text = """
                 Enter your value:
                 in \(currency.currencyToConvert)
                 """
-            secondCurrencyLabel.text = """
+            rightCurrencyLabel.text = """
                 Result:
                 in \(currency.currencyToObtain)
                 """
             resultValueLabel.text = currencyForOne
 
         } catch ErrorType.userValueIsIncorrect {
-            errorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
         } catch ErrorType.firstCurrencyIsIncorrect {
-            errorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
         } catch {
-            errorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
+            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
         }
     }
 
-    private func errorMessage(message: String) {
+    private func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        convertButton.isHidden = shown
+    }
+
+    // MARK: - UIAlertController
+    private func alertErrorMessage(message: String) {
         let alertVC = UIAlertController(title: "Error!", message: message,
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
+}
 
-    @IBAction func tappedConvertButton() {
-        do {
-            resultValueLabel.text = try CurrencyService.shared.convertCurrency(
-                currency: currency,
-                currencyToConvert: currency.currencyToConvert,
-                currencyToObtain: currency.currencyToObtain,
-                valueToConvert: userValueTextField.text)
+// MARK: - Methods for NavigationItem Buttons
+extension ExchangeRateViewController {
+    @objc func launchParametersViewController() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let parametersViewController = storyBoard.instantiateViewController(
+                withIdentifier: "Parameters") as? ParametersViewController else { return}
+        self.present(parametersViewController, animated: true, completion: nil)
+    }
 
-        } catch ErrorType.userValueIsIncorrect {
-            errorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
-        } catch ErrorType.firstCurrencyIsIncorrect {
-            errorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
-        } catch {
-            errorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
-        }
+    @objc func updateCurrentViewController() {
+        updateExchangeRateView(currency: SelectedParameters.selectedCurrency)
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard for UITextFieldDelegate
 extension ExchangeRateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -107,8 +141,4 @@ extension ExchangeRateViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         userValueTextField.resignFirstResponder()
     }
-}
-
-extension ExchangeRateViewController {
-
 }

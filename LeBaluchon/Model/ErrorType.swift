@@ -17,5 +17,7 @@ please contact us to update application
 The second currency was not found,
 please contact us to update application
 """
-    case downloadFailed = "The durrency download failed"
+    case cityNotFound = "City not found, please enter another city"
+    case noValue = "Please enter a value before validating"
+    case downloadFailed = "The download failed"
 }

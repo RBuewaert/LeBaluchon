@@ -9,9 +9,11 @@ import XCTest
 @testable import LeBaluchon
 
 class CurrencyServiceTestCase: XCTestCase {
-    func testGetExchangeRateShouldPostFailedCallbackIfError() {
+    // MARK: - Method getExchangeRate
+    func testGetExchangeRateShouldPostFailedCallbackIfBadUrl() {
         // Given
-        let currencyService = CurrencyService(currencySession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: nil, response: nil, error: FakeResponseData.error))
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -21,8 +23,167 @@ class CurrencyServiceTestCase: XCTestCase {
             XCTAssertNil(currency)
             expectation.fulfill()
         }
-
         wait(for: [expectation], timeout: 0.01)
     }
 
+    func testGetExchangeRateShouldPostFailedCallbackIfError() {
+        // Given
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: nil, response: nil, error: FakeResponseData.error))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetExchangeRateShouldPostFailedCallbackIfNoData() {
+        // Given
+        let currencyService = CurrencyService(currencySession: URLSessionFake(data: nil, response: nil, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetExchangeRateShouldPostFailedCallbackIfIncorrectResponse() {
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: FakeResponseData.currencyCorrectData,
+                                                response: FakeResponseData.responseKO, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetExchangeRateShouldPostFailedCallbackIfIncorrectData() {
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: FakeResponseData.incorrectData,
+                                                response: FakeResponseData.responseOK, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetExchangeRateShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: FakeResponseData.currencyCorrectData,
+                                                response: FakeResponseData.responseOK, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            let exchangeRateUSD = ["USD": 1.179419]
+
+            XCTAssertEqual(exchangeRateUSD["USD"], currency!.exchangeRate["USD"])
+            XCTAssertTrue(success)
+            XCTAssertNotNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    // MARK: - Other Method of the Model
+    func testConvertCurrencyShouldFailedIfThereIsUserValueEntered() {
+        // Given
+        let currency = Currency(exchangeRate: ["USD": 1.179419])
+
+        // When
+        // Then
+        XCTAssertThrowsError(try CurrencyService.shared.convertCurrency(
+                                        currency: currency,
+                                        currencyToConvert: currency.currencyToConvert,
+                                        currencyToObtain: currency.currencyToObtain,
+                                        valueToConvert: nil)!) { (errorThrown) in
+               XCTAssertEqual(errorThrown as? ErrorType, ErrorType.userValueIsIncorrect)
+        }
+    }
+
+    func testConvertCurrencyShouldFailedIfTheUserValueEnteredIsNotADouble() {
+        // Given
+        let currency = Currency(exchangeRate: ["USD": 1.179419])
+
+        // When
+        // Then
+        XCTAssertThrowsError(try CurrencyService.shared.convertCurrency(
+                                        currency: currency,
+                                        currencyToConvert: currency.currencyToConvert,
+                                        currencyToObtain: currency.currencyToObtain,
+                                valueToConvert: "15.5.5")!) { (errorThrown) in
+               XCTAssertEqual(errorThrown as? ErrorType, ErrorType.userValueIsIncorrect)
+        }
+    }
+
+    func testConvertCurrencyShouldFailedIfTheFirstCurrencyNotFound() {
+        // Given
+        let currency = Currency(exchangeRate: ["FRF": 1, "USD": 1.179419])
+
+        // When
+        // Then
+        XCTAssertThrowsError(try CurrencyService.shared.convertCurrency(
+                                        currency: currency,
+                                        currencyToConvert: currency.currencyToConvert,
+                                        currencyToObtain: currency.currencyToObtain,
+                                valueToConvert: "15.5")!) { (errorThrown) in
+               XCTAssertEqual(errorThrown as? ErrorType, ErrorType.firstCurrencyIsIncorrect)
+        }
+    }
+
+    func testConvertCurrencyShouldFailedIfTheSecondCurrencyNotFound() {
+        // Given
+        let currency = Currency(exchangeRate: ["EUR": 1, "FRF": 1.179419])
+
+        // When
+        // Then
+        XCTAssertThrowsError(try CurrencyService.shared.convertCurrency(
+                                        currency: currency,
+                                        currencyToConvert: currency.currencyToConvert,
+                                        currencyToObtain: currency.currencyToObtain,
+                                valueToConvert: "15.5")!) { (errorThrown) in
+               XCTAssertEqual(errorThrown as? ErrorType, ErrorType.secondCurrencyIsIncorrect)
+        }
+    }
+
+    func testConvertCurrencyShouldSuccesIfValueAndCurrenciesAreCorrect() {
+        // Given
+        let currency = Currency(exchangeRate: ["EUR": 1, "USD": 1.179419])
+
+        // When
+        // Then
+        XCTAssertNoThrow(try CurrencyService.shared.convertCurrency(
+                                        currency: currency,
+                                        currencyToConvert: currency.currencyToConvert,
+                                        currencyToObtain: currency.currencyToObtain,
+                                valueToConvert: "15.5")!)
+        XCTAssertEqual("$18.28", try CurrencyService.shared.convertCurrency(
+                        currency: currency,
+                        currencyToConvert: currency.currencyToConvert,
+                        currencyToObtain: currency.currencyToObtain,
+                valueToConvert: "15.5")!)
+    }
 }

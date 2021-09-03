@@ -1,0 +1,85 @@
+{
+    "cnt": 2,
+    "list": [
+        {
+            "coord": {
+                "lon": 0.9876,
+                "lat": 43.8829
+            },
+            "sys": {
+                "country": "FR",
+                "timezone": 7200,
+                "sunrise": 1629695366,
+                "sunset": 1629744497
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ],
+            "main": {
+                "temp": 19.16,
+                "feels_like": 18.72,
+                "temp_min": 17.57,
+                "temp_max": 20.16,
+                "pressure": 1023,
+                "sea_level": 1023,
+                "grnd_level": 1008,
+                "humidity": 61
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.74,
+                "deg": 309
+            },
+            "clouds": {
+                "all": 84
+            },
+            "dt": 1629706194,
+            "id": 3034170,
+            "name": "Beaumont-de-Lomagne"
+        },
+        {
+            "coord": {
+                "lon": -74.006,
+                "lat": 40.7143
+            },
+            "sys": {
+                "country": "US",
+                "timezone": -14400,
+                "sunrise": 1629713677,
+                "sunset": 1629762177
+            },
+            "weather": [
+                {
+                    "id": 501,
+                    "main": "Rain",
+                    "description": "moderate rain",
+                    "icon": "10n"
+                }
+            ],
+            "main": {
+                "temp": 22.44,
+                "feels_like": 23.19,
+                "temp_min": 21.33,
+                "temp_max": 23.38,
+                "pressure": 1007,
+                "humidity": 94
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.45,
+                "deg": 31
+            },
+            "clouds": {
+                "all": 90
+            },
+            "dt": 1629706163,
+            "id": 5128581,
+            "name": "New York"
+        }
+    ]
+}
