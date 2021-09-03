@@ -10,6 +10,22 @@ import XCTest
 
 class CurrencyServiceTestCase: XCTestCase {
     // MARK: - Method getExchangeRate
+    func testGetExchangeRateShouldPostFailedCallbackIfBadUrl() {
+        // Given
+        let currencyService = CurrencyService(currencySession: URLSessionFake(
+                                                data: nil, response: nil, error: FakeResponseData.error))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        currencyService.getExchangeRate { (success, currency) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(currency)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
     func testGetExchangeRateShouldPostFailedCallbackIfError() {
         // Given
         let currencyService = CurrencyService(currencySession: URLSessionFake(

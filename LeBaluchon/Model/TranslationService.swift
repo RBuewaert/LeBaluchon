@@ -10,13 +10,12 @@ import Foundation
 final class TranslationService {
     // MARK: - Pattern Singleton
     static var shared = TranslationService()
-    private init() {}
 
     // MARK: - Dependency injection
     private var task: URLSessionDataTask?
     private var translationSession = URLSession(configuration: .default)
 
-    init(translationSession: URLSession) {
+    init(translationSession: URLSession = URLSession.shared) {
         self.translationSession = translationSession
     }
 

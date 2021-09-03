@@ -10,13 +10,12 @@ import Foundation
 final class WeatherService {
     // MARK: - Pattern Singleton
     static var shared = WeatherService()
-    private init() {}
 
     // MARK: - Dependency injection
     private var task: URLSessionDataTask?
     private var weatherSession = URLSession(configuration: .default)
 
-    init(weatherSession: URLSession) {
+    init(weatherSession: URLSession = URLSession.shared) {
         self.weatherSession = weatherSession
     }
 
