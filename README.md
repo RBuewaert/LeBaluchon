@@ -2,7 +2,7 @@
 
 It's an iOS Application to compare exchange rate between two currencies, to traduce words and to compare weather between two cities
 
-## API Used
+# API Used
 
 API fixer.io
 
