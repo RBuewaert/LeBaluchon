@@ -61,7 +61,6 @@ final class Lists {
                         "BOB": "Boliviano",
                         "BRL": "Brazilian real",
                         "BSD": "Bahamian dollar",
-                        "BTC": "Bitcoin",
                         "BTN": "Bhutanese ngultrum",
                         "BWP": "Botswana pula",
                         "BYN": "Belarusian ruble",
