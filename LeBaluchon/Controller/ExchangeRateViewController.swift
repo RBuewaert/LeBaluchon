@@ -52,20 +52,7 @@ final class ExchangeRateViewController: UIViewController {
 
     // MARK: - Action
     @IBAction func tappedConvertButton() {
-        do {
-            resultValueLabel.text = try CurrencyService.shared.convertCurrency(
-                currency: SelectedParameters.selectedCurrency,
-                currencyToConvert: SelectedParameters.selectedCurrency.currencyToConvert,
-                currencyToObtain: SelectedParameters.selectedCurrency.currencyToObtain,
-                valueToConvert: userValueTextField.text)
-
-        } catch ErrorType.userValueIsIncorrect {
-            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
-        } catch ErrorType.firstCurrencyIsIncorrect {
-            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
-        } catch {
-            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
-        }
+        convertValue()
     }
 
     // MARK: - Privates methods
@@ -93,6 +80,27 @@ final class ExchangeRateViewController: UIViewController {
                 in \(currency.currencyToObtain)
                 """
             resultValueLabel.text = currencyForOne
+
+        } catch ErrorType.userValueIsIncorrect {
+            alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
+        } catch ErrorType.firstCurrencyIsIncorrect {
+            alertErrorMessage(message: ErrorType.firstCurrencyIsIncorrect.rawValue)
+        } catch {
+            alertErrorMessage(message: ErrorType.secondCurrencyIsIncorrect.rawValue)
+        }
+
+        if userValueTextField.text != "" && userValueTextField.text != nil {
+            convertValue()
+        }
+    }
+
+    private func convertValue() {
+        do {
+            resultValueLabel.text = try CurrencyService.shared.convertCurrency(
+                currency: SelectedParameters.selectedCurrency,
+                currencyToConvert: SelectedParameters.selectedCurrency.currencyToConvert,
+                currencyToObtain: SelectedParameters.selectedCurrency.currencyToObtain,
+                valueToConvert: userValueTextField.text)
 
         } catch ErrorType.userValueIsIncorrect {
             alertErrorMessage(message: ErrorType.userValueIsIncorrect.rawValue)
