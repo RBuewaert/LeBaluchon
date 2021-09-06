@@ -28,7 +28,7 @@ final class Lists {
     static let montreal = City(name: "Montreal", currency: "CAD", language: "French", cityId: 6077243)
     static let vancouver = City(name: "Vancouver", currency: "CAD", language: "English", cityId: 6173331)
     static let casablanca = City(name: "Casablanca", currency: "MAD", language: "Arabic", cityId: 2553604)
-    static let rome = City(name: "Rome", currency: "EUR", language: "Italian", cityId: 4219762)
+    static let rome = City(name: "Rome", currency: "EUR", language: "Italian", cityId: 3169070)
     static let madrid = City(name: "Madrid", currency: "EUR", language: "Spanish", cityId: 3117735)
     static let lisbon = City(name: "Lisbon", currency: "EUR", language: "Portuguese", cityId: 2267057)
     static let oslo = City(name: "oslo", currency: "NOK", language: "Norwegian", cityId: 3143244)
